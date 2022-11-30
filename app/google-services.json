@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "189952899619",
+    "project_id": "vivi-a924b",
+    "storage_bucket": "vivi-a924b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189952899619:android:8a656ea2312048262b4f96",
+        "android_client_info": {
+          "package_name": "com.example.viviappis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "189952899619-cps1d0b113dr8fjd3em3455bj70lc0ps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrZStcsx3EoKQhj6lpid8qS4s1GAdu9fY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189952899619-cps1d0b113dr8fjd3em3455bj70lc0ps.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
