@@ -55,8 +55,8 @@ public class Utente {
         return surname;
     }
 
-    public void setFriends(Collection<Utente> friends) {
-        this.friends = friends;
+    public void addFriends(Utente u) {
+        this.friends.add(u);
     }
 
     public void setPassword(String password) {
