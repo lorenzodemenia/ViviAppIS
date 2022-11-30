@@ -1,10 +1,9 @@
 package com.example.viviappis;
 
-import static com.example.viviappis.ui.Utente.userMap;
+import static com.example.viviappis.Utente.userMap;
 
 import android.os.Bundle;
 
-import com.example.viviappis.ui.Utente;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +11,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.example.viviappis.databinding.ActivityMainBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.time.LocalDate;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {

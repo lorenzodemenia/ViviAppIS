@@ -1,6 +1,5 @@
-package com.example.viviappis.ui;
+package com.example.viviappis;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
