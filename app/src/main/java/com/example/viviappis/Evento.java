@@ -15,6 +15,7 @@ public class Evento {
     private boolean isPublic;
 
 
+
     public Evento (String name, String description, Utente creator, String date, String password, boolean isPublic){
         this.name = name;
         this.creator = creator;
