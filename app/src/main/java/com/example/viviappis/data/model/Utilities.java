@@ -1,4 +1,4 @@
-package com.example.viviappis;
+package com.example.viviappis.data.model;
 
 import java.lang.annotation.Retention;
 import java.util.Random;

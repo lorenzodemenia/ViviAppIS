@@ -1,11 +1,12 @@
-package com.example.viviappis;
+package com.example.viviappis.data.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Utente {
+public class Utente
+{
     private final String name;
     private final String surname;
     private final String birth;
@@ -16,7 +17,8 @@ public class Utente {
     private int score;
 
 
-    public Utente(String name, String surname, String birth, String email, String password){
+    public Utente(String name, String surname, String birth, String email, String password, int score)
+    {
         this.name = name;
         this.surname = surname;
         this.birth = birth;
@@ -24,56 +26,37 @@ public class Utente {
         this.password = password;
         this.friends = new ArrayList<>();
         //this.events = new ArrayList<>();
-        this.score = 0;
+        this.score = score;
     }
+    public Utente(String name, String surname, String birth, String email, String password){this(name, surname, birth,email,password, 0);}
+    public Utente(Utente a){this(a.name, a.surname, a.birth, a.email, a.password, a.score);}
 
-    public String getName(){
-        return this.name;
-    }
 
-    public int getScore() {
-        return score;
-    }
-
-    public Collection<Utente> getFriends() {
-        return friends;
-    }
-
-    public String getBirth() {
-        return birth;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
+    public String             getName()     {return this.name;}
+    public int                getScore()    {return score;}
+    public Collection<Utente> getFriends()  {return friends;}
+    public String             getBirth()    {return birth;}
+    public String             getEmail()    {return email;}
+    public String             getPassword() {
         return password;
     }
+    public String             getSurname()  {return surname;}
 
-    public String getSurname() {
-        return surname;
-    }
 
-    public void addFriends(Utente u) {
-        this.friends.add(u);
-    }
-
+    public void addFriends(Utente u)         {this.friends.add(u);}
     public void setPassword(String password) {
         this.password = password;
     }
+    public void setScore(int score)          {this.score = score;}
 
-    public void setScore(int score) {
-        this.score = score;
-    }
 
-    public static Map<String, Object> userMap(Utente u){
+    public static Map<String, Object> userMap(Utente u)
+    {
         Map<String, Object> user = new HashMap<>();
         user.put("name", u.getName());
         user.put("surname", u.getSurname());
         user.put("birthday", u.getBirth());
         user.put("email", u.getEmail());
-        user.put("password", u.getPassword());
         user.put("friends", u.getFriends());
         user.put("score", u.getScore());
         return user;

@@ -1,4 +1,4 @@
-package com.example.viviappis;
+package com.example.viviappis.data.model;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package com.example.viviappis;
+package com.example.viviappis.data.model;
 
 public class GenericEvent extends Evento{
     int minPart;
