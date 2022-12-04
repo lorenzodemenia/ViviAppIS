@@ -25,7 +25,8 @@ public class LoginActivity extends AppCompatActivity
 
     //eliminabile
     private TextView result;
-    
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -60,8 +61,13 @@ public class LoginActivity extends AppCompatActivity
 
             if(u!=null)
             {
-                au.signInWithEmailAndPassword(u.getEmail(), u.getPassword());
+                au.signInWithEmailAndPassword(u.getEmail(), u.getPassword()).addOnCompleteListener((task ->
+                {
+                    if(task.isSuccessful()) result.setText("Success");
+                    else result.setText("reject");
+                }));
                 //db.collection("users").document(u.getEmail()).
+
             }
             else result.setText("Inserisci tutti i dati richiesti");
         });
