@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.viviappis.AfterLogin;
 import com.example.viviappis.MainActivity;
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Utente;
@@ -63,13 +64,17 @@ public class LoginActivity extends AppCompatActivity
             {
                 au.signInWithEmailAndPassword(u.getEmail(), u.getPassword()).addOnCompleteListener((task ->
                 {
-                    if(task.isSuccessful()) result.setText("Success");
-                    else result.setText("reject");
+                    if(task.isSuccessful())
+                    {
+                        result.setText(R.string.log_succ);
+                        startActivity(new Intent(this, AfterLogin.class));
+                    }
+                    else result.setText(R.string.log_rej);
                 }));
                 //db.collection("users").document(u.getEmail()).
 
             }
-            else result.setText("Inserisci tutti i dati richiesti");
+            else result.setText(R.string.log_err_no_all_data);
         });
     }
 

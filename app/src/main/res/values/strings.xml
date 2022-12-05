@@ -10,4 +10,26 @@
     <string name="title_activity_register">RegisterActivity</string>
     <!-- Strings used for fragments for navigation -->
 
+
+    <!-- stringhe per l'accesso alle raccolte (tabelle database)-->
+    <string name="db_rac_users">users</string>      <!--getResources().getString(R.string.db_rac_users)-->
+    <string name="db_rac_events">events</string>    <!--getResources().getString(R.string.db_rac_events)-->
+
+
+    <!-- stringhe per l'activity register  -->
+    <string name="reg_succ">Registrazione avvenuta con successo, clicca qui per tornare alla pagina di login</string>
+    <string name="reg_rej">Errore durante la registrazione</string>
+    <!--Errori-->
+    <string name="reg_err_no_all_data">Inserisci tutti i dati richiesti</string>
+    <string name="reg_err_email">Email formattata in modo errato</string>
+    <string name="reg_err_psw">Password inserita troppo corta, almeno 6 caratteri</string>
+    <string name="reg_err_exist">Utente già esistente</string>
+    <string name="reg_err_gen">Errore generico</string>
+
+
+    <!-- stringhe per l'activity login  -->
+    <string name="log_succ">Login avvenuto con successo</string>
+    <string name="log_rej">Password e/o email sono state inserite errate</string>
+    <!--Errori-->
+    <string name="log_err_no_all_data">Inserisci tutti i dati richiesti</string>
 </resources>

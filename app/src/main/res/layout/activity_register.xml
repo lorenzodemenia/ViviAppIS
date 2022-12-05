@@ -95,9 +95,10 @@
 
     <TextView
         android:id="@+id/registerResult"
-        android:layout_width="177dp"
-        android:layout_height="18dp"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="465dp" />
+        android:layout_width="359dp"
+        android:layout_height="152dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="474dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
