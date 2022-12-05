@@ -1,31 +1,26 @@
 package com.example.viviappis;
 
-import static com.example.viviappis.data.model.Evento.eventMap;
-import static com.example.viviappis.data.model.Utente.userMap;
-import static com.example.viviappis.data.model.Utilities.generateRandomId;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
-
-import com.example.viviappis.data.model.Evento;
-import com.example.viviappis.data.model.Utente;
-import com.example.viviappis.ui.loginAndRegister.LoginActivity;
-import com.example.viviappis.ui.loginAndRegister.RegisterActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+
+import com.example.viviappis.ui.loginAndRegister.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
-
+/**
+ * Questa classe serve a gestire activity principale
+ * @author Jacopo Cini
+ * @version 1.0
+ */
 public class MainActivity extends AppCompatActivity
 {
     private FirebaseAuth au;
 
+    /**
+     * Questa funzione permette di creare actactivity principale
+     * @param savedInstanceState Rappresenta lo stato che ce alla creazione dell'attività
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

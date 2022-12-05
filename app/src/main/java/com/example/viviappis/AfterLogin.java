@@ -11,11 +11,20 @@ import android.os.Bundle;
 import com.example.viviappis.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Questa classe serve a gestire activity che gestisce le azioni dopo il login
+ * @author Jacopo Cini
+ * @version 1.0
+ */
 public class AfterLogin extends AppCompatActivity
 {
 
     private ActivityMainBinding binding;
 
+    /**
+     * Questa funzione permette di creare activity che gestisce le azioni dopo il login
+     * @param savedInstanceState Rappresenta lo stato che ce alla creazione dell'attività
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

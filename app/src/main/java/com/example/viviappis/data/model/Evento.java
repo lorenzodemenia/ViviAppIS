@@ -5,7 +5,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Evento {
+public class Evento
+{
     private String name;
     private String description;
     private final Utente creator;
@@ -13,7 +14,6 @@ public class Evento {
     private final String password;
     private Collection<Utente> partecipants;
     private boolean isPublic;
-
 
 
     public Evento (String name, String description, Utente creator, String date, String password, boolean isPublic){
@@ -29,23 +29,18 @@ public class Evento {
     public String getName() {
         return name;
     }
-
     public String getPassword() {
         return password;
     }
-
     public String getDate() {
         return date;
     }
-
     public Collection<Utente> getPartecipants() {
         return partecipants;
     }
-
     public String getDescription() {
         return description;
     }
-
     public Utente getCreator() {
         return creator;
     }
@@ -53,13 +48,14 @@ public class Evento {
     public void setDate(String date) {
         this.date = date;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public void setName(String name) {
         this.name = name;
+    }
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
     }
 
     public void addPartecipants(Utente u) {
@@ -70,9 +66,6 @@ public class Evento {
         return isPublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
-    }
 
     public static Map<String, Object> eventMap(Evento e){
         Map<String, Object> event = new HashMap<>();

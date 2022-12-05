@@ -3,7 +3,8 @@ package com.example.viviappis.data.model;
 import java.lang.annotation.Retention;
 import java.util.Random;
 
-public class Utilities {
+public class Utilities
+{
     public static String generateRandomId() {
         String rndId;
         int leftlimit = 48;

@@ -5,6 +5,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Questa classe serve a gestire utente
+ * @author
+ * @version 1.0
+ */
 public class Utente
 {
     private final String name;
@@ -17,6 +22,15 @@ public class Utente
     private int score;
 
 
+    /**
+     * Permette di costruire un oggetto di tipo Utente
+     * @param name nome dell'utente
+     * @param surname cognome dell'utente
+     * @param birth data di nascita
+     * @param email email dell'utente
+     * @param password password dell'utente, salvata solo momentaneamente alla register
+     * @param score rappresenta il valore di punteggio dell'utente
+     */
     public Utente(String name, String surname, String birth, String email, String password, int score)
     {
         this.name = name;
@@ -28,28 +42,82 @@ public class Utente
         //this.events = new ArrayList<>();
         this.score = score;
     }
+    /**
+     * Permette di costruire un oggetto di tipo Utente
+     * @param name nome dell'utente
+     * @param surname cognome dell'utente
+     * @param birth data di nascita
+     * @param email email dell'utente
+     * @param password password dell'utente, salvata solo momentaneamente alla register
+     */
     public Utente(String name, String surname, String birth, String email, String password){this(name, surname, birth,email,password, 0);}
+    /**
+     * Permette di costruire un oggetto di tipo Utente
+     * @param a Rappresenta utente che serve per creare il nuovo utente
+     */
     public Utente(Utente a){this(a.name, a.surname, a.birth, a.email, a.password, a.score);}
 
 
-    public String             getName()     {return this.name;}
-    public int                getScore()    {return score;}
-    public Collection<Utente> getFriends()  {return friends;}
-    public String             getBirth()    {return birth;}
-    public String             getEmail()    {return email;}
-    public String             getPassword() {
-        return password;
-    }
-    public String             getSurname()  {return surname;}
+    /**
+     * Ritorna il valore del nome del utente
+     * @return il valore del nome del utente
+     */
+    public String  getName() {return this.name;}
+    /**
+     * Ritorna il valore del cognome del utente
+     * @return il valore del cognome del utente
+     */
+    public String getSurname() {return surname;}
+    /**
+     * Ritorna il valore del punteggio del utente
+     * @return il valore del punteggio del utente
+     */
+    public int getScore() {return score;}
+    /**
+     * Ritorna gli amici del utente
+     * @return gli amici del utente
+     */
+    public Collection<Utente> getFriends() {return friends;}
+    /**
+     * Ritorna il valore della data di nascita del utente
+     * @return il valore della data di nascita del utente
+     */
+    public String  getBirth() {return birth;}
+    /**
+     * Ritorna il valore della mail del utente
+     * @return il valore della mail del utente
+     */
+    public String  getEmail(){return email;}
+    /**
+     * Ritorna il valore della password del utente
+     * @return il valore della password del utente
+     */
+    public String getPassword() {return password;}
+
+    /**
+     * Permette di aggiungere un amico alla lista degli amici del utente
+     * @param u amico da aggiungere
+     */
+    public void addFriends(Utente u) {this.friends.add(u);}
+    /**
+     * Permette di settare il valore dello score al valore passato
+     * @param score valore da sostituire a score del utente
+     */
+    public void setScore(int score) {this.score = score;}
 
 
-    public void addFriends(Utente u)         {this.friends.add(u);}
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public void setScore(int score)          {this.score = score;}
+    /**
+     * Permette di aggiungere al valore dello score il valore passato
+     * @param score valore da aggiungere allo score dell'utente
+     */
+    public void addScore(int score) {this.score+= score;}
 
 
+    /**
+     * Permette di creare una mappa a partire dall'utente passato
+     * @param u Utente da trasformare in mappa
+     * @return La mappa che rappresenta l'utente
+     */
     public static Map<String, Object> userMap(Utente u)
     {
         Map<String, Object> user = new HashMap<>();

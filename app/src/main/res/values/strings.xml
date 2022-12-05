@@ -22,6 +22,7 @@
     <!--Errori-->
     <string name="reg_err_no_all_data">Inserisci tutti i dati richiesti</string>
     <string name="reg_err_email">Email formattata in modo errato</string>
+    <string name="reg_err_data">Data formattata in modo errato</string>
     <string name="reg_err_psw">Password inserita troppo corta, almeno 6 caratteri</string>
     <string name="reg_err_exist">Utente già esistente</string>
     <string name="reg_err_gen">Errore generico</string>
