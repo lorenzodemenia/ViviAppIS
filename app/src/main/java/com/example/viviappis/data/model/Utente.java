@@ -1,5 +1,6 @@
 package com.example.viviappis.data.model;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.Map;
  */
 public class Utente
 {
+    private final String username;
     private final String name;
     private final String surname;
     private final String birth;
@@ -25,14 +27,16 @@ public class Utente
     /**
      * Permette di costruire un oggetto di tipo Utente
      * @param name nome dell'utente
+     * @param username username dell'utente
      * @param surname cognome dell'utente
      * @param birth data di nascita
      * @param email email dell'utente
      * @param password password dell'utente, salvata solo momentaneamente alla register
      * @param score rappresenta il valore di punteggio dell'utente
      */
-    public Utente(String name, String surname, String birth, String email, String password, int score)
+    public Utente(String name, String surname, String username,  String birth, String email, String password, int score)
     {
+        this.username = username;
         this.name = name;
         this.surname = surname;
         this.birth = birth;
@@ -50,12 +54,12 @@ public class Utente
      * @param email email dell'utente
      * @param password password dell'utente, salvata solo momentaneamente alla register
      */
-    public Utente(String name, String surname, String birth, String email, String password){this(name, surname, birth,email,password, 0);}
+    public Utente(String name, String surname, String username, String birth, String email, String password){this(name, surname, username, birth,email,password, 0);}
     /**
      * Permette di costruire un oggetto di tipo Utente
      * @param a Rappresenta utente che serve per creare il nuovo utente
      */
-    public Utente(Utente a){this(a.name, a.surname, a.birth, a.email, a.password, a.score);}
+    public Utente(Utente a){this(a.name, a.surname,a.username, a.birth, a.email, a.password, a.score);}
 
 
     /**
@@ -63,6 +67,12 @@ public class Utente
      * @return il valore del nome del utente
      */
     public String  getName() {return this.name;}
+
+    /**
+     * Ritorna il valore del Username del utente
+     * @return il valore del Username del utente
+     */
+    public String  getUsername() {return this.username;}
     /**
      * Ritorna il valore del cognome del utente
      * @return il valore del cognome del utente
@@ -118,15 +128,20 @@ public class Utente
      * @param u Utente da trasformare in mappa
      * @return La mappa che rappresenta l'utente
      */
-    public static Map<String, Object> userMap(Utente u)
-    {
+    public static Map<String, Object> userMap(Utente u) {
+
         Map<String, Object> user = new HashMap<>();
+        Field[] a = u.getClass().getDeclaredFields();
+
+
         user.put("name", u.getName());
         user.put("surname", u.getSurname());
+        user.put("username", u.getUsername());
         user.put("birthday", u.getBirth());
         user.put("email", u.getEmail());
         user.put("friends", u.getFriends());
         user.put("score", u.getScore());
+
         return user;
     }
 }
