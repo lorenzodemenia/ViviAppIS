@@ -1,4 +1,4 @@
-package com.example.viviappis.ui.loginAndRegister;
+package com.example.viviappis.control.loginAndRegister;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.viviappis.AfterLogin;
+import com.example.viviappis.control.AfterLogin;
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Utente;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,8 +85,6 @@ public class LoginActivity extends AppCompatActivity
                     }
                     else result.setText(R.string.log_rej);
                 }));
-                //db.collection("users").document(u.getEmail()).
-
             }
             else result.setText(R.string.log_err_no_all_data);
         });

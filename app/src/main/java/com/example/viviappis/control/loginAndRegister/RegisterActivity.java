@@ -1,4 +1,4 @@
-package com.example.viviappis.ui.loginAndRegister;
+package com.example.viviappis.control.loginAndRegister;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,13 +19,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.database.collection.LLRBNode;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -82,37 +80,43 @@ public class RegisterActivity extends AppCompatActivity
     /**
      * Questa funzione va ad inserire i Listener ai vari componenti nella pagina
      */
-    private void addActionListener() {
+    private void addActionListener()
+    {
         bReg.setOnClickListener((v) ->
         {
             Utente u = validate();
 
-            if (u != null) {
+            if (u != null)
+            {
                 au.createUserWithEmailAndPassword(u.getEmail(), u.getPassword()).addOnCompleteListener((task) ->
                 {
-                    if (task.isSuccessful()) {
+                    if (task.isSuccessful())
+                    {
                         db.collection(getResources().getString(R.string.db_rac_users)).
                                 document(u.getEmail()).set(Utente.userMap(u)).addOnCompleteListener((t) ->
                                 {
-                                    if (t.isSuccessful()) {
+                                    if (t.isSuccessful())
+                                    {
                                         result.setText(R.string.reg_succ);
-                                        result.setOnClickListener((r) -> {
+                                        result.setOnClickListener((r) ->
+                                        {
                                             startActivity(new Intent(this, LoginActivity.class));
                                         });
+                                        startActivity(new Intent(this, LoginActivity.class));
                                     } else result.setText(R.string.reg_rej);
                                 });
-                    } else {
-                        try {
-                            throw task.getException();
-                        } catch (FirebaseAuthInvalidCredentialsException e) {
+                    }
+                    else
+                    {
+                        try {throw task.getException();}
+                        catch (FirebaseAuthInvalidCredentialsException e)
+                        {
                             if (e instanceof FirebaseAuthWeakPasswordException)
                                 result.setText(R.string.reg_err_psw);
                             else result.setText(R.string.reg_err_email);
-                        } catch (FirebaseAuthUserCollisionException e) {
-                            result.setText(R.string.reg_err_exist);
-                        } catch (Exception e) {
-                            result.setText(R.string.reg_err_gen);
                         }
+                        catch (FirebaseAuthUserCollisionException e) {result.setText(R.string.reg_err_exist);}
+                        catch (Exception e) {result.setText(R.string.reg_err_gen);}
                     }
                 });
             } else result.setText(R.string.reg_err_no_all_data);
@@ -123,19 +127,20 @@ public class RegisterActivity extends AppCompatActivity
             Calendar c = Calendar.getInstance();
             DatePickerDialog a = new DatePickerDialog(this, (datePicker, y, m, g) ->
             {
-                inpDate.setText(g + "/" + m + "/" + y);
+                inpDate.setText(g + "/" + (m+1) + "/" + y);
             }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
             a.show();
         });
         inpDate.setFocusable(false);
 
-        inpPsw.addTextChangedListener(new TextWatcher() {
+        inpPsw.addTextChangedListener(new TextWatcher()
+        {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
                 if (charSequence.length() < 6) inpPsw.setTextColor(Color.RED);
                 else if (charSequence.length() >= 6 && charSequence.length() < 9)
                     inpPsw.setTextColor(Color.rgb(255, 165, 0));
@@ -143,15 +148,24 @@ public class RegisterActivity extends AppCompatActivity
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-            }
+            public void afterTextChanged(Editable editable) {}
         });
-        //cntr email ????
-       /* String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
-        //Compile regular expression to get the pattern
-        Pattern pattern = Pattern.compile(regex);
-        //Iterate emails array list
-        Matcher matcher = pattern.matcher();*/
+
+        inpEmail.setOnFocusChangeListener((view, b) ->
+        {
+            System.out.println(view+" "+b);
+            if(!b)
+            {
+                String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
+                //Compile regular expression to get the pattern
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(inpEmail.getText());
+
+                if(matcher.matches()) inpEmail.setTextColor(Color.GREEN);
+                else                  inpEmail.setTextColor(Color.RED);
+            }
+            else inpEmail.setTextColor(Color.BLACK);
+        });
     }
 
 
@@ -172,6 +186,11 @@ public class RegisterActivity extends AppCompatActivity
         return !u.isEmpty() && !p.isEmpty() && !e.isEmpty() && !d.isEmpty()  && !d.equals("")? new Utente(n, s, u, d, e,p) : null;
     }
 
+    /**
+     * Questa funzione permmete di controllare se la stringa passata rappresenta una data accettabile
+     * @param c Data da controllare se accettabile
+     * @return
+     */
     private String cntrDate(String c)
     {
         c = c.replace("-", "/").replace(" ", "");

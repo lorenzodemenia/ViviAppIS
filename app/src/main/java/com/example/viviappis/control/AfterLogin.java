@@ -1,4 +1,4 @@
-package com.example.viviappis;
+package com.example.viviappis.control;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -8,6 +8,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 
+import com.example.viviappis.R;
 import com.example.viviappis.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
