@@ -1,20 +1,15 @@
 package com.example.viviappis;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.example.viviappis.control.AfterLogin;
 import com.example.viviappis.control.loginAndRegister.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 
 /**
  * Questa classe serve a gestire activity principale
@@ -38,7 +33,18 @@ public class MainActivity extends AppCompatActivity
         mes =FirebaseMessaging.getInstance();
         mes.getToken().addOnCompleteListener((t)->
         {
-            //System.out.println("\n"+t.getResult()+"\n");
+            mes.subscribeToTopic("pippo").addOnCompleteListener((tt)->{
+                System.out.println("sub: "+tt.getResult()+" "+tt.isSuccessful());
+                System.out.println("\n\n\n\n");
+            });
+          mes.send(new RemoteMessage.Builder("189952899619" + "@fcm.googleapis.com")
+                .setMessageId(Integer.toString(1))
+                .addData("my_message", "Hello World")
+                .addData("my_action","SAY_HELLO")
+                .build());
+
+          System.out.println("invio");
+          System.out.println("\n\n\n\n");
         });
 
 
