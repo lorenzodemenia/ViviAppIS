@@ -6,9 +6,14 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.viviappis.R;
+import com.example.viviappis.control.event.NewEventActivity;
 import com.example.viviappis.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -19,8 +24,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
  */
 public class AfterLogin extends AppCompatActivity
 {
-
     private ActivityMainBinding binding;
+    private Button bHomeNewEvent;
 
     /**
      * Questa funzione permette di creare activity che gestisce le azioni dopo il login
@@ -43,5 +48,25 @@ public class AfterLogin extends AppCompatActivity
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        setUpUIViews();
+        addActionListener();
+    }
+
+    /**
+     * Questa funzione serve a inizzializzare le variabili dell'activity utili per recuperare i valori di input e mostrare i valori di output
+     */
+    private void setUpUIViews()
+    {
+        bHomeNewEvent = (Button) findViewById(R.id.homeNewEvent);
+    }
+
+
+    /**
+     * Questa funzione va ad inserire i Listener ai vari componenti nella pagina
+     */
+    private void addActionListener()
+    {
+        bHomeNewEvent.setOnClickListener((i)->{startActivity(new Intent(this, NewEventActivity.class));});
     }
 }

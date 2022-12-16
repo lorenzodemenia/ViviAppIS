@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.viviappis.control.AfterLogin;
 import com.example.viviappis.control.loginAndRegister.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.RemoteMessage;
 
 /**
  * Questa classe serve a gestire activity principale
@@ -19,7 +17,6 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MainActivity extends AppCompatActivity
 {
     private FirebaseAuth au;
-    private FirebaseMessaging mes;
 
     /**
      * Questa funzione permette di creare actactivity principale
@@ -30,29 +27,12 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         au = FirebaseAuth.getInstance();
-        mes =FirebaseMessaging.getInstance();
-        mes.getToken().addOnCompleteListener((t)->
-        {
-            mes.subscribeToTopic("pippo").addOnCompleteListener((tt)->{
-                System.out.println("sub: "+tt.getResult()+" "+tt.isSuccessful());
-                System.out.println("\n\n\n\n");
-            });
-          mes.send(new RemoteMessage.Builder("189952899619" + "@fcm.googleapis.com")
-                .setMessageId(Integer.toString(1))
-                .addData("my_message", "Hello World")
-                .addData("my_action","SAY_HELLO")
-                .build());
-
-          System.out.println("invio");
-          System.out.println("\n\n\n\n");
-        });
-
 
         if(au.getCurrentUser()==null || au.getCurrentUser().isAnonymous()) startActivity(new Intent(this, LoginActivity.class));
         else
         {
             /*eliminabile --------------------------------*/
-            au.signOut();
+           // au.signOut();
             /*eliminabile --------------------------------*/
 
             startActivity(new Intent(this, AfterLogin.class));

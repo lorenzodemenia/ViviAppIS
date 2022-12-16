@@ -33,7 +33,7 @@ public class MacroD extends GenericEvent {
      * @param nameSquadra2 name of the team 2
      * @param points points gained for the victory
      */
-    public MacroD(String name, String description, Utente creator, String date, String password, boolean isPublic, int minPart, int maxPart, String nameSquadra1, String nameSquadra2, int points) {
+    public MacroD(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart, String nameSquadra1, String nameSquadra2, int points) {
         super(name, description, creator, date, password, isPublic, minPart, maxPart);
         this.points = points;
         this.squadra1 = new Pair<>(nameSquadra1, new ArrayList<>());

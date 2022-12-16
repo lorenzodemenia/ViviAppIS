@@ -9,7 +9,7 @@ public class Evento
 {
     private String name;
     private String description;
-    private final Utente creator;
+    private final String creator;
     private String date;
     private final String password;
     private Collection<Utente> partecipants;
@@ -24,7 +24,7 @@ public class Evento
      * @param password password di accesso all'evento
      * @param isPublic definisce se l'evento è pubblico oppure privato
      */
-    public Evento (String name, String description, Utente creator, String date, String password, boolean isPublic){
+    public Evento (String name, String description, String creator, String date, String password, boolean isPublic){
         this.name = name;
         this.creator = creator;
         this.description = description;
@@ -33,6 +33,8 @@ public class Evento
         this.partecipants = new ArrayList<>();
         this.isPublic = isPublic;
     }
+
+    public Evento(Evento e) {this(e.name,e.description,e.creator,e.date,e.password, e.isPublic);}
 
     /**
      * Return the name of the event.
@@ -78,7 +80,7 @@ public class Evento
      * Return the users the created the event.
      * @return creator of the event
      */
-    public Utente getCreator() {
+    public String getCreator() {
         return creator;
     }
 
@@ -133,18 +135,37 @@ public class Evento
     /**
      * Create a Map of an event using Strings as keys and the fields of the event as values.
      * We use it in order to communicate the values of the event to the database.
-     * @param e the event to push in the database
      * @return return a map having fields' name as keys and event fields' values as value
      */
-    public static Map<String, Object> eventMap(Evento e){
+    public Map<String, Object> toMap()
+    {
         Map<String, Object> event = new HashMap<>();
-        event.put("name", e.getName());
-        event.put("description", e.getDescription());
-        event.put("date", e.getDate());
-        event.put("creator", e.getCreator());
-        event.put("password", e.getPassword());
-        event.put("partecipants", e.getPartecipants());
-        event.put("public", e.isPublic());
+        event.put("name", this.getName());
+        event.put("description", this.getDescription());
+        event.put("date", this.getDate());
+        event.put("creator", this.getCreator());
+        event.put("password", this.getPassword());
+        event.put("partecipants", this.getPartecipants());
+        event.put("public", this.isPublic());
         return event;
     }
+
+    /**
+     * Genera la stringa che rappresenta l'oggetto
+     * @return stringa che rappresenta l'oggetto
+     */
+    @Override
+    public String toString()
+    {
+        return "Evento{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", creator='" + creator + '\'' +
+                ", date='" + date + '\'' +
+                ", password='" + password + '\'' +
+                ", partecipants=" + partecipants +
+                ", isPublic=" + isPublic +
+                '}';
+    }
 }
+
