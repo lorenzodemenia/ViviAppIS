@@ -68,7 +68,7 @@
         android:layout_height="62dp"
         android:checked="true"
         android:showText="false"
-        android:text="Publico"
+        android:text="@string/new_ev_pub"
         android:textOff="Privato"
         android:textOn="Publico"
         app:layout_constraintBottom_toTopOf="@+id/newEvResult"

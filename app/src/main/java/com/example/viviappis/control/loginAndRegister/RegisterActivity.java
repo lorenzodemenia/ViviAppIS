@@ -125,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity
             } else result.setText(R.string.err_no_all_data);
         });
 
-        inpDate.setOnClickListener(Utilities.createDataInp(inpDate,this, result));
+        inpDate.setOnClickListener(Utilities.createDataInp(inpDate,this, result,-1));
         inpDate.setFocusable(false);
 
         inpPsw.addTextChangedListener(new TextWatcher()

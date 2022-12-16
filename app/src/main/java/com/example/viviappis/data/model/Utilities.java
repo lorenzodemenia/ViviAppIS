@@ -20,9 +20,10 @@ public class Utilities
     /**
      * Questa funzione permmete di controllare se la stringa passata rappresenta una data accettabile
      * @param c Data da controllare se accettabile
+     * @param check valore che rappresenta se la data deve essere prima o dopo la data odierna (1 dopo, -1 prima)
      * @return
      */
-    public static String cntrDate(String c, Context con)
+    public static String cntrDate(String c, Context con, int check)
     {
         c = c.replace("-", "/").replace(" ", "");
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -31,7 +32,8 @@ public class Utilities
         try
         {
             Date a =  formatter.parse(c);
-            if(a.after(Calendar.getInstance().getTime()))return con.getString(R.string.ut_err_after_now);
+            if(check==-1 &&  a.after(Calendar.getInstance().getTime()))return con.getString(R.string.ut_err_after_now);
+            else if(check==1 &&  a.before(Calendar.getInstance().getTime()))return con.getString(R.string.ut_err_before_now);
 
             return c;
         }
@@ -44,9 +46,10 @@ public class Utilities
      * @param inp campo dove andare a inserire il valore della data
      * @param con contenitore
      * @param out campo dove andare a mostrare errore dato dalla scelta sbaglita della data
+     * @param check valore che rappresenta se la data deve essere prima o dopo la data odierna (1 dopo, -1 prima)
      * @return ascoltatore creato
      */
-    public static View.OnClickListener createDataInp(TextView inp, Context con, TextView out)
+    public static View.OnClickListener createDataInp(TextView inp, Context con, TextView out, int check)
     {
         return (View view) ->
         {
@@ -54,7 +57,7 @@ public class Utilities
             DatePickerDialog a = new DatePickerDialog(con, (datePicker, y, m, g) ->
             {
                 String s = g + "/" + (m + 1) + "/" + y;
-                String cnt = cntrDate(s, con);
+                String cnt = cntrDate(s, con, check);
                 if(cnt.equals(s))
                 {
                     inp.setText(s);
@@ -64,6 +67,7 @@ public class Utilities
                 {
                     if(cnt.equals(con.getString(R.string.ut_err_no_data)))out.setText(con.getString(R.string.ut_err_no_data_out));
                     else if(cnt.equals(con.getString(R.string.ut_err_after_now)))out.setText(con.getString(R.string.ut_err_after_now_out));
+                    else if (cnt.equals(con.getString(R.string.ut_err_before_now)))out.setText(con.getString(R.string.ut_err_before_now_out));
                 }
             }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
             a.show();

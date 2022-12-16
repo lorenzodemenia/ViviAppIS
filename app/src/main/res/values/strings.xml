@@ -36,10 +36,16 @@
     <!--Errori-->
     <string name="log_err_no_all_data">Inserisci tutti i dati richiesti</string>
 
+    <!-- stringhe per l'activity newEvent  -->
+    <string name="new_ev_pub">Evento: publico</string>
+    <string name="new_ev_priv">Evento: privato</string>
+
 
     <!-- stringhe per file utility  -->
-    <string name="ut_err_after_now">afterNow</string>
+    <string name="ut_err_after_now">beforeNow</string>
+    <string name="ut_err_before_now">afterNow</string>
     <string name="ut_err_no_data">noData</string>
     <string name="ut_err_no_data_out">Data formattata in modo errato</string>
     <string name="ut_err_after_now_out">Data inserita successiva a quella odierna</string>
+    <string name="ut_err_before_now_out">Data inserita precedente a quella odierna</string>
 </resources>

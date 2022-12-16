@@ -75,19 +75,19 @@ public class NewEventActivity extends AppCompatActivity
      */
     private void addActionListener()
     {
-        inpDate.setOnClickListener(Utilities.createDataInp(inpDate, this, result));
+        inpDate.setOnClickListener(Utilities.createDataInp(inpDate, this, result, 1));
         inpDate.setFocusable(false);
 
         inpPublic.setOnCheckedChangeListener((com, bool) ->
         {
             if (bool)
             {
-                inpPublic.setText("Publico");
+                inpPublic.setText(getResources().getText(R.string.new_ev_pub));
                 inpPsw.setVisibility(View.INVISIBLE);
             }
             else
             {
-                inpPublic.setText("Privato");
+                inpPublic.setText(getResources().getText(R.string.new_ev_priv));
                 inpPsw.setVisibility(View.VISIBLE);
             }
         });
@@ -107,11 +107,11 @@ public class NewEventActivity extends AppCompatActivity
         String t = inpType.getSelectedItem().toString();
         String d = inpDate.getText().toString();
         String p = inpPsw.getText().toString();
-        boolean i = inpPublic.getShowText();
+        boolean i = inpPublic.isChecked();
 
-        if(!i && p.isEmpty()) p = Utilities.getNewPassword(10);
-        else if(i)            p="";
+        if(!i && p.equals("")) p = Utilities.getNewPassword(10);
+        else if(i)             p="";
 
-        return !n.isEmpty() && !d.equals("")? new Evento(n,ds,au.getCurrentUser().getEmail(),d,"",i) : null;
+        return !n.isEmpty() && !d.equals("")? new Evento(n,ds,au.getCurrentUser().getEmail(),d,p,i) : null;
     }
 }

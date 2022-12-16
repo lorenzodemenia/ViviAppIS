@@ -19,6 +19,12 @@ public class MacroD extends GenericEvent {
     private final int points;
     private Pair<String, Collection<Utente>> winners;
 
+    /*
+    **************elim
+    * ********** inserire tutte le classi del tipo palla prigioniera ... dentro array.xml
+    * **********
+     */
+
     /**
      * Constructor of object MacroD
      * @param name name of the event
