@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.viviappis.R;
@@ -26,6 +27,7 @@ public class AfterLogin extends AppCompatActivity
 {
     private ActivityMainBinding binding;
     private Button bHomeNewEvent;
+    private SearchView srcDash;
 
     /**
      * Questa funzione permette di creare activity che gestisce le azioni dopo il login
@@ -59,6 +61,10 @@ public class AfterLogin extends AppCompatActivity
     private void setUpUIViews()
     {
         bHomeNewEvent = (Button) findViewById(R.id.homeNewEvent);
+        srcDash = (SearchView) findViewById(R.id.dashSrcEvent);
+
+
+        System.out.println(srcDash);
     }
 
 

@@ -1,36 +1,133 @@
 package com.example.viviappis.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.viviappis.R;
+import com.example.viviappis.control.event.NewEventActivity;
+import com.example.viviappis.control.loginAndRegister.LoginActivity;
+import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.databinding.FragmentDashboardBinding;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class DashboardFragment extends Fragment {
+import java.util.List;
+import java.util.Map;
 
+public class DashboardFragment extends Fragment
+{
     private FragmentDashboardBinding binding;
+    private FirebaseAuth au;
+    private FirebaseFirestore db;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+    private SearchView srcDash;
 
+
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        //DashboardViewModel dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        au = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+        db.collection(getResources().getString(R.string.db_rac_events)).get().addOnCompleteListener((t) ->
+        {
+           createDash(t.getResult().getDocuments());
+        });
+
+        setUpUIViews();
+        addActionListener();
+
+
         return root;
     }
 
+    /**
+     * crea la dash bord del fragmant per la visualizzazione degli eventi
+     * @param l lista dei documenti presi dal server che rappresentano gli eventi
+     */
+    public static void createDash(List<DocumentSnapshot> l)
+    {
+        int r;
+        for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
+        {
+            System.out.println(i.getData());
+            //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
+
+        }
+        //return r;
+    }
+    public static List<DocumentSnapshot> filterListByName(List<DocumentSnapshot> l, String name)
+    {
+        int i=0;
+
+        while (i<l.size())
+        {
+            Map<String, Object> m = l.get(i).getData();
+            String cnt = (String) m.get("name");
+
+            if(!cnt.startsWith(name)) System.out.println(l.remove(i));
+            else i++;
+        }
+
+        return l;
+    }
+
+    /**
+     * Questa funzione serve a inizzializzare le variabili del fragment utili per recuperare i valori di input e mostrare i valori di output
+     */
+    private void setUpUIViews()
+    {
+        srcDash = (SearchView) binding.getRoot().getViewById(R.id.dashSrcEvent);
+    }
+
+
+    /**
+     * Questa funzione va ad inserire i Listener ai vari componenti nella pagina
+     */
+    private void addActionListener()
+    {
+        srcDash.setOnQueryTextListener(new SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextSubmit(String s) {return false;}
+
+            @Override
+            public boolean onQueryTextChange(String s)
+            {
+                /*db.collection(getResources().getString(R.string.db_rac_events)).add(new Evento(s, "fddsf",au.getCurrentUser().getEmail(), "11/11/2200", "", true)).addOnCompleteListener((t) ->
+                {
+                    System.out.println("ciao");
+                });*/
+
+                db.collection(getResources().getString(R.string.db_rac_events)).get().addOnCompleteListener((t) ->
+                {
+                    createDash(filterListByName(t.getResult().getDocuments(),s));
+                });
+
+                return true;
+            }
+        });
+    }
+
+
     @Override
-    public void onDestroyView() {
+    public void onDestroyView()
+    {
         super.onDestroyView();
         binding = null;
     }
