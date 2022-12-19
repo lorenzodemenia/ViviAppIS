@@ -26,6 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
+        android:layout_marginEnd="2dp"
         android:autofillHints="@string/prompt_email"
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
@@ -57,7 +58,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="324dp"
         android:enabled="true"
-        android:text="Login"
+        android:text="Accedi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -89,5 +90,15 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginResult" />
+
+    <Switch
+        android:id="@+id/page_status_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:thumb="@drawable/ic_baseline_login_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
