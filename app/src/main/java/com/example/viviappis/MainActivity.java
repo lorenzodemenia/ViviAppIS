@@ -1,20 +1,13 @@
 package com.example.viviappis;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.example.viviappis.control.AfterLogin;
 import com.example.viviappis.control.loginAndRegister.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 /**
  * Questa classe serve a gestire activity principale
@@ -24,7 +17,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class MainActivity extends AppCompatActivity
 {
     private FirebaseAuth au;
-    private FirebaseMessaging mes;
 
     /**
      * Questa funzione permette di creare actactivity principale
@@ -35,18 +27,12 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         au = FirebaseAuth.getInstance();
-        mes =FirebaseMessaging.getInstance();
-        mes.getToken().addOnCompleteListener((t)->
-        {
-            //System.out.println("\n"+t.getResult()+"\n");
-        });
-
 
         if(au.getCurrentUser()==null || au.getCurrentUser().isAnonymous()) startActivity(new Intent(this, LoginActivity.class));
         else
         {
             /*eliminabile --------------------------------*/
-            au.signOut();
+           // au.signOut();
             /*eliminabile --------------------------------*/
 
             startActivity(new Intent(this, AfterLogin.class));

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Utente;
+import com.example.viviappis.data.model.Utilities;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity
         setContentView(R.layout.activity_register);
         setUpUIViews();
         addActionListener();
+        super.setTitle("Register");
 
         au = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -93,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity
                     if (task.isSuccessful())
                     {
                         db.collection(getResources().getString(R.string.db_rac_users)).
-                                document(u.getEmail()).set(Utente.userMap(u)).addOnCompleteListener((t) ->
+                                document(u.getEmail()).set(u.toMap()).addOnCompleteListener((t) ->
                                 {
                                     if (t.isSuccessful())
                                     {
@@ -116,21 +119,13 @@ public class RegisterActivity extends AppCompatActivity
                             else result.setText(R.string.reg_err_email);
                         }
                         catch (FirebaseAuthUserCollisionException e) {result.setText(R.string.reg_err_exist);}
-                        catch (Exception e) {result.setText(R.string.reg_err_gen);}
+                        catch (Exception e) {result.setText(R.string.err_gen);}
                     }
                 });
-            } else result.setText(R.string.reg_err_no_all_data);
+            } else result.setText(R.string.err_no_all_data);
         });
 
-        inpDate.setOnClickListener(view ->
-        {
-            Calendar c = Calendar.getInstance();
-            DatePickerDialog a = new DatePickerDialog(this, (datePicker, y, m, g) ->
-            {
-                inpDate.setText(g + "/" + (m+1) + "/" + y);
-            }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-            a.show();
-        });
+        inpDate.setOnClickListener(Utilities.createDataInp(inpDate,this, result,-1));
         inpDate.setFocusable(false);
 
         inpPsw.addTextChangedListener(new TextWatcher()
@@ -153,7 +148,6 @@ public class RegisterActivity extends AppCompatActivity
 
         inpEmail.setOnFocusChangeListener((view, b) ->
         {
-            System.out.println(view+" "+b);
             if(!b)
             {
                 String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
@@ -181,23 +175,7 @@ public class RegisterActivity extends AppCompatActivity
         String p = inpPsw.getText().toString();
         String e = inpEmail.getText().toString();
         String d = inpDate.getText().toString();
-        d = cntrDate(d);
 
         return !u.isEmpty() && !p.isEmpty() && !e.isEmpty() && !d.isEmpty()  && !d.equals("")? new Utente(n, s, u, d, e,p) : null;
-    }
-
-    /**
-     * Questa funzione permmete di controllare se la stringa passata rappresenta una data accettabile
-     * @param c Data da controllare se accettabile
-     * @return
-     */
-    private String cntrDate(String c)
-    {
-        c = c.replace("-", "/").replace(" ", "");
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        formatter.setLenient(false);
-
-        try {return formatter.parse(c).toString();}
-        catch (Exception e ) {return "";}
     }
 }

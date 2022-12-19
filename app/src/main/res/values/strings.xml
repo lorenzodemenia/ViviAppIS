@@ -16,38 +16,36 @@
     <string name="db_rac_events">events</string>    <!--getResources().getString(R.string.db_rac_events)-->
 
 
+    <!-- stringhe per errori generici-->
+    <string name="err_gen">Errore generico</string>
+    <string name="err_no_all_data">Inserisci tutti i dati richiesti</string>
+
+
     <!-- stringhe per l'activity register  -->
     <string name="reg_succ">Registrazione avvenuta con successo, clicca qui per tornare alla pagina di login</string>
     <string name="reg_rej">Errore durante la registrazione</string>
-    <string name="reg_page">Registrati</string>
     <!--Errori-->
-    <string name="reg_err_no_all_data">Inserisci tutti i dati richiesti</string>
     <string name="reg_err_email">Email formattata in modo errato</string>
-    <string name="reg_err_data">Data formattata in modo errato</string>
     <string name="reg_err_psw">Password inserita troppo corta, almeno 6 caratteri</string>
     <string name="reg_err_exist">Utente già esistente</string>
-    <string name="reg_err_gen">Errore generico</string>
 
 
     <!-- stringhe per l'activity login  -->
     <string name="log_succ">Login avvenuto con successo</string>
     <string name="log_rej">Password e/o email sono state inserite errate</string>
-    <string name="log_page">Login</string>
-
     <!--Errori-->
     <string name="log_err_no_all_data">Inserisci tutti i dati richiesti</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <!-- stringhe per l'activity newEvent  -->
+    <string name="new_ev_pub">Evento: publico</string>
+    <string name="new_ev_priv">Evento: privato</string>
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- stringhe per file utility  -->
+    <string name="ut_err_after_now">beforeNow</string>
+    <string name="ut_err_before_now">afterNow</string>
+    <string name="ut_err_no_data">noData</string>
+    <string name="ut_err_no_data_out">Data formattata in modo errato</string>
+    <string name="ut_err_after_now_out">Data inserita successiva a quella odierna</string>
+    <string name="ut_err_before_now_out">Data inserita precedente a quella odierna</string>
 </resources>

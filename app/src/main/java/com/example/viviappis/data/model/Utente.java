@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * Questa classe serve a gestire utente
- * @author
+ * @author jacopo
  * @version 1.0
  */
 public class Utente
@@ -124,23 +124,22 @@ public class Utente
 
 
     /**
-     * Permette di creare una mappa a partire dall'utente passato
-     * @param u Utente da trasformare in mappa
+     * Permette di creare una mappa a partire dall'utente
      * @return La mappa che rappresenta l'utente
      */
-    public static Map<String, Object> userMap(Utente u) {
-
+    public Map<String, Object> toMap()
+    {
         Map<String, Object> user = new HashMap<>();
-        Field[] a = u.getClass().getDeclaredFields();
+        Field[] a = this.getClass().getDeclaredFields();
 
 
-        user.put("name", u.getName());
-        user.put("surname", u.getSurname());
-        user.put("username", u.getUsername());
-        user.put("birthday", u.getBirth());
-        user.put("email", u.getEmail());
-        user.put("friends", u.getFriends());
-        user.put("score", u.getScore());
+        user.put("name", this.getName());
+        user.put("surname", this.getSurname());
+        user.put("username", this.getUsername());
+        user.put("birthday", this.getBirth());
+        user.put("email", this.getEmail());
+        user.put("friends", this.getFriends());
+        user.put("score", this.getScore());
 
         return user;
     }

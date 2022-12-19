@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- array per l'activity newEvent  -->
+    <string-array name="new_ev_spinner_item">
+        <item>Palla prigioniera</item>
+        <item>Ruba bandiera</item>
+        <item>Tiro alla fune</item>
+        <item>agg qui</item>
+    </string-array>
+</resources>
