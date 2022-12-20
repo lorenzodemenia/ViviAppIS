@@ -6,9 +6,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity
 {
     private EditText inpUser, inpPsw, inpEmail, inpDate, inpName, inpSurn;
     private Button bReg;
+    private Switch changePage;
 
     private FirebaseAuth au;
     private FirebaseFirestore db;
@@ -75,6 +79,8 @@ public class RegisterActivity extends AppCompatActivity
 
         bReg = (Button) findViewById(R.id.register);
 
+        changePage = (Switch) findViewById(R.id.page_status_switch2);
+
         //eliminabile
         result = (TextView) findViewById(R.id.registerResult);
     }
@@ -85,6 +91,20 @@ public class RegisterActivity extends AppCompatActivity
      */
     private void addActionListener()
     {
+        changePage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { //Uno switch che se premuto sposta da accedi a registrati
+                if (isChecked) {
+                    // The switch is turned on
+                    Log.d("Switch", "Turned on");
+
+                } else {
+                    // The switch is turned off
+                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                }
+            }
+        });
+
         bReg.setOnClickListener((v) ->
         {
             Utente u = validate();

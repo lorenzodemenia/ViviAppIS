@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.viviappis.control.AfterLogin;
@@ -24,6 +27,7 @@ public class LoginActivity extends AppCompatActivity
     private EditText inpPsw, inpEmail;
     private Button   bLog;
     private TextView linkRegister;
+    private Switch pageStatuSwitch;
 
     private FirebaseAuth      au;
     private FirebaseFirestore db;
@@ -61,7 +65,11 @@ public class LoginActivity extends AppCompatActivity
         //eliminabile
         result = (TextView) findViewById(R.id.loginResult);
         linkRegister = (TextView) findViewById(R.id.linkRegister);
+        pageStatuSwitch =(Switch) findViewById(R.id.page_status_switch);
+
     }
+
+
 
 
     /**
@@ -70,6 +78,20 @@ public class LoginActivity extends AppCompatActivity
     private void addActionListener()
     {
         linkRegister.setOnClickListener((v) -> {startActivity(new Intent(LoginActivity.this, RegisterActivity.class));});
+
+        pageStatuSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { //Uno switch che se premuto sposta da accedi a registrati
+                if (isChecked) {
+                    // The switch is turned on
+                    startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+
+            } else {
+                    // The switch is turned off
+                    Log.d("Switch", "Turned off");
+                }
+            }
+        });
 
         bLog.setOnClickListener((v)->
         {
