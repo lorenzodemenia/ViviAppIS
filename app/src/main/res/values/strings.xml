@@ -8,6 +8,7 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_profile">Profile</string>
     <!-- Strings used for fragments for navigation -->
 
 
