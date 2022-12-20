@@ -48,4 +48,8 @@
     <string name="ut_err_no_data_out">Data formattata in modo errato</string>
     <string name="ut_err_after_now_out">Data inserita successiva a quella odierna</string>
     <string name="ut_err_before_now_out">Data inserita precedente a quella odierna</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

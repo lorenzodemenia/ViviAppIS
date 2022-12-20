@@ -6,6 +6,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.control.event.NewEventActivity;
+import com.example.viviappis.control.event.NewEventFragment;
 import com.example.viviappis.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -73,6 +75,12 @@ public class AfterLogin extends AppCompatActivity
      */
     private void addActionListener()
     {
-        bHomeNewEvent.setOnClickListener((i)->{startActivity(new Intent(this, NewEventActivity.class));});
+        bHomeNewEvent.setOnClickListener((i)->
+        {
+            startActivity(new Intent(this, NewEventActivity.class));
+            /*Fragment a = getFragmentManager().findFragmentById(R.id.newEventFragmant);
+            setContentView(a.getView());*/
+
+        });
     }
 }

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
-import com.example.viviappis.data.model.Utente;
 import com.example.viviappis.data.model.Utilities;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -51,14 +49,14 @@ public class NewEventActivity extends AppCompatActivity
      */
     private void setUpUIViews()
     {
-        inpName = (EditText) findViewById(R.id.newEvName);
-        inpDesc = (EditText) findViewById(R.id.newEvDesc);
-        inpDate = (EditText) findViewById(R.id.newEvDate);
+        inpName = (EditText) findViewById(R.id.newEvName1);
+        inpDesc = (EditText) findViewById(R.id.newEvDesc1);
+        inpDate = (EditText) findViewById(R.id.newEvDate1);
         inpPsw = (EditText) findViewById(R.id.newEvPsw);
-        inpType = (Spinner) findViewById(R.id.newEvType);
-        inpPublic = (Switch) findViewById(R.id.newEvPublic);
+        inpType = (Spinner) findViewById(R.id.newEvType1);
+        inpPublic = (Switch) findViewById(R.id.newEvPublic1);
 
-        bCont   = (Button) findViewById(R.id.newEvCont);
+        bCont   = (Button) findViewById(R.id.newEvCont1);
         result  = (TextView) findViewById(R.id.newEvResult);
 
         String[] type={"test", "re", "fefe"};

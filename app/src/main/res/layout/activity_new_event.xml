@@ -7,24 +7,24 @@
     tools:context=".control.event.NewEventActivity">
 
     <Spinner
-        android:id="@+id/newEvType"
+        android:id="@+id/newEvType1"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/newEvDesc"
+        app:layout_constraintBottom_toTopOf="@+id/newEvDesc1"
         tools:layout_editor_absoluteX="16dp" />
 
     <EditText
-        android:id="@+id/newEvName"
+        android:id="@+id/newEvName1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/newEvDate"
+        app:layout_constraintBottom_toTopOf="@+id/newEvDate1"
         tools:layout_editor_absoluteX="100dp" />
 
     <EditText
-        android:id="@+id/newEvDesc"
+        android:id="@+id/newEvDesc1"
         android:layout_width="369dp"
         android:layout_height="246dp"
         android:layout_marginBottom="84dp"
@@ -32,17 +32,17 @@
         android:gravity="start|top"
         android:hint="Descrizione"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/newEvCont"
+        app:layout_constraintBottom_toTopOf="@+id/newEvCont1"
         tools:layout_editor_absoluteX="26dp" />
 
     <EditText
-        android:id="@+id/newEvDate"
+        android:id="@+id/newEvDate1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Data"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/newEvType"
+        app:layout_constraintBottom_toTopOf="@+id/newEvType1"
         tools:layout_editor_absoluteX="100dp" />
 
     <TextView
@@ -50,11 +50,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/newEvName"
+        app:layout_constraintBottom_toTopOf="@+id/newEvName1"
         tools:layout_editor_absoluteX="176dp" />
 
     <Button
-        android:id="@+id/newEvCont"
+        android:id="@+id/newEvCont1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
@@ -63,7 +63,7 @@
         tools:layout_editor_absoluteX="149dp" />
 
     <Switch
-        android:id="@+id/newEvPublic"
+        android:id="@+id/newEvPublic1"
         android:layout_width="180dp"
         android:layout_height="62dp"
         android:checked="true"
@@ -83,7 +83,7 @@
         android:hint="password"
         android:inputType="textPassword"
         android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/newEvDesc"
+        app:layout_constraintTop_toBottomOf="@+id/newEvDesc1"
         tools:layout_editor_absoluteX="103dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

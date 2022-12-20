@@ -60,18 +60,24 @@ public class DashboardFragment extends Fragment
      * crea la dash bord del fragmant per la visualizzazione degli eventi
      * @param l lista dei documenti presi dal server che rappresentano gli eventi
      */
-    public static void createDash(List<DocumentSnapshot> l)
+    public void createDash(List<DocumentSnapshot> l)
     {
         int r;
         for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
         {
-            System.out.println(i.getData());
+            createContenitor(i.getData());
             //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
 
         }
         //return r;
     }
-    public static List<DocumentSnapshot> filterListByName(List<DocumentSnapshot> l, String name)
+
+    public void createContenitor(Map<String, Object> i)
+    {
+        System.out.println(i);
+    }
+
+    public List<DocumentSnapshot> filterListByName(List<DocumentSnapshot> l, String name)
     {
         int i=0;
 

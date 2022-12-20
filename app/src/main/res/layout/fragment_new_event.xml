@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newEventFragmant"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".control.event.NewEventFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/newEvResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/newEvType"
+            tools:layout_editor_absoluteX="150dp" />
+
+        <Button
+            android:id="@+id/newEvCont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continua"
+            tools:layout_editor_absoluteX="136dp"
+            tools:layout_editor_absoluteY="562dp" />
+
+        <EditText
+            android:id="@+id/newEvPsw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/newEvName"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <EditText
+            android:id="@+id/newEvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Data"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/newEvPublic"
+            tools:layout_editor_absoluteX="51dp" />
+
+        <Switch
+            android:id="@+id/newEvPublic"
+            android:layout_width="180dp"
+            android:layout_height="62dp"
+            android:checked="true"
+            android:showText="false"
+            android:text="@string/new_ev_pub"
+            android:textOff="Privato"
+            android:textOn="Publico"
+            app:layout_constraintBottom_toTopOf="@+id/newEvDesc"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <Spinner
+            android:id="@+id/newEvType"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/newEvPsw"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <EditText
+            android:id="@+id/newEvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/newEvDate"
+            tools:layout_editor_absoluteX="100dp" />
+
+        <EditText
+            android:id="@+id/newEvDesc"
+            android:layout_width="369dp"
+            android:layout_height="246dp"
+            android:layout_marginBottom="4dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Descrizione"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toTopOf="@+id/newEvCont"
+            tools:layout_editor_absoluteX="26dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
