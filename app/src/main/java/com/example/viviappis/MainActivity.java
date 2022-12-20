@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class MainActivity extends AppCompatActivity
 {
-    private FirebaseAuth au;
+    protected FirebaseAuth au;
 
     /**
      * Questa funzione permette di creare actactivity principale
