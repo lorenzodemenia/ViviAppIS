@@ -19,7 +19,7 @@ public class MacroD extends Evento {
     private Pair<String, Collection<Utente>> winners;
 
     /*
-    **************elim
+    * ********** elim
     * ********** inserire tutte le classi del tipo palla prigioniera ... dentro array.xml
     * **********
      */
