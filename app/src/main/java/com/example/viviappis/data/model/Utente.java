@@ -60,6 +60,15 @@ public class Utente
      * @param a Rappresenta utente che serve per creare il nuovo utente
      */
     public Utente(Utente a){this(a.name, a.surname,a.username, a.birth, a.email, a.password, a.score);}
+    /**
+     * crea un utente a partire dalla mappa che rappresenta il documento nel database
+     * @param user mappa del documento
+     */
+    public Utente(Map<String, Object> user)
+    {
+        this((String) user.get("name"), (String) user.get("surname"), (String)user.get("username"),
+             (String) user.get("birthday"),(String) user.get("email"), "", (Integer) user.get("score"));
+    }
 
 
     /**
