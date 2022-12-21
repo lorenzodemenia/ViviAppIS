@@ -12,6 +12,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -30,8 +32,9 @@ public class ProfileViewModel extends ViewModel {
         this.au = FirebaseAuth.getInstance();
         this.db = FirebaseFirestore.getInstance();
         user = db.collection("users").whereEqualTo("email",au.getCurrentUser().getEmail());
-
-
+        db.collection("users").document(au.getCurrentUser().getEmail()).get().addOnCompleteListener((t)->{
+            System.out.println(t.getResult().getData());
+        });
 
         this.mText =new MutableLiveData<>();
 

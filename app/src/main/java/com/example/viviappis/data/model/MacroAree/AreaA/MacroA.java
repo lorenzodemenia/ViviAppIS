@@ -1,10 +1,9 @@
 package com.example.viviappis.data.model.MacroAree.AreaA;
 
 
-import com.example.viviappis.data.model.GenericEvent;
-import com.example.viviappis.data.model.Utente;
+import com.example.viviappis.data.model.Evento;
 
-public class MacroA extends GenericEvent
+public class MacroA extends Evento
 {
 
     /*

@@ -14,17 +14,22 @@ public class Evento
     private final String password;
     private Collection<Utente> partecipants;
     private boolean isPublic;
+    private int minPart;
+    private int maxPart;
 
     /**
-     * Constructor of object Evento.
+     * Genera un oggetto di tipo evento
      * @param name nome dell'evento
      * @param description descrizione dell'evento
-     * @param creator utente creatore dell'evento
-     * @param date data e ora dell'evento
-     * @param password password di accesso all'evento
-     * @param isPublic definisce se l'evento è pubblico oppure privato
+     * @param creator creatore dell'evento
+     * @param date data dell'evento
+     * @param password password dell'evento
+     * @param isPublic rappresenta se l'evento è publico
+     * @param minPart numero minimo di partecipanti
+     * @param maxPart numero massimo di partecipanti
      */
-    public Evento (String name, String description, String creator, String date, String password, boolean isPublic){
+    public Evento(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart)
+    {
         this.name = name;
         this.creator = creator;
         this.description = description;
@@ -32,9 +37,25 @@ public class Evento
         this.date = date;
         this.partecipants = new ArrayList<>();
         this.isPublic = isPublic;
+        this.minPart=minPart;
+        this.maxPart=maxPart;
     }
+    /**
+     * Genera un oggetto di tipo evento
+     * @param a oggetto di tipo GenericEvent per creare un nuovo oggetto
+     */
+    public Evento(Evento a) {this(a.getName(), a.getDescription(), a.getCreator(), a.getDate(), a.getPassword(),a.isPublic(), a.minPart, a.maxPart);}
 
-    public Evento(Evento e) {this(e.name,e.description,e.creator,e.date,e.password, e.isPublic);}
+    /**
+     * ritorna il valore minimo dei partecipanti
+     * @return ritorna il valore minimo dei partecipanti
+     */
+    public int getMinPart() {return minPart;}
+    /**
+     * ritorna il valore massimo dei partecipanti
+     * @return ritorna il valore massimo dei partecipanti
+     */
+    public int getMaxPart() {return maxPart;}
 
     /**
      * Return the name of the event.

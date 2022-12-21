@@ -2,7 +2,6 @@ package com.example.viviappis.data.model.MacroAree.AreaD;
 
 import com.example.viviappis.Pair;
 import com.example.viviappis.data.model.Evento;
-import com.example.viviappis.data.model.GenericEvent;
 import com.example.viviappis.data.model.Utente;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MacroD extends GenericEvent {
+public class MacroD extends Evento {
     private Pair<String, Collection<Utente>> squadra1;
     private Pair<String, Collection<Utente>> squadra2;
     private Map<Utente, Integer> ranklist;

@@ -1,24 +1,16 @@
 package com.example.viviappis.ui.dashboard;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.viviappis.R;
-import com.example.viviappis.control.event.NewEventActivity;
-import com.example.viviappis.control.loginAndRegister.LoginActivity;
-import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.databinding.FragmentDashboardBinding;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;

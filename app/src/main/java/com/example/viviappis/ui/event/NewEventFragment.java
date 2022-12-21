@@ -1,9 +1,12 @@
-package com.example.viviappis.control.event;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.viviappis.ui.event;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,10 +17,13 @@ import android.widget.TextView;
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.data.model.Utilities;
+import com.example.viviappis.databinding.ActivityMainBinding;
+import com.example.viviappis.databinding.FragmentNewEventBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class NewEventActivity extends AppCompatActivity
+
+public class NewEventFragment extends Fragment
 {
     private EditText inpName, inpDesc, inpDate, inpPsw;
     private TextView result;
@@ -28,20 +34,25 @@ public class NewEventActivity extends AppCompatActivity
     private FirebaseAuth au;
     private FirebaseFirestore db;
 
+    private FragmentNewEventBinding binding;
+
     private Evento e;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_event);
-        super.setTitle("Nuovo evento");
+
+        binding = FragmentNewEventBinding.inflate(getLayoutInflater());
 
         setUpUIViews();
         addActionListener();
 
-        au = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+
+        return  binding.getRoot();
     }
 
     /**
@@ -49,21 +60,19 @@ public class NewEventActivity extends AppCompatActivity
      */
     private void setUpUIViews()
     {
-        inpName = (EditText) findViewById(R.id.newEvName1);
-        inpDesc = (EditText) findViewById(R.id.newEvDesc1);
-        inpDate = (EditText) findViewById(R.id.newEvDate1);
-        inpPsw = (EditText) findViewById(R.id.newEvPsw);
-        inpType = (Spinner) findViewById(R.id.newEvType1);
-        inpPublic = (Switch) findViewById(R.id.newEvPublic1);
+        inpName = binding.newEvName;
+        inpDesc = binding.newEvDesc;
+        inpDate = binding.newEvDate;
+        inpPsw = binding.newEvPsw;
+        inpType = binding.newEvType;
+        inpPublic = binding.newEvPublic;
 
-        bCont   = (Button) findViewById(R.id.newEvCont1);
-        result  = (TextView) findViewById(R.id.newEvResult);
+        bCont   = binding.newEvCont;
+        result  = binding.newEvResult;
 
-        String[] type={"test", "re", "fefe"};
 
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,type);
+        ArrayAdapter aa = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,getActivity().getResources().getTextArray(R.array.new_ev_spinner_item));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //Setting the ArrayAdapter data on the Spinner
         inpType.setAdapter(aa);
     }
 
@@ -73,7 +82,7 @@ public class NewEventActivity extends AppCompatActivity
      */
     private void addActionListener()
     {
-        inpDate.setOnClickListener(Utilities.createDataInp(inpDate, this, result, 1));
+        inpDate.setOnClickListener(Utilities.createDataInp(inpDate, getActivity(), result, 1));
         inpDate.setFocusable(false);
 
         inpPublic.setOnCheckedChangeListener((com, bool) ->
@@ -110,6 +119,6 @@ public class NewEventActivity extends AppCompatActivity
         if(!i && p.equals("")) p = Utilities.getNewPassword(10);
         else if(i)             p="";
 
-        return !n.isEmpty() && !d.equals("")? new Evento(n,ds,au.getCurrentUser().getEmail(),d,p,i) : null;
+        return !n.isEmpty() && !d.equals("")? new Evento(n,ds,au.getCurrentUser().getEmail(),d,p,i, 0, 0) : null;
     }
 }

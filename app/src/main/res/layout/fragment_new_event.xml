@@ -5,7 +5,7 @@
     android:id="@+id/newEventFragmant"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".control.event.NewEventFragment">
+    tools:context=".ui.event.NewEventFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -25,9 +25,10 @@
             android:id="@+id/newEvCont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="68dp"
             android:text="Continua"
-            tools:layout_editor_absoluteX="136dp"
-            tools:layout_editor_absoluteY="562dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="140dp" />
 
         <EditText
             android:id="@+id/newEvPsw"
@@ -83,13 +84,13 @@
             android:id="@+id/newEvDesc"
             android:layout_width="369dp"
             android:layout_height="246dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="16dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="Descrizione"
             android:inputType="textMultiLine"
             app:layout_constraintBottom_toTopOf="@+id/newEvCont"
-            tools:layout_editor_absoluteX="26dp" />
+            tools:layout_editor_absoluteX="16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
