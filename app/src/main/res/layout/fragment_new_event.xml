@@ -10,6 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newEvent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,7 +18,6 @@
             android:id="@+id/newEvResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/newEvType"
             tools:layout_editor_absoluteX="150dp" />
 
@@ -25,21 +25,22 @@
             android:id="@+id/newEvCont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="68dp"
+            android:layout_marginBottom="16dp"
             android:text="Continua"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="140dp" />
+            tools:layout_editor_absoluteX="149dp" />
 
         <EditText
             android:id="@+id/newEvPsw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="password"
             android:inputType="textPassword"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/newEvName"
-            tools:layout_editor_absoluteX="16dp" />
+            tools:layout_editor_absoluteX="34dp" />
 
         <EditText
             android:id="@+id/newEvDate"
@@ -78,19 +79,27 @@
             android:hint="Name"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/newEvDate"
-            tools:layout_editor_absoluteX="100dp" />
+            tools:layout_editor_absoluteX="90dp" />
 
         <EditText
             android:id="@+id/newEvDesc"
-            android:layout_width="369dp"
-            android:layout_height="246dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="333dp"
+            android:layout_height="100dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="Descrizione"
             android:inputType="textMultiLine"
-            app:layout_constraintBottom_toTopOf="@+id/newEvCont"
+            app:layout_constraintBottom_toTopOf="@+id/newEventMap"
             tools:layout_editor_absoluteX="16dp" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/newEventMap"
+            android:layout_width="238dp"
+            android:layout_height="122dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/newEvCont"
+            tools:layout_editor_absoluteX="76dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

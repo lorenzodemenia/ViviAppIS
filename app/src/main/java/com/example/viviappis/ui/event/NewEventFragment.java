@@ -2,6 +2,7 @@ package com.example.viviappis.ui.event;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -19,17 +20,25 @@ import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.data.model.Utilities;
 import com.example.viviappis.databinding.ActivityMainBinding;
 import com.example.viviappis.databinding.FragmentNewEventBinding;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class NewEventFragment extends Fragment
+public class NewEventFragment extends Fragment implements OnMapReadyCallback
 {
     private EditText inpName, inpDesc, inpDate, inpPsw;
     private TextView result;
     private Spinner inpType;
     private Switch inpPublic;
     private Button bCont;
+    private MapView inpMap;
+
 
     private FirebaseAuth au;
     private FirebaseFirestore db;
@@ -48,9 +57,26 @@ public class NewEventFragment extends Fragment
 
         binding = FragmentNewEventBinding.inflate(getLayoutInflater());
 
+        /*SupportMapFragment mapFragment = SupportMapFragment.newInstance();
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.map, mapFragment)
+                .commit();
+
+        mapFragment.getMapAsync(this);*/
+
+        /*
+        *  <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        * */
+
+
         setUpUIViews();
         addActionListener();
-
 
         return  binding.getRoot();
     }
@@ -66,6 +92,7 @@ public class NewEventFragment extends Fragment
         inpPsw = binding.newEvPsw;
         inpType = binding.newEvType;
         inpPublic = binding.newEvPublic;
+        inpMap = binding.newEventMap;
 
         bCont   = binding.newEvCont;
         result  = binding.newEvResult;
@@ -99,11 +126,14 @@ public class NewEventFragment extends Fragment
             }
         });
 
+
         bCont.setOnClickListener((v)->
         {
             e = validate();
             if(e==null)result.setText(R.string.err_no_all_data);
-            System.out.println(e);
+            else {
+                System.out.println(e);
+            }
         });
     }
 
@@ -120,5 +150,14 @@ public class NewEventFragment extends Fragment
         else if(i)             p="";
 
         return !n.isEmpty() && !d.equals("")? new Evento(n,ds,au.getCurrentUser().getEmail(),d,p,i, 0, 0) : null;
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap)
+    {
+        LatLng sydney = new LatLng(-33.852, 151.211);
+        googleMap.addMarker(new MarkerOptions()
+                .position(sydney)
+                .title("Marker in Sydney"));
     }
 }

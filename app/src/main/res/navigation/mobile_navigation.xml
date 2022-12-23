@@ -29,10 +29,4 @@
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 
-    <fragment
-        android:id="@+id/navigation_new_event"
-        android:name="com.example.viviappis.ui.event.NewEventFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_new_event" />
-
 </navigation>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ViviAppIS"
         tools:targetApi="31">
+
+
+
+        <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyDjsYA6EV9gYu5NPy_RKjFJIwhthYuCDmE" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".control.AfterLogin"
             android:exported="true"
@@ -39,5 +49,5 @@
                 android:value="" />
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 </manifest>
