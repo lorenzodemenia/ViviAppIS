@@ -24,16 +24,17 @@ public class ProfileViewModel extends ViewModel {
     private final MutableLiveData<String> mText;
     protected FirebaseAuth au;
     private FirebaseFirestore db;
-    private Query user;
+    private Utente user;
 
 
     public ProfileViewModel() {
 
         this.au = FirebaseAuth.getInstance();
         this.db = FirebaseFirestore.getInstance();
-        user = db.collection("users").whereEqualTo("email",au.getCurrentUser().getEmail());
+
         db.collection("users").document(au.getCurrentUser().getEmail()).get().addOnCompleteListener((t)->{
-            System.out.println(t.getResult().getData());
+            user = new Utente(t.getResult().getData());
+
         });
 
         this.mText =new MutableLiveData<>();

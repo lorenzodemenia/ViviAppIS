@@ -7,7 +7,7 @@ public class MacroA extends Evento
 {
 
     /*
-     **************elim
+     * ********** elim
      * ********** inserire tutte le classi del tipo palla prigioniera ... dentro array.xml
      * **********
      */
