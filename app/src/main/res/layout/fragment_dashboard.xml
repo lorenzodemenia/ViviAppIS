@@ -10,11 +10,13 @@
         android:id="@+id/dashSrcEvent"
         android:layout_width="363dp"
         android:layout_height="31dp"
-        android:queryHint="Nome del evento"
+        android:queryHint="Nome dell' evento"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067"
-        tools:layout_editor_absoluteX="32dp" />
+        app:layout_constraintVertical_bias="0.067" />
 
     <TextView
         android:id="@+id/test"
@@ -23,5 +25,80 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="165dp"
         tools:layout_editor_absoluteY="191dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/eventList"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginBottom="100dp"
+        app:cardCornerRadius="53.3333dp"
+        app:cardBackgroundColor="@color/giallocra"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dashSrcEvent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.appcompat.widget.AppCompatCheckedTextView
+            android:id="@+id/event"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#99FFFFFF"
+            android:layout_marginTop="161px"
+            app:layout_constraintBottom_toBottomOf="@+id/eventList"
+            app:layout_constraintEnd_toEndOf="@+id/eventList"
+            app:layout_constraintStart_toStartOf="@+id/eventList"
+            app:layout_constraintTop_toTopOf="@+id/eventList"
+            android:text="Primo">
+
+            <!-- place Event's info here -->
+
+
+
+
+            </androidx.appcompat.widget.AppCompatCheckedTextView>
+
+        <androidx.appcompat.widget.AppCompatCheckedTextView
+            android:id="@+id/event3"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="440px"
+            android:background="#99FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/eventList"
+            app:layout_constraintEnd_toEndOf="@+id/eventList"
+            app:layout_constraintStart_toStartOf="@+id/eventList"
+            app:layout_constraintTop_toTopOf="@+id/eventList"
+            android:text="Terzo">
+
+            <!-- place Event's info here -->
+
+
+        </androidx.appcompat.widget.AppCompatCheckedTextView>
+
+        <androidx.appcompat.widget.AppCompatCheckedTextView
+            android:id="@+id/event2"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="300px"
+            android:background="#99FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/event"
+            app:layout_constraintEnd_toEndOf="@+id/event"
+            app:layout_constraintStart_toStartOf="@+id/eventList"
+            app:layout_constraintTop_toTopOf="@+id/eventList"
+            android:text="Secondo">
+
+            <!-- place Event's info here -->
+
+
+        </androidx.appcompat.widget.AppCompatCheckedTextView>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
