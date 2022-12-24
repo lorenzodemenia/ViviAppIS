@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="giallocra">#FFCD29</color>
+    <color name="blurred_white">#99FFFFFF</color>
 
 </resources>

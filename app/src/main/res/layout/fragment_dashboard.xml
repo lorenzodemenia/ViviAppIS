@@ -10,18 +10,140 @@
         android:id="@+id/dashSrcEvent"
         android:layout_width="363dp"
         android:layout_height="31dp"
-        android:queryHint="Nome del evento"
+        android:layout_marginEnd="24dp"
+        android:queryHint="Nome dell' evento"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067"
-        tools:layout_editor_absoluteX="32dp" />
+        app:layout_constraintVertical_bias="0.067" />
 
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="191dp" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/eventList"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginBottom="100dp"
+        app:cardBackgroundColor="@color/giallocra"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dashSrcEvent"
+        app:layout_constraintVertical_bias="0.5" >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/RectangleEvent"
+            android:layout_width="295dp"
+            android:layout_height="40dp"
+            android:background="@color/blurred_white"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft=".5dp">
+
+
+            <TextView
+                android:id="@+id/TitleEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Primo"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="15dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/DateEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data"
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="15dp" />
+
+            <TextView
+                android:id="@+id/LocationEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Luogo"
+                tools:layout_editor_absoluteX="60dp"
+                tools:layout_editor_absoluteY="15dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/RectangleEvent2"
+            android:layout_width="295dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="70dp"
+            android:background="@color/blurred_white"
+            android:layout_marginLeft=".5dp">
+
+            <TextView
+                android:id="@+id/TitleEvent2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Secondo"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="15dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/DateEvent2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data"
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="15dp" />
+
+            <TextView
+                android:id="@+id/LocationEvent2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Luogo"
+                tools:layout_editor_absoluteX="60dp"
+                tools:layout_editor_absoluteY="15dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/RectangleEvent3"
+            android:layout_width="295dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="115dp"
+            android:background="@color/blurred_white"
+            android:layout_marginLeft=".5dp">
+
+            <TextView
+                android:id="@+id/TitleEvent3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Terzo"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="15dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/DateEvent3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data"
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="15dp" />
+
+            <TextView
+                android:id="@+id/LocationEvent3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Luogo"
+                tools:layout_editor_absoluteX="60dp"
+                tools:layout_editor_absoluteY="15dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
