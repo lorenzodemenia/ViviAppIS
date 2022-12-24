@@ -25,7 +25,7 @@
             android:id="@+id/newEvCont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="92dp"
             android:text="Continua"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="149dp" />

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newEventMacroFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.event.NewEventMacroFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="390dp"
+            android:text="@string/hello_blank_fragment"
+            tools:layout_editor_absoluteX="120dp"
+            tools:layout_editor_absoluteY="130dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

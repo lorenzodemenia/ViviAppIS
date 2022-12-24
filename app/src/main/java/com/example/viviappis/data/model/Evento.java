@@ -1,18 +1,20 @@
 package com.example.viviappis.data.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Evento
+public class Evento implements Serializable
 {
     private String name;
     private String description;
-    private final String creator;
+    private String creator;
     private String date;
-    private final String password;
-    private Collection<Utente> partecipants;
+    private String password;
+    private List<Utente> partecipants;
     private boolean isPublic;
     private int minPart;
     private int maxPart;
@@ -42,9 +44,56 @@ public class Evento
     }
     /**
      * Genera un oggetto di tipo evento
+     * @param name nome dell'evento
+     * @param description descrizione dell'evento
+     * @param creator creatore dell'evento
+     * @param date data dell'evento
+     * @param password password dell'evento
+     * @param partecipants array che rappresenta i partecipanti all'evento
+     * @param isPublic rappresenta se l'evento è publico
+     * @param minPart numero minimo di partecipanti
+     * @param maxPart numero massimo di partecipanti
+     */
+    public Evento(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart, List<Utente> partecipants)
+    {
+        this.name = name;
+        this.creator = creator;
+        this.description = description;
+        this.password = password;
+        this.date = date;
+        this.partecipants = partecipants;
+        this.isPublic = isPublic;
+        this.minPart=minPart;
+        this.maxPart=maxPart;
+    }
+    /**
+     * Genera un oggetto di tipo evento
      * @param a oggetto di tipo GenericEvent per creare un nuovo oggetto
      */
-    public Evento(Evento a) {this(a.getName(), a.getDescription(), a.getCreator(), a.getDate(), a.getPassword(),a.isPublic(), a.minPart, a.maxPart);}
+    public Evento(Evento a) {this(a.getName(), a.getDescription(), a.getCreator(), a.getDate(), a.getPassword(),a.isPublic(), a.minPart, a.maxPart, a.partecipants);}
+
+    /**
+     * crea un oggetto a partire da una stringa creata con toStringData()
+     * @param a stringa creata con to string data (deve avere la forma name/description/creator/date/password/minPart/maxPart/isPublic;
+     */
+    public Evento(String a)
+    {
+        this("","","","","",false,0,0);
+
+        String[] b = a.split("/");
+        if(b.length==8)
+        {
+            this.name = b[0];
+            this.creator = b[1];
+            this.description = b[2];
+            this.password = b[3];
+            this.date = b[4];
+            this.partecipants = new ArrayList<>();
+            this.isPublic = Boolean.parseBoolean(b[7]);
+            this.minPart=Integer.parseInt(b[5]);
+            this.maxPart=Integer.parseInt(b[6]);
+        }
+    }
 
     /**
      * ritorna il valore minimo dei partecipanti
@@ -169,6 +218,13 @@ public class Evento
         event.put("partecipants", this.getPartecipants());
         event.put("public", this.isPublic());
         return event;
+    }
+
+    public String toStringData()
+    {
+        String part = "";
+        for (Utente i : partecipants);
+        return name+'/'+description+'/'+creator+'/'+date+'/'+password+'/'+minPart+'/'+maxPart+'/'+isPublic;
     }
 
     /**

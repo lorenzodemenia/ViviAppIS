@@ -34,6 +34,8 @@ public class HomeFragment extends Fragment
         return root;
     }
 
+
+
     /**
      * Funzione usata per riportare in vita il fragment
      */
@@ -42,14 +44,12 @@ public class HomeFragment extends Fragment
     {
         super.onResume();
         Fragment a = getChildFragmentManager().findFragmentById(R.id.homeFragment);
-        if(a!=null)
-        {
-            hide(true);
+        if (a != null) {
+
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
             transaction.setReorderingAllowed(true);
             transaction.remove(a);
             transaction.commit();
-            hide(false);
         }
     }
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +79,9 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         setUpUIViews();
         addActionListener();
 
+        au = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
         return  binding.getRoot();
     }
 
@@ -131,11 +135,30 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         {
             e = validate();
             if(e==null)result.setText(R.string.err_no_all_data);
-            else {
-                System.out.println(e);
+            else
+            {
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                transaction.setReorderingAllowed(true);
+                Bundle mex = new Bundle();
+                mex.putString(getResources().getString(R.string.event_event_macro_send_ev),e.toStringData());
+
+                transaction.replace(R.id.newEventFragmant, NewEventMacroFragment.class, mex);
+
+                transaction.commit();
+                hide(true);
             }
         });
     }
+
+    /**
+     * nasconde tutti i componenti appartenenti alla pagina newEvent
+     */
+    private void hide(Boolean a)
+    {
+        if(a)binding.newEvent.setVisibility(View.INVISIBLE);
+        else binding.newEvent.setVisibility(View.VISIBLE);
+    }
+
 
     private Evento validate()
     {
