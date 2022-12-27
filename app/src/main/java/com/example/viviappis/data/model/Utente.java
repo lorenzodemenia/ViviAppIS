@@ -67,7 +67,7 @@ public class Utente
     public Utente(Map<String, Object> user)
     {
         this((String) user.get("name"), (String) user.get("surname"), (String)user.get("username"),
-             (String) user.get("birthday"),(String) user.get("email"), "", (Integer) user.get("score"));
+             (String) user.get("birthday"),(String) user.get("email"), "", ((Long) user.get("score")).intValue());
     }
 
 
