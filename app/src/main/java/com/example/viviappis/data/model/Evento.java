@@ -217,7 +217,30 @@ public class Evento implements Serializable
         event.put("password", this.getPassword());
         event.put("partecipants", this.getPartecipants());
         event.put("public", this.isPublic());
+        event.put("maxPart", this.maxPart);
+        event.put("minPart", this.minPart);
         return event;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public void setMaxPart(int maxPart) {
+        this.maxPart = maxPart;
+    }
+
+    public void setMinPart(int minPart) {
+        this.minPart = minPart;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPartecipants(List<Utente> partecipants) {
+        this.partecipants.clear();
+        this.partecipants.addAll(partecipants);
     }
 
     public String toStringData()

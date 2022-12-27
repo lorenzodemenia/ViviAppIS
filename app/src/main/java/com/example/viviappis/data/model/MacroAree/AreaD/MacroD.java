@@ -3,6 +3,11 @@ package com.example.viviappis.data.model.MacroAree.AreaD;
 import com.example.viviappis.Pair;
 import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.data.model.Utente;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -149,11 +154,39 @@ public class MacroD extends Evento {
      * Add winner users to winners map field
      * @param winners
      */
-    public void setWinners(Pair<String, Collection<Utente>> winners){
+    public void addWinners(Pair<String, Collection<Utente>> winners){
         this.winners.setX(winners.getX());
         for(Utente u: winners.getY()) {
             this.winners.getY().add(u);
         }
+    }
+
+    public void setWinners(Pair<String, Collection<Utente>> winners) {
+        this.winners = winners;
+    }
+
+    /**
+     * Set values of squadra1 with squadra1 field's values
+     * @param squadra1
+     */
+    public void setSquadra1(Pair<String, Collection<Utente>> squadra1) {
+        this.squadra1 = squadra1;
+    }
+
+    /**
+     * Set values of squadra2 with squadra2 field's values
+     * @param squadra2
+     */
+    public void setSquadra2(Pair<String, Collection<Utente>> squadra2) {
+        this.squadra2 = squadra2;
+    }
+
+    /**
+     * Set ranklist values with ranklist field's values
+     * @param ranklist
+     */
+    public void setRanklist(Map<Utente, Integer> ranklist) {
+        this.ranklist = ranklist;
     }
 
     /**
@@ -183,6 +216,26 @@ public class MacroD extends Evento {
         mdeMap.put("winners", this.getWinners());
         mdeMap.put("ranklist", this.getRanklist());
         return mdeMap;
+    }
+
+
+    /**
+     * Set all event fields' values with map param's values
+     * @param map
+     */
+    public void setValuesFromMap(Map<String, Object> map){
+        this.setDescription((String) map.get("description"));
+        this.setDate((String) map.get("date"));
+        this.setPublic((Boolean) map.get("public"));
+        this.setPassword((String) map.get("password"));
+        this.setCreator((String) map.get("creator"));
+        this.setMaxPart((Integer) map.get("maxPart"));
+        this.setMinPart((Integer) map.get("minPart"));
+        this.setPartecipants((List<Utente>) map.get("partecipants"));
+        this.setSquadra1((Pair<String, Collection<Utente>>) map.get("team 1"));
+        this.setSquadra2((Pair<String, Collection<Utente>>) map.get("team 2"));
+        this.setWinners((Pair<String, Collection<Utente>>) map.get("winners"));
+        this.setRanklist((Map<Utente, Integer>) map.get("ranklist"));
     }
 
 }
