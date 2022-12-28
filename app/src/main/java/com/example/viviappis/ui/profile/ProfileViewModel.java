@@ -34,7 +34,6 @@ public class ProfileViewModel extends ViewModel {
 
         db.collection("users").document(au.getCurrentUser().getEmail()).get().addOnCompleteListener((t)->{
             user = new Utente(t.getResult().getData());
-
         });
 
         this.mText =new MutableLiveData<>();
