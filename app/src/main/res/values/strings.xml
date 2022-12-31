@@ -50,10 +50,38 @@
     <string name="ut_err_after_now_out">Data inserita successiva a quella odierna</string>
     <string name="ut_err_before_now_out">Data inserita precedente a quella odierna</string>
 
-    <!-- stringhe per messaggi tra frament -->
+    <!-- stringhe per messaggi tra fragment -->
     <string name="event_event_macro_send_ev">Evento</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- stringhe per fragment dashboard -->
+    <string-array name="cardEventsTitle">
+        <item>Title1</item>
+        <item>Title2</item>
+        <item>Title3</item>
+        <item>Title4</item>
+        <item>Title5</item>
+        <item>Title6</item>
+    </string-array>
+
+    <string-array name="cardEventsDate">
+        <item>Date1</item>
+        <item>Date2</item>
+        <item>Date3</item>
+        <item>Date4</item>
+        <item>Date5</item>
+        <item>Date6</item>
+    </string-array>
+
+    <string-array name="cardEventsLocation">
+        <item>Location1</item>
+        <item>Location2</item>
+        <item>Location3</item>
+        <item>Location4</item>
+        <item>Location5</item>
+        <item>Location6</item>
+    </string-array>
 </resources>

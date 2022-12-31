@@ -10,11 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.viviappis.R;
+import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.databinding.FragmentDashboardBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +28,27 @@ public class DashboardFragment extends Fragment
 
     private SearchView srcDash;
 
+    /**
+     * @author Agostino
+     *     Array con la lista degli eventi della dashboard (popolare con DocumentSnapshot) così non tocco cose del DB
+     */
+    ArrayList<Evento> eventi = new ArrayList<>();
+    int frecciaEvento = R.drawable.ic_baseline_arrow_back_ios_24;
+
+    /**
+     * @author Agostino
+     *  funzione per settare la cardview con gli eventi (uso il costruttore con dei parametri inventati per farlo funzionare intanto)
+     */
+    private void setUpEventi(){
+        String[] titleEventi= getResources().getStringArray(R.array.cardEventsTitle);
+        String[] dataEventi = getResources().getStringArray(R.array.cardEventsDate);
+        String[] locationEventi = getResources().getStringArray(R.array.cardEventsLocation);
+
+        for(int i=0; i< titleEventi.length;i++){
+            eventi.add(new Evento(titleEventi[i],"noDescription","noCreator",dataEventi[i],"noPassword",true,1,10));
+        }
+
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -40,7 +63,7 @@ public class DashboardFragment extends Fragment
         {
            createDash(t.getResult().getDocuments());
         });
-
+        setUpEventi();
         setUpUIViews();
         addActionListener();
 

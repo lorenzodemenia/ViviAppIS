@@ -19,6 +19,7 @@ public class Evento implements Serializable
     private int minPart;
     private int maxPart;
 
+
     /**
      * Genera un oggetto di tipo evento
      * @param name nome dell'evento
@@ -41,6 +42,7 @@ public class Evento implements Serializable
         this.isPublic = isPublic;
         this.minPart=minPart;
         this.maxPart=maxPart;
+
     }
     /**
      * Genera un oggetto di tipo evento
