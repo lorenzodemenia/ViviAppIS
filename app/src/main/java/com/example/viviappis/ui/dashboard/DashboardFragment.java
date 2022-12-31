@@ -7,10 +7,14 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
+import com.example.viviappis.data.model.ScorrimentoDashboard;
 import com.example.viviappis.databinding.FragmentDashboardBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -28,8 +32,16 @@ public class DashboardFragment extends Fragment
 
     private SearchView srcDash;
 
+    public static class Prova extends AppCompatActivity{
+        /**
+         * @author sindago
+         * tentativo disperato per usare la funzione findViewById di AppCompactActivity senza togliere extends Fragment alla Dashboard
+         */
+        RecyclerView cap(int elem){return findViewById(R.id.recycleViewEvents);}
+    }
+
     /**
-     * @author Agostino
+     * @author sindago
      *     Array con la lista degli eventi della dashboard (popolare con DocumentSnapshot) così non tocco cose del DB
      */
     ArrayList<Evento> eventi = new ArrayList<>();
@@ -53,6 +65,7 @@ public class DashboardFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         //DashboardViewModel dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
+
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -63,9 +76,15 @@ public class DashboardFragment extends Fragment
         {
            createDash(t.getResult().getDocuments());
         });
+        RecyclerView recyclerView = new Prova().cap(0); //di questa cosa Agostino se ne vergogna
         setUpEventi();
+        ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext(),eventi); //quel getcontext è sus
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         setUpUIViews();
         addActionListener();
+
 
 
         return root;
