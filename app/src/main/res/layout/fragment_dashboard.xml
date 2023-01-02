@@ -11,6 +11,7 @@
         android:layout_width="363dp"
         android:layout_height="31dp"
         android:layout_marginEnd="24dp"
+        android:background="@color/cardview_shadow_start_color"
         android:queryHint="Nome dell' evento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
