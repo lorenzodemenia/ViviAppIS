@@ -33,7 +33,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class NewEventFragment extends Fragment implements OnMapReadyCallback
 {
-    private EditText inpName, inpDesc, inpDate, inpPsw;
+    private EditText inpName, inpDesc, inpDate, inpPsw, inpMin, inpMax;
     private TextView result;
     private Spinner inpType;
     private Switch inpPublic;
@@ -96,7 +96,9 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         inpPsw = binding.newEvPsw;
         inpType = binding.newEvType;
         inpPublic = binding.newEvPublic;
-        inpMap = binding.newEventMap;
+       // inpMap = binding.newEventMap;
+        inpMin = binding.newEvMinPart;
+        inpMax = binding.newEvMaxPart;
 
         bCont   = binding.newEvCont;
         result  = binding.newEvResult;
@@ -137,10 +139,12 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
             if(e==null)result.setText(R.string.err_no_all_data);
             else
             {
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.setReorderingAllowed(true);
+
                 Bundle mex = new Bundle();
-                mex.putString(getResources().getString(R.string.event_event_macro_send_ev),e.toStringData());
+                mex.putString(getResources().getString(R.string.event_macro_send_ev),e.toStringData());
+                mex.putString(getResources().getString(R.string.event_macro_send_type),inpType.getSelectedItem().toString());
 
                 transaction.replace(R.id.newEventFragmant, NewEventMacroFragment.class, mex);
 
@@ -164,15 +168,19 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
     {
         String n = inpName.getText().toString();
         String ds = inpDesc.getText().toString();
-        String t = inpType.getSelectedItem().toString();
         String d = inpDate.getText().toString();
         String p = inpPsw.getText().toString();
         boolean i = inpPublic.isChecked();
+        String app = inpMax.getText().toString();
+        System.out.println(app);
+        int M = app.equals("") ? 0 : Integer.valueOf(app);
+        app = inpMin.getText().toString();
+        int m = app.equals("") ? 0 : Integer.valueOf(app);
 
         if(!i && p.equals("")) p = Utilities.getNewPassword(10);
         else if(i)             p="";
 
-        return !n.isEmpty() && !d.equals("")? new Evento(n,ds,au.getCurrentUser().getEmail(),d,p,i, 0, 0) : null;
+        return !n.isEmpty() && !d.equals("") && (m<=M && m>0 && M>0)? new Evento(n,ds,au.getCurrentUser().getEmail(),d,p,i, m, M) : null;
     }
 
     @Override

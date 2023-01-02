@@ -20,6 +20,8 @@ public class Evento implements Serializable
     private int maxPart;
 
 
+    private final String splitCart = "-";
+
     /**
      * Genera un oggetto di tipo evento
      * @param name nome dell'evento
@@ -82,14 +84,15 @@ public class Evento implements Serializable
     {
         this("","","","","",false,0,0);
 
-        String[] b = a.split("/");
+        String[] b = a.split(splitCart);
+
         if(b.length==8)
         {
             this.name = b[0];
-            this.creator = b[1];
-            this.description = b[2];
-            this.password = b[3];
-            this.date = b[4];
+            this.creator = b[2];
+            this.description = b[1];
+            this.password = b[4].equals("()") ? "" :b[4].substring(1,b[4].length()-1);
+            this.date = b[3];
             this.partecipants = new ArrayList<>();
             this.isPublic = Boolean.parseBoolean(b[7]);
             this.minPart=Integer.parseInt(b[5]);
@@ -248,8 +251,15 @@ public class Evento implements Serializable
     public String toStringData()
     {
         String part = "";
-        for (Utente i : partecipants);
-        return name+'/'+description+'/'+creator+'/'+date+'/'+password+'/'+minPart+'/'+maxPart+'/'+isPublic;
+
+        return  name            +splitCart+
+                description     +splitCart+
+                creator         +splitCart+
+                date            +splitCart+
+                "("+password+")"+splitCart+
+                minPart         +splitCart+
+                maxPart         +splitCart+
+                isPublic;
     }
 
     /**
@@ -267,6 +277,8 @@ public class Evento implements Serializable
                 ", password='" + password + '\'' +
                 ", partecipants=" + partecipants +
                 ", isPublic=" + isPublic +
+                ", minPart=" + minPart +
+                ", maxPart=" + maxPart +
                 '}';
     }
 }

@@ -51,7 +51,9 @@
     <string name="ut_err_before_now_out">Data inserita precedente a quella odierna</string>
 
     <!-- stringhe per messaggi tra fragment -->
-    <string name="event_event_macro_send_ev">Evento</string>
+    <string name="event_macro_send_ev">Evento</string>
+    <string name="event_macro_send_type">EventoType</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
