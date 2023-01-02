@@ -13,15 +13,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.viviappis.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashboard.MyViewHolder> {
     Context context;
-    ArrayList<Evento> eventos;
+    List<Evento> eventos;
 
     public ScorrimentoDashboard(Context context, ArrayList<Evento> eventos){
         this.context=context;
         this.eventos=eventos;
     }
+    public ScorrimentoDashboard(Context context)
+    {
+        this.context=context;
+        this.eventos=new ArrayList<>();
+    }
+
+    public void addEvent(Evento e){eventos.add(e);}
 
     @NonNull
     @Override
@@ -34,7 +42,7 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
 
 
     @Override
-    public void onBindViewHolder(@NonNull ScorrimentoDashboard.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         //posizione delle righe nella dash
         holder.titolo.setText(eventos.get(position).getName());
         holder.data.setText(eventos.get(position).getDate());

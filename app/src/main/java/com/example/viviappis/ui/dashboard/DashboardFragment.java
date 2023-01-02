@@ -31,36 +31,10 @@ public class DashboardFragment extends Fragment
     private FirebaseFirestore db;
 
     private SearchView srcDash;
+    private RecyclerView recyclerView;
 
-    public static class Prova extends AppCompatActivity{
-        /**
-         * @author sindago
-         * tentativo disperato per usare la funzione findViewById di AppCompactActivity senza togliere extends Fragment alla Dashboard
-         */
-        RecyclerView cap(int elem){return findViewById(R.id.recycleViewEvents);}
-    }
-
-    /**
-     * @author sindago
-     *     Array con la lista degli eventi della dashboard (popolare con DocumentSnapshot) così non tocco cose del DB
-     */
-    ArrayList<Evento> eventi = new ArrayList<>();
     int frecciaEvento = R.drawable.ic_baseline_arrow_back_ios_24;
 
-    /**
-     * @author Agostino
-     *  funzione per settare la cardview con gli eventi (uso il costruttore con dei parametri inventati per farlo funzionare intanto)
-     */
-    private void setUpEventi(){
-        String[] titleEventi= getResources().getStringArray(R.array.cardEventsTitle);
-        String[] dataEventi = getResources().getStringArray(R.array.cardEventsDate);
-        String[] locationEventi = getResources().getStringArray(R.array.cardEventsLocation);
-
-        for(int i=0; i< titleEventi.length;i++){
-            eventi.add(new Evento(titleEventi[i],"noDescription","noCreator",dataEventi[i],"noPassword",true,1,10));
-        }
-
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -72,20 +46,13 @@ public class DashboardFragment extends Fragment
         au = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+        setUpUIViews();
+        addActionListener();
+
         db.collection(getResources().getString(R.string.db_rac_events)).get().addOnCompleteListener((t) ->
         {
            createDash(t.getResult().getDocuments());
         });
-        RecyclerView recyclerView = new Prova().cap(0); //di questa cosa Agostino se ne vergogna
-        setUpEventi();
-        ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext(),eventi); //quel getcontext è sus
-
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        setUpUIViews();
-        addActionListener();
-
-
 
         return root;
     }
@@ -97,19 +64,22 @@ public class DashboardFragment extends Fragment
     public void createDash(List<DocumentSnapshot> l)
     {
         int r;
+        binding.dashProgressBar.setVisibility(View.VISIBLE);
+
+        ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext());
+
         for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
         {
-            createContenitor(i.getData());
+            adapter.addEvent(new Evento(i.getData()));
             //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
 
         }
-        //return r;
+        binding.dashProgressBar.setVisibility(View.INVISIBLE);
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
-    public void createContenitor(Map<String, Object> i)
-    {
-        System.out.println(i);
-    }
 
     public List<DocumentSnapshot> filterListByName(List<DocumentSnapshot> l, String name)
     {
@@ -133,6 +103,7 @@ public class DashboardFragment extends Fragment
     private void setUpUIViews()
     {
         srcDash = (SearchView) binding.getRoot().getViewById(R.id.dashSrcEvent);
+        recyclerView = binding.dashViewEvents;
     }
 
 

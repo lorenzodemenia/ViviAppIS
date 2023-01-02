@@ -75,7 +75,6 @@ public class Evento implements Serializable
      * @param a oggetto di tipo GenericEvent per creare un nuovo oggetto
      */
     public Evento(Evento a) {this(a.getName(), a.getDescription(), a.getCreator(), a.getDate(), a.getPassword(),a.isPublic(), a.minPart, a.maxPart, a.partecipants);}
-
     /**
      * crea un oggetto a partire da una stringa creata con toStringData()
      * @param a stringa creata con to string data (deve avere la forma name/description/creator/date/password/minPart/maxPart/isPublic;
@@ -98,6 +97,19 @@ public class Evento implements Serializable
             this.minPart=Integer.parseInt(b[5]);
             this.maxPart=Integer.parseInt(b[6]);
         }
+    }
+
+    public Evento(Map<String, Object> data)
+    {
+        this((String) data.get("name"),
+                (String) data.get("description"),
+                (String) data.get("creator"),
+                (String) data.get("date"),
+                (String) data.get("password"),
+                (boolean) data.get("public"),
+                Integer.valueOf(data.get("minPart")==null ? "0" : (String) data.get("minPart")),
+                Integer.valueOf(data.get("maxPart")==null ? "0" : (String) data.get("maxPart")));
+        this.partecipants = (ArrayList<Utente>) data.get("partecipants");
     }
 
     /**
