@@ -15,34 +15,34 @@ import com.example.viviappis.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashboard.MyViewHolder> {
+public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashboard.MyViewHolder>
+{
     Context context;
     List<Evento> eventos;
 
-    public ScorrimentoDashboard(Context context, ArrayList<Evento> eventos){
-        this.context=context;
-        this.eventos=eventos;
-    }
+
     public ScorrimentoDashboard(Context context)
     {
         this.context=context;
         this.eventos=new ArrayList<>();
     }
 
+
     public void addEvent(Evento e){eventos.add(e);}
+
 
     @NonNull
     @Override
-    public ScorrimentoDashboard.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //layout della riga evento
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view= layoutInflater.inflate(R.layout.single_card_event, parent, false);
+    public ScorrimentoDashboard.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
+        View view=  LayoutInflater.from(context).inflate(R.layout.single_card_event, parent, false);
         return new ScorrimentoDashboard.MyViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
+    {
         //posizione delle righe nella dash
         holder.titolo.setText(eventos.get(position).getName());
         holder.data.setText(eventos.get(position).getDate());
@@ -56,17 +56,19 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
         return eventos.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder
+    {
         //prende la vista del file layout
         ImageView imageView;
         TextView titolo, data, luogo;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView)
+        {
             super(itemView);
-            imageView=itemView.findViewById(R.id.imageView);
-            titolo =itemView.findViewById(R.id.textView);
-            data = itemView.findViewById(R.id.textView2);
-            luogo = itemView.findViewById(R.id.textView3);
+            imageView = itemView.findViewById(R.id.cardEvCont);
+            titolo    = itemView.findViewById(R.id.cardEvTitle);
+            data      = itemView.findViewById(R.id.cardEvDate);
+            luogo     = itemView.findViewById(R.id.cardEvLoc);
         }
     }
 }

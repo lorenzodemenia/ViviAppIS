@@ -25,10 +25,12 @@
             android:id="@+id/newEvCont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
+            android:layout_marginBottom="72dp"
             android:text="Continua"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="150dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/newEvPsw"
@@ -68,6 +70,7 @@
             android:id="@+id/newEvType"
             android:layout_width="409dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/newEvPsw"
             tools:layout_editor_absoluteX="16dp" />
 
@@ -96,21 +99,24 @@
             android:id="@+id/newEvMinPart"
             android:layout_width="308dp"
             android:layout_height="76dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="Minimo numero di partecipanti "
             android:inputType="number"
             app:layout_constraintBottom_toTopOf="@+id/newEvMaxPart"
-            tools:layout_editor_absoluteX="57dp" />
+            tools:layout_editor_absoluteX="51dp" />
 
         <EditText
             android:id="@+id/newEvMaxPart"
             android:layout_width="312dp"
             android:layout_height="57dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="Massimo numero di partecipanti "
             android:inputType="number"
             app:layout_constraintBottom_toTopOf="@+id/newEvCont"
-            tools:layout_editor_absoluteX="53dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

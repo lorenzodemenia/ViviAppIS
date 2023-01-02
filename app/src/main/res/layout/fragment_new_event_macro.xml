@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="202dp"
             android:layout_height="390dp"
-            android:text="@string/hello_blank_fragment"
+            android:text="test"
             tools:layout_editor_absoluteX="120dp"
             tools:layout_editor_absoluteY="130dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>

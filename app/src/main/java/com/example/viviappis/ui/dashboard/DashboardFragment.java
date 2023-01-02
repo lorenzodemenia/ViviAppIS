@@ -38,8 +38,6 @@ public class DashboardFragment extends Fragment
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        //DashboardViewModel dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
-
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -90,8 +88,8 @@ public class DashboardFragment extends Fragment
             Map<String, Object> m = l.get(i).getData();
             String cnt = (String) m.get("name");
 
-            if(!cnt.startsWith(name)) System.out.println(l.remove(i));
-            else i++;
+            if(!cnt.startsWith(name)) l.remove(i);
+            else                      i++;
         }
 
         return l;
@@ -102,7 +100,7 @@ public class DashboardFragment extends Fragment
      */
     private void setUpUIViews()
     {
-        srcDash = (SearchView) binding.getRoot().getViewById(R.id.dashSrcEvent);
+        srcDash = binding.dashSrcEvent;
         recyclerView = binding.dashViewEvents;
     }
 
@@ -120,11 +118,6 @@ public class DashboardFragment extends Fragment
             @Override
             public boolean onQueryTextChange(String s)
             {
-                /*db.collection(getResources().getString(R.string.db_rac_events)).add(new Evento(s, "fddsf",au.getCurrentUser().getEmail(), "11/11/2200", "", true)).addOnCompleteListener((t) ->
-                {
-                    System.out.println("ciao");
-                });*/
-
                 db.collection(getResources().getString(R.string.db_rac_events)).get().addOnCompleteListener((t) ->
                 {
                     createDash(filterListByName(t.getResult().getDocuments(),s));
