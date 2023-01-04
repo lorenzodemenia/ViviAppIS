@@ -1,9 +1,12 @@
 package com.example.viviappis.data.model;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -69,6 +72,8 @@ public class Utente
         this((String) user.get("name"), (String) user.get("surname"), (String)user.get("username"),
              (String) user.get("birthday"),(String) user.get("email"), "", ((Long) user.get("score")).intValue());
     }
+
+
 
 
     /**
