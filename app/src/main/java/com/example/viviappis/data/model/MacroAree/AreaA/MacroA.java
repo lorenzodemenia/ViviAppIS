@@ -1,7 +1,6 @@
 package com.example.viviappis.data.model.MacroAree.AreaA;
 
 
-import com.example.viviappis.Pair;
 import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.data.model.Utente;
 import com.google.firebase.firestore.CollectionReference;
@@ -23,14 +22,7 @@ public class MacroA extends Evento
     private List<Utente> Giocatori;
     private Map<Utente, Integer> ranklist;
     private final int points;
-    private List<Utente> winners; //Lista di utenti che può contenere al più 3 utenti
-
-
-    /*
-     * L'ho pensata così: tutti i partecipanti sono nella lista 'Giocatori', alla fine di ogni round verranno assegnati i punti ai giocatori.
-     * Inoltre i vincitori di tale round verranno spostati in winners, in modo da poter ricevere dei punti aggiuntivi.
-     *
-     * */
+    private List<Utente> winners;
 
     /*
      * ********** elim
