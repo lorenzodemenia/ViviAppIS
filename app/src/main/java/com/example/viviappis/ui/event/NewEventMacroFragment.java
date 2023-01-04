@@ -21,9 +21,11 @@ public class NewEventMacroFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
 
-        e = new Evento(getArguments().getString(getResources().getString(R.string.event_macro_send_ev)));
+        e = new Evento(getArguments().getString(getResources().getString(R.string.event_send_ev)));
         System.out.println(e);
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

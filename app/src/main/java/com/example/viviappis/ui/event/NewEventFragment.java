@@ -143,7 +143,7 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
                 transaction.setReorderingAllowed(true);
 
                 Bundle mex = new Bundle();
-                mex.putString(getResources().getString(R.string.event_macro_send_ev),e.toStringData());
+                mex.putString(getResources().getString(R.string.event_send_ev),e.toStringData());
                 mex.putString(getResources().getString(R.string.event_macro_send_type),inpType.getSelectedItem().toString());
 
                 transaction.replace(R.id.newEventFragmant, NewEventMacroFragment.class, mex);

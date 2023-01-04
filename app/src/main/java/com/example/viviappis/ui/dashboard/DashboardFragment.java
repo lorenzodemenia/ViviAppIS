@@ -9,6 +9,7 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,9 +63,9 @@ public class DashboardFragment extends Fragment
     public void createDash(List<DocumentSnapshot> l)
     {
         int r;
-        binding.dashProgressBar.setVisibility(View.VISIBLE);
+        ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext(), getChildFragmentManager().beginTransaction(), this);
 
-        ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext());
+        binding.dashProgressBar.setVisibility(View.VISIBLE);
 
         for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
         {
@@ -76,6 +77,26 @@ public class DashboardFragment extends Fragment
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        Fragment a = getChildFragmentManager().findFragmentById(R.id.dasboard);
+        if (a != null)
+        {
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            transaction.setReorderingAllowed(true);
+            transaction.remove(a);
+            transaction.commit();
+        }
+    }
+
+    public void hide(Boolean a)
+    {
+        if(a)binding.dasboard.setVisibility(View.INVISIBLE);
+        else binding.dasboard.setVisibility(View.VISIBLE);
     }
 
 

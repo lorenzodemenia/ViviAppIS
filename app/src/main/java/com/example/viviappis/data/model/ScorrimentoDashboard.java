@@ -1,6 +1,7 @@
 package com.example.viviappis.data.model;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,23 +9,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
+import com.example.viviappis.ui.dashboard.DashboardFragment;
+import com.example.viviappis.ui.event.EventPageFragment;
+import com.example.viviappis.ui.event.NewEventFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashboard.MyViewHolder>
 {
-    Context context;
-    List<Evento> eventos;
+    private Context context;
+    private List<Evento> eventos;
+    private FragmentTransaction transaction;
+    private DashboardFragment f;
 
 
-    public ScorrimentoDashboard(Context context)
+    public ScorrimentoDashboard(Context context, FragmentTransaction beginTransaction, DashboardFragment dashboardFragment)
     {
         this.context=context;
         this.eventos=new ArrayList<>();
+        this.f = dashboardFragment;
+        this.transaction = beginTransaction;
     }
 
 
@@ -48,13 +57,23 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
         holder.data.setText(eventos.get(position).getDate());
         holder.luogo.setText("Posizione coming soon"); //LA CLASSE EVENTO NON HA UNA STRINGA LUOGO
         holder.imageView.setImageResource(R.drawable.ic_baseline_arrow_back_ios_24);
+
+        holder.imageView.setOnClickListener((t)->
+        {
+            transaction.setReorderingAllowed(true);
+
+            Bundle mex = new Bundle();
+            mex.putString(f.getResources().getString(R.string.event_send_ev),eventos.get(position).toStringData());
+
+            transaction.replace(R.id.dasboard, EventPageFragment.class, null);
+
+            transaction.commit();
+            f.hide(true);
+        });
     }
 
     @Override
-    public int getItemCount() {
-        //numero degli eventi mostrati
-        return eventos.size();
-    }
+    public int getItemCount() {return eventos.size();}
 
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
