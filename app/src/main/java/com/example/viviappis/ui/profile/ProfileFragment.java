@@ -32,10 +32,6 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth au;
     private FirebaseFirestore db;
 
-    public Utente getUser() {
-        return user;
-    }
-
     protected Utente user;
 
 
@@ -52,8 +48,15 @@ public class ProfileFragment extends Fragment {
         db.collection(getResources().getString(R.string.db_rac_users)).get().addOnCompleteListener((t)->{
 
             user = new Utente(filterListByID(t.getResult().getDocuments(),au.getCurrentUser().getEmail()));
-            final TextView textView = binding.textProfile;
-            textView.setText(user.getName());
+            final TextView textName = binding.textName,textSurname = binding.textSurname,
+                    textDate = binding.textDate, textNickname = binding.textNickname,
+                    textEmail = binding.textEmail;
+            textName.setText(user.getName());
+            textSurname.setText(user.getSurname());
+            textDate.setText(user.getBirth());
+            textNickname.setText(user.getName());
+            textEmail.setText(user.getEmail());
+
         });
 
 
