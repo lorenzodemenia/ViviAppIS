@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ProfileFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
@@ -42,8 +43,8 @@
 
     <TextView
         android:id="@+id/textName"
-        android:layout_width="114dp"
-        android:layout_height="22dp"
+        android:layout_width="156dp"
+        android:layout_height="20dp"
         android:text="Nome"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view"
@@ -55,8 +56,8 @@
 
     <TextView
         android:id="@+id/textSurname"
-        android:layout_width="114dp"
-        android:layout_height="22dp"
+        android:layout_width="156dp"
+        android:layout_height="20dp"
         android:text="Cognome"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view"
@@ -68,8 +69,8 @@
 
     <TextView
         android:id="@+id/textNickname"
-        android:layout_width="114dp"
-        android:layout_height="22dp"
+        android:layout_width="156dp"
+        android:layout_height="20dp"
         android:text="Nickname"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view"
@@ -81,29 +82,29 @@
 
     <TextView
         android:id="@+id/textDate"
-        android:layout_width="114dp"
-        android:layout_height="22dp"
+        android:layout_width="156dp"
+        android:layout_height="20dp"
         android:text="Data di Nascita"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.733" />
 
     <TextView
         android:id="@+id/textEmail"
-        android:layout_width="114dp"
+        android:layout_width="203dp"
         android:layout_height="22dp"
         android:text="Email"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.886" />
+        app:layout_constraintVertical_bias="0.861" />
 
     <TextView
         android:id="@+id/textView6"

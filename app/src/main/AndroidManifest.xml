@@ -35,9 +35,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
+            android:roundIcon="@mipmap/ic_launcher_round">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
