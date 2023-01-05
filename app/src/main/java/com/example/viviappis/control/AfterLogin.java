@@ -37,7 +37,6 @@ public class AfterLogin extends AppCompatActivity
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         navView = findViewById(R.id.nav_view);
-        HomeFragment.navbar = navView;
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

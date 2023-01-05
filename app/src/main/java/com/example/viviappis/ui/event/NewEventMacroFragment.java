@@ -76,10 +76,6 @@ public class NewEventMacroFragment extends Fragment
         max.setText(e.getMaxPart()+"");
         min.setText(e.getMinPart()+"");
         psw.setText(e.getPassword());
-
-        //class
-
-
     }
 
     @Override

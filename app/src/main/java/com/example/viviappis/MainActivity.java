@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.viviappis.control.AfterLogin;
+import com.example.viviappis.control.loginAndRegister.LoginActivity;
+import com.example.viviappis.control.loginAndRegister.RegisterActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         au = FirebaseAuth.getInstance();
 
-        if(au.getCurrentUser()==null || au.getCurrentUser().isAnonymous()) startActivity(new Intent(this, AfterLogin.class));
+        if(au.getCurrentUser()==null || au.getCurrentUser().isAnonymous()) startActivity(new Intent(this, LoginActivity.class));
         else
         {
 

@@ -1,15 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pageEvent"
+    android:id="@+id/pageEventFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.event.EventPageFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pageEvent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pageEventPart"
+            android:layout_width="413dp"
+            android:layout_height="157dp"
+            android:layout_marginBottom="220dp"
+            android:backgroundTint="@color/giallocra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/pageEventProp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="105dp" />
+
+        <TextView
+            android:id="@+id/pageEventData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="56dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="64dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pageEventUser"
+            android:layout_width="125dp"
+            android:layout_height="99dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/pageEventIscr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Iscriviti"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="23dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pageEventAdmin"
+            android:layout_width="248dp"
+            android:layout_height="106dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/pageEventStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avvia evento"
+                tools:layout_editor_absoluteX="135dp"
+                tools:layout_editor_absoluteY="27dp" />
+
+            <Button
+                android:id="@+id/pageEventCanc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancella evento"
+                tools:layout_editor_absoluteX="12dp"
+                tools:layout_editor_absoluteY="28dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/pageEventNm"
+            android:layout_width="79dp"
+            android:layout_height="23dp"
+            android:layout_marginEnd="56dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/pageEventDesc"
+            android:layout_width="260dp"
+            android:layout_height="168dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/pageEventPart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

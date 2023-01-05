@@ -9,30 +9,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
-import com.example.viviappis.ui.dashboard.DashboardFragment;
 import com.example.viviappis.ui.event.EventPageFragment;
-import com.example.viviappis.ui.event.NewEventFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashboard.MyViewHolder>
 {
     private Context context;
     private List<Evento> eventos;
-    private DashboardFragment f;
+    private Fragment f;
+    private Consumer<Boolean> func;
+
+    private int conteiner;
 
 
-    public ScorrimentoDashboard(Context context, DashboardFragment dashboardFragment)
+    public ScorrimentoDashboard(Context context, Fragment dashboardFragment, Consumer<Boolean> func, boolean isDash)
     {
         this.context=context;
         this.eventos=new ArrayList<>();
         this.f = dashboardFragment;
+        this.func = func;
+        if(isDash) conteiner = R.id.dasboardFragment;
+        else conteiner = R.id.homeFragment;
     }
 
 
@@ -66,10 +71,10 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
             Bundle mex = new Bundle();
             mex.putString(f.getResources().getString(R.string.event_send_ev),eventos.get(position).toStringData());
 
-            t.replace(R.id.dasboard, EventPageFragment.class, null);
+            t.replace(conteiner, EventPageFragment.class ,mex);
 
             t.commit();
-            f.hide(true);
+            func.accept(true);
         });
     }
 
@@ -86,7 +91,7 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
         {
             super(itemView);
             imageView = itemView.findViewById(R.id.cardEvCont);
-            titolo    = itemView.findViewById(R.id.cardEvTitle);
+            titolo    = itemView.findViewById(R.id.cardEvNm);
             data      = itemView.findViewById(R.id.cardEvDate);
             luogo     = itemView.findViewById(R.id.cardEvLoc);
         }

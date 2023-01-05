@@ -8,7 +8,6 @@ import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,9 +33,6 @@ public class DashboardFragment extends Fragment
     private SearchView srcDash;
     private RecyclerView recyclerView;
     private ProgressBar  asp;
-
-
-    int frecciaEvento = R.drawable.ic_baseline_arrow_back_ios_24;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -65,8 +60,7 @@ public class DashboardFragment extends Fragment
      */
     public void createDash(List<DocumentSnapshot> l)
     {
-        int r;
-        ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext(), this);
+        ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext(), this, this::hide,true);
 
         asp.setVisibility(View.VISIBLE);
 
@@ -85,7 +79,7 @@ public class DashboardFragment extends Fragment
     public void onResume()
     {
         super.onResume();
-        Fragment a = getChildFragmentManager().findFragmentById(R.id.dasboard);
+        Fragment a = getChildFragmentManager().findFragmentById(R.id.dasboardFragment);
         if (a != null)
         {
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
