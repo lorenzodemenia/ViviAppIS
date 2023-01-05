@@ -47,6 +47,7 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
     private FragmentNewEventBinding binding;
 
     private Evento e;
+    private String t;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
@@ -81,6 +82,23 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
 
         au = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+        try
+        {
+            e = new Evento(getArguments().getString(getResources().getString(R.string.event_send_ev)));
+            t = getArguments().getString(getResources().getString(R.string.event_macro_send_type));
+            inpName.setText(e.getName());
+            inpDesc.setText(e.getDescription());
+            inpDate.setText(e.getDate());
+            inpName.setText(e.getName());
+            inpPublic.setChecked(e.isPublic());
+            inpType.setSelection(getPosition(t));
+            inpPsw.setText(e.getPassword());
+        }
+        catch (Exception e){}
+
+        System.out.println("dfdfsasdaf");
+
 
         return  binding.getRoot();
     }
@@ -150,6 +168,21 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
                 hide(true);
             }
         });
+    }
+
+
+    private int getPosition(String s)
+    {
+        String a[] = getResources().getStringArray(R.array.new_ev_spinner_item);
+        int i =0;
+
+        while (i<a.length)
+        {
+            if(s.equals(a[i]))return i;
+            i++;
+        }
+
+        return -1;
     }
 
     /**

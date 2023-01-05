@@ -107,8 +107,8 @@ public class Evento implements Serializable
                 (String) data.get("date"),
                 (String) data.get("password"),
                 (boolean) data.get("public"),
-                Integer.valueOf(data.get("minPart")==null ? "0" : (String) data.get("minPart")),
-                Integer.valueOf(data.get("maxPart")==null ? "0" : (String) data.get("maxPart")));
+                (data.get("minPart")==null ? 0 : ((Long) data.get("minPart")).intValue()),
+                (data.get("maxPart")==null ? 0 : ((Long) data.get("maxPart")).intValue()));
         this.partecipants = (ArrayList<Utente>) data.get("partecipants");
     }
 

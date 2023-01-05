@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- array per l'activity newEvent  -->
+    <!-- non toccare ordine e se aggiungiamo giochi aggiungere anche sotto il minimo e massimo dei giocatori -->
     <string-array name="new_ev_spinner_item">
         <item>Palla prigioniera</item>
         <item>Ruba bandiera</item>
@@ -11,6 +12,32 @@
         <item>Nascondino</item>
         <item>Sardine</item>
         <item>Uno due tre Stella</item>
-        <item>agg qui</item>
     </string-array>
+
+    <integer-array name="max_for_event">
+        <item>30</item>
+        <item>51</item>
+        <item>40</item>
+        <item>20</item>
+        <item>20</item>
+        <item>15</item>
+        <item>20</item>
+        <item>15</item>
+        <item>20</item>
+
+    </integer-array>
+
+    <integer-array name="min_for_event">
+        <item>10</item>
+        <item>7</item>
+        <item>10</item>
+        <item>3</item>
+        <item>2</item>
+        <item>5</item>
+        <item>3</item>
+        <item>4</item>
+        <item>3</item>
+
+    </integer-array>
+
 </resources>

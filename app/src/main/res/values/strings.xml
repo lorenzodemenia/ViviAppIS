@@ -67,4 +67,9 @@
         nell\'area dei prigionieri posta sul fondo del campo degli avversari. Li dovrà aspettare che qualche suo compagno intercetti
         un tiro fermando la palla al volo liberandolo così dalla sua prigionia. Vince il gioco chi riesce a colpire tutti gli avversari."</string>
 
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="allert_title_new_event">Creazione evento</string>
+    <string name="allert_text_new_event">Evento è stato creato con successo</string>
+
 </resources>
