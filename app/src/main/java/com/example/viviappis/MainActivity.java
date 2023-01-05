@@ -32,11 +32,6 @@ public class MainActivity extends AppCompatActivity
         if(au.getCurrentUser()==null || au.getCurrentUser().isAnonymous()) startActivity(new Intent(this, LoginActivity.class));
         else
         {
-
-            /*eliminabile --------------------------------*/
-           // au.signOut();
-            /*eliminabile --------------------------------*/
-
             startActivity(new Intent(this, AfterLogin.class));
         }
     }
