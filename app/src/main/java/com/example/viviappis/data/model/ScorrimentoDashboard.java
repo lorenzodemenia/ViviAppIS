@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,16 +25,14 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
 {
     private Context context;
     private List<Evento> eventos;
-    private FragmentTransaction transaction;
     private DashboardFragment f;
 
 
-    public ScorrimentoDashboard(Context context, FragmentTransaction beginTransaction, DashboardFragment dashboardFragment)
+    public ScorrimentoDashboard(Context context, DashboardFragment dashboardFragment)
     {
         this.context=context;
         this.eventos=new ArrayList<>();
         this.f = dashboardFragment;
-        this.transaction = beginTransaction;
     }
 
 
@@ -58,16 +57,18 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
         holder.luogo.setText("Posizione coming soon"); //LA CLASSE EVENTO NON HA UNA STRINGA LUOGO
         holder.imageView.setImageResource(R.drawable.ic_baseline_arrow_back_ios_24);
 
-        holder.imageView.setOnClickListener((t)->
+        holder.imageView.setOnClickListener((v)->
         {
-            transaction.setReorderingAllowed(true);
+            FragmentTransaction t = f.getChildFragmentManager().beginTransaction();
+
+            t.setReorderingAllowed(true);
 
             Bundle mex = new Bundle();
             mex.putString(f.getResources().getString(R.string.event_send_ev),eventos.get(position).toStringData());
 
-            transaction.replace(R.id.dasboard, EventPageFragment.class, null);
+            t.replace(R.id.dasboard, EventPageFragment.class, null);
 
-            transaction.commit();
+            t.commit();
             f.hide(true);
         });
     }

@@ -53,10 +53,7 @@ public class AfterLogin extends AppCompatActivity
     }
 
     @Override
-    public void onBackPressed()
-    {
-
-    }
+    public void onBackPressed() {}
 
     /**
      * Questa funzione serve a inizzializzare le variabili dell'activity utili per recuperare i valori di input e mostrare i valori di output

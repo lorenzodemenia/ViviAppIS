@@ -33,7 +33,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class NewEventFragment extends Fragment implements OnMapReadyCallback
 {
-    private EditText inpName, inpDesc, inpDate, inpPsw, inpMin, inpMax;
+    private EditText inpName, inpDesc, inpDate, inpPsw;
     private TextView result;
     private Spinner inpType;
     private Switch inpPublic;
@@ -97,8 +97,6 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         inpType = binding.newEvType;
         inpPublic = binding.newEvPublic;
        // inpMap = binding.newEventMap;
-        inpMin = binding.newEvMinPart;
-        inpMax = binding.newEvMaxPart;
 
         bCont   = binding.newEvCont;
         result  = binding.newEvResult;
@@ -171,16 +169,11 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         String d = inpDate.getText().toString();
         String p = inpPsw.getText().toString();
         boolean i = inpPublic.isChecked();
-        String app = inpMax.getText().toString();
-        System.out.println(app);
-        int M = app.equals("") ? 0 : Integer.valueOf(app);
-        app = inpMin.getText().toString();
-        int m = app.equals("") ? 0 : Integer.valueOf(app);
 
         if(!i && p.equals("")) p = Utilities.getNewPassword(10);
         else if(i)             p="";
 
-        return !n.isEmpty() && !d.equals("") && (m<=M && m>0 && M>0)? new Evento(n,ds,au.getCurrentUser().getEmail(),d,p,i, m, M) : null;
+        return !n.isEmpty() && !d.equals("") ? new Evento(n,ds,au.getCurrentUser().getEmail(),d,p,i, 0, 0) : null;
     }
 
     @Override

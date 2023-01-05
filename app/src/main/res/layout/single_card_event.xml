@@ -15,12 +15,14 @@
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47000003">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="95dp"
+            android:layout_width="377dp"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/blurred_white">
 
             <TextView
@@ -60,8 +62,8 @@
                 android:layout_width="84dp"
                 android:layout_height="94dp"
                 android:layout_marginEnd="30dp"
-                android:rotation="180"
                 android:backgroundTint="@color/blurred_white"
+                android:rotation="180"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

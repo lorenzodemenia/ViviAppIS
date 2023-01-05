@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/newEventMacroFragment"
     android:layout_width="match_parent"
@@ -12,11 +13,99 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="202dp"
-            android:layout_height="390dp"
-            android:text="test"
-            tools:layout_editor_absoluteX="120dp"
-            tools:layout_editor_absoluteY="130dp" />
+            android:id="@+id/newEventMacroPub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            android:text="publico"
+            app:layout_constraintEnd_toStartOf="@+id/newEventMacroMin"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintStart_toEndOf="@+id/newEventMacroType"
+            app:layout_constraintTop_toBottomOf="@+id/newEventMacroMax" />
+
+        <TextView
+            android:id="@+id/newEventMacroMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="36dp"
+            android:text="min"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newEventMacroMax" />
+
+        <TextView
+            android:id="@+id/newEventMacroNm"
+            android:layout_width="125dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="60dp"
+            android:text="nome"
+            app:layout_constraintEnd_toStartOf="@+id/newEventMacroDate"
+            app:layout_constraintHorizontal_bias="0.402"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/newEventMacroDate"
+            android:layout_width="96dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="80dp"
+            android:text="data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/newEventMacroDesc"
+            android:layout_width="184dp"
+            android:layout_height="124dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="48dp"
+            android:text="descrizione"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newEventMacroNm" />
+
+        <TextView
+            android:id="@+id/newEventMacroMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="80dp"
+            android:text="max"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/newEventMacroDesc"
+            app:layout_constraintTop_toBottomOf="@+id/newEventMacroDate" />
+
+        <TextView
+            android:id="@+id/newEventMacroType"
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="84dp"
+            android:text="type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newEventMacroDesc" />
+
+        <Button
+            android:id="@+id/newEventMacroConf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Conferma"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toEndOf="@+id/newEventMacroMod"
+            app:layout_constraintTop_toBottomOf="@+id/newEventMacroPub" />
+
+        <Button
+            android:id="@+id/newEventMacroMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="80dp"
+            android:text="Modifica"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newEventMacroPub" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,8 @@ public class DashboardFragment extends Fragment
 
     private SearchView srcDash;
     private RecyclerView recyclerView;
+    private ProgressBar  asp;
+
 
     int frecciaEvento = R.drawable.ic_baseline_arrow_back_ios_24;
 
@@ -63,17 +66,16 @@ public class DashboardFragment extends Fragment
     public void createDash(List<DocumentSnapshot> l)
     {
         int r;
-        ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext(), getChildFragmentManager().beginTransaction(), this);
+        ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext(), this);
 
-        binding.dashProgressBar.setVisibility(View.VISIBLE);
+        asp.setVisibility(View.VISIBLE);
 
         for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
         {
             adapter.addEvent(new Evento(i.getData()));
             //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
-
         }
-        binding.dashProgressBar.setVisibility(View.INVISIBLE);
+        asp.setVisibility(View.INVISIBLE);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -123,6 +125,7 @@ public class DashboardFragment extends Fragment
     {
         srcDash = binding.dashSrcEvent;
         recyclerView = binding.dashViewEvents;
+        asp = binding.dashProgressBar;
     }
 
 
