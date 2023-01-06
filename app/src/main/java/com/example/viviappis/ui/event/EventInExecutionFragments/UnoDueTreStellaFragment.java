@@ -1,4 +1,4 @@
-package com.example.viviappis.ui.event;
+package com.example.viviappis.ui.event.EventInExecutionFragments;
 
 import androidx.fragment.app.Fragment;
 

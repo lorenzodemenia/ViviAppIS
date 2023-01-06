@@ -2,33 +2,25 @@ package com.example.viviappis.ui.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.SearchView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.viviappis.R;
 import com.example.viviappis.control.loginAndRegister.LoginActivity;
-import com.example.viviappis.control.loginAndRegister.RegisterActivity;
 import com.example.viviappis.data.model.Utente;
 import com.example.viviappis.databinding.FragmentProfileBinding;
-import com.example.viviappis.ui.event.NewEventFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 
