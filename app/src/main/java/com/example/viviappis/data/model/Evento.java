@@ -14,7 +14,7 @@ public class Evento implements Serializable
     private String creator;
     private String date;
     private String password;
-    private List<Utente> partecipants;
+    private List<String> partecipants;
     private boolean isPublic;
     private int minPart;
     private int maxPart;
@@ -58,7 +58,7 @@ public class Evento implements Serializable
      * @param minPart numero minimo di partecipanti
      * @param maxPart numero massimo di partecipanti
      */
-    public Evento(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart, List<Utente> partecipants)
+    public Evento(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart, List<String> partecipants)
     {
         this.name = name;
         this.creator = creator;
@@ -109,7 +109,7 @@ public class Evento implements Serializable
                 (boolean) data.get("public"),
                 (data.get("minPart")==null ? 0 : ((Long) data.get("minPart")).intValue()),
                 (data.get("maxPart")==null ? 0 : ((Long) data.get("maxPart")).intValue()));
-        this.partecipants = (ArrayList<Utente>) data.get("partecipants");
+        this.partecipants = (ArrayList<String>) data.get("partecipants");
     }
 
     /**
@@ -151,7 +151,7 @@ public class Evento implements Serializable
      * Return the users that partecipate to the event.
      * @return partecipants in the event
      */
-    public Collection<Utente> getPartecipants() {
+    public List<String> getPartecipants() {
         return partecipants;
     }
 
@@ -207,8 +207,13 @@ public class Evento implements Serializable
      * add the user u to the partecipants list.
      * @param u user to add to partecipants list
      */
-    public void addPartecipants(Utente u) {
+    public void addPartecipants(String u)
+    {
         this.partecipants.add(u);
+    }
+    public boolean removePartecipant(String u)
+    {
+        return this.partecipants.remove(u);
     }
 
     /**
@@ -255,7 +260,7 @@ public class Evento implements Serializable
         this.password = password;
     }
 
-    public void setPartecipants(List<Utente> partecipants) {
+    public void setPartecipants(List<String> partecipants) {
         this.partecipants.clear();
         this.partecipants.addAll(partecipants);
     }

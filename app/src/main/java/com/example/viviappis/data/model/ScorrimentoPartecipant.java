@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPartecipant.MyViewHolder>
@@ -21,10 +22,11 @@ public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPart
     public ScorrimentoPartecipant(Context context)
     {
         this.context=context;
+        part = new ArrayList<>();
     }
 
 
-    public void addEvent(String e){part.add(e);}
+    public void addPart(String e){part.add(e);}
 
 
     @NonNull

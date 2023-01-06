@@ -229,7 +229,7 @@ public class MacroA extends Evento
     /**
      * Create the event's ranklist sorting for descending values
      */
-    public void generateRanklistInOrder(){
+   /* public void generateRanklistInOrder(){
         for(Utente u: this.getPartecipants()){
             this.ranklist.put(u, u.getScore());
         }
@@ -239,8 +239,7 @@ public class MacroA extends Evento
         for(Map.Entry<Utente, Integer> u: list){
             this.ranklist.put(u.getKey(), u.getValue());
         }
-    }
-
+*/
     /**
      * Create a Map of an event using Strings as keys and the fields of the event as values.
      * We use it in order to communicate the values of the event to the database.
@@ -274,7 +273,7 @@ public class MacroA extends Evento
         this.setCreator((String) map.get("creator"));
         this.setMaxPart((Integer) map.get("maxPart"));
         this.setMinPart((Integer) map.get("minPart"));
-        this.setPartecipants((List<Utente>) map.get("partecipants"));
+        this.setPartecipants((List<String>) map.get("partecipants"));
         this.setGiocatori((List<Utente>) map.get("players"));
         this.setWinners((List<Utente>) map.get("winners"));
         this.setRanklist((Map<Utente, Integer>) map.get("ranklist"));

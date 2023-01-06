@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +19,9 @@ import com.example.viviappis.R;
 import com.example.viviappis.control.loginAndRegister.LoginActivity;
 import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.data.model.ScorrimentoDashboard;
+import com.example.viviappis.databinding.FragmentEventPageBinding;
 import com.example.viviappis.databinding.FragmentHomeBinding;
+import com.example.viviappis.ui.event.EventPageFragment;
 import com.example.viviappis.ui.event.NewEventFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -74,7 +77,7 @@ public class HomeFragment extends Fragment
 
         for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
         {
-            adapter.addEvent(new Evento(i.getData()));
+            adapter.addEvent(new Evento(i.getData()),i.getId());
             //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
         }
         asp.setVisibility(View.INVISIBLE);
@@ -138,8 +141,10 @@ public class HomeFragment extends Fragment
         {
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
             transaction.setReorderingAllowed(true);
+            NewEventFragment a = new NewEventFragment();
 
-            transaction.replace(R.id.homeFragment, NewEventFragment.class, null);
+            transaction.replace(R.id.homeFragment, a, null);
+            transaction.setMaxLifecycle(a , Lifecycle.State.STARTED );
 
             transaction.commit();
             hide(true);

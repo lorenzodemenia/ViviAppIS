@@ -11,10 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.ui.event.EventPageFragment;
+import com.example.viviappis.ui.event.NewEventFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,7 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
 {
     private Context context;
     private List<Evento> eventos;
+    private List<String> ids;
     private Fragment f;
     private Consumer<Boolean> func;
 
@@ -34,6 +37,7 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
     {
         this.context=context;
         this.eventos=new ArrayList<>();
+        this.ids=new ArrayList<>();
         this.f = dashboardFragment;
         this.func = func;
         if(isDash) conteiner = R.id.dasboardFragment;
@@ -41,7 +45,11 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
     }
 
 
-    public void addEvent(Evento e){eventos.add(e);}
+    public void addEvent(Evento e, String id)
+    {
+        eventos.add(e);
+        ids.add(id);
+    }
 
 
     @NonNull
@@ -69,7 +77,7 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
             t.setReorderingAllowed(true);
 
             Bundle mex = new Bundle();
-            mex.putString(f.getResources().getString(R.string.event_send_ev),eventos.get(position).toStringData());
+            mex.putString(f.getResources().getString(R.string.event_send_ev),ids.get(position));
 
             t.replace(conteiner, EventPageFragment.class ,mex);
 

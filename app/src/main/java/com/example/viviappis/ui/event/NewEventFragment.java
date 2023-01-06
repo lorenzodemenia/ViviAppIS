@@ -156,7 +156,7 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
             if(e==null)result.setText(R.string.err_no_all_data);
             else
             {
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.setReorderingAllowed(true);
 
                 Bundle mex = new Bundle();

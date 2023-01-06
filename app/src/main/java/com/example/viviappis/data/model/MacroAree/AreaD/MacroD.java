@@ -136,7 +136,7 @@ public class MacroD extends Evento {
     /**
      * Create the event's ranklist sorting for descending values
      */
-    public void generateRanklistInOrder(){
+   /* public void generateRanklistInOrder(){
         for(Utente u: this.getPartecipants()){
             this.ranklist.put(u, u.getScore());
         }
@@ -148,7 +148,7 @@ public class MacroD extends Evento {
         }
         //TODO: da rivere perchè probabilmente è ordinata in ordine crescente invece che decrescente KEKW. Meme del dev che piange per la sua incompetenza :')
         //TODO UPDATE: ok forse è risolto ma lo scopriremo a tempo debito
-    }
+    }*/
 
     /**
      * Add winner users to winners map field
@@ -231,7 +231,7 @@ public class MacroD extends Evento {
         this.setCreator((String) map.get("creator"));
         this.setMaxPart((Integer) map.get("maxPart"));
         this.setMinPart((Integer) map.get("minPart"));
-        this.setPartecipants((List<Utente>) map.get("partecipants"));
+        this.setPartecipants((List<String>) map.get("partecipants"));
         this.setSquadra1((Pair<String, Collection<Utente>>) map.get("team 1"));
         this.setSquadra2((Pair<String, Collection<Utente>>) map.get("team 2"));
         this.setWinners((Pair<String, Collection<Utente>>) map.get("winners"));

@@ -25,21 +25,24 @@
             android:id="@+id/homeViewEventsIscr"
             android:layout_width="412dp"
             android:layout_height="146dp"
+            android:layout_marginTop="48dp"
             android:backgroundTint="@color/giallocra"
+            app:layout_constraintBottom_toTopOf="@+id/homeViewEventsProp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="29dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/homeViewEventsProp"
             android:layout_width="413dp"
             android:layout_height="157dp"
+            android:layout_marginBottom="32dp"
             android:backgroundTint="@color/giallocra"
+            app:layout_constraintBottom_toTopOf="@+id/homeNewEvent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="219dp" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/homeNewEvent"

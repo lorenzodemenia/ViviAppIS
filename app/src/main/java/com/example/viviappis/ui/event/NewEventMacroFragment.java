@@ -136,7 +136,7 @@ public class NewEventMacroFragment extends Fragment
                             .setTitle(getResources().getString(R.string.allert_title_new_event))
                             .setMessage(getResources().getString(R.string.allert_text_new_event)).show();
 
-                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                    FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                     transaction.setReorderingAllowed(true);
 
                     transaction.replace(R.id.newEventMacroFragment, HomeFragment.class, null);
@@ -150,7 +150,7 @@ public class NewEventMacroFragment extends Fragment
 
         mod.setOnClickListener((v)->
         {
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
             transaction.setReorderingAllowed(true);
 
             Bundle mex = new Bundle();

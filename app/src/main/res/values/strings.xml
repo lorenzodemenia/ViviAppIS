@@ -56,6 +56,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--Stringhe pagina event-->
+    <string name="page_event_isc">Iscriviti</string>
+    <string name="page_event_dis">Disiscriviti</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="allert_title_new_event">Creazione evento</string>
+    <string name="allert_text_new_event">Evento è stato creato con successo</string>
+    <string name="allert_title_del_event">Eliminazione evento</string>
+    <string name="allert_text_del_event">Evento è stato cancellato con successo</string>
+    <string name="allert_title_show_event_err">Errore Evento</string>
+    <string name="allert_text_show_event_err">La pagina non e stata caricata correttamente, l\'evento potrebbe essere stato cancellato o ci potrebbero essere altri problemi ricarcia la pagina</string>
+
+
     <string name="palla_prig_desc">Il gioco si svolge a squadre. Esse devono essere composte da un minimo di
         cinque giocatori fino ad un massimo di venti. Per giocare a palla prigioniera è necessaria una palla e
         un campo da gioco diviso in due, sia esso posto all\'aperto o in una palestra, di misura rettangolare grande
@@ -126,9 +140,4 @@
         girarsi ed osservare attentamente gli altri giocatori. Se il capogioco, mentre si sta girando o mentre è girato a guardarli, vede qualche giocatore muoversi allora
         quei giocatori vengono eliminati. OBBIETTIVO: Vince il giocatore (o i giocatori) che per primi riescono ad arrivare a toccare il muro e dire: \'STELLONE!\', prima
         di essere eliminati.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="allert_title_new_event">Creazione evento</string>
-    <string name="allert_text_new_event">Evento è stato creato con successo</string>
-
 </resources>

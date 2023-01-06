@@ -66,7 +66,7 @@ public class DashboardFragment extends Fragment
 
         for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
         {
-            adapter.addEvent(new Evento(i.getData()));
+            adapter.addEvent(new Evento(i.getData()),   i.getId());
             //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
         }
         asp.setVisibility(View.INVISIBLE);
