@@ -4,6 +4,7 @@ package com.example.viviappis.data.model;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.TextView;
 
@@ -88,4 +89,5 @@ public class Utilities
 
         return password;
     }
+
 }
