@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,12 +52,14 @@ public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPart
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
         //prende la vista del file layout
-        TextView titolo;
+        TextView titolo, data, luogo;
 
         public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            titolo    = itemView.findViewById(R.id.cardPartNm);
+            titolo    = itemView.findViewById(R.id.titoloPartecipante);
+            data      = itemView.findViewById(R.id.dataPartecipante);
+            luogo     = itemView.findViewById(R.id.luogoPartecipante);
         }
     }
 }

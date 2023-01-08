@@ -46,10 +46,15 @@
 
         <Button
             android:id="@+id/homeNewEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="374dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="108dp"
+            android:backgroundTint="@color/azzurro"
             android:text="Crea evento"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
