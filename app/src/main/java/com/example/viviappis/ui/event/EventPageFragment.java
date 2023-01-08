@@ -115,8 +115,8 @@ public class EventPageFragment extends Fragment
 
     private void setViewEvent()
     {
-        inpNm.setText(e.getName());
-        inpDs.setText(e.getDescription());
+        inpNm.setText("Info su \n"+e.getName());
+        inpDs.setText("Descrizione: \n"+e.getDescription());
         inpDate.setText(e.getDate());
         dbGetCollUsers().document(e.getCreator()).get().addOnCompleteListener((task)->
         {

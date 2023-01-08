@@ -19,7 +19,7 @@
             android:layout_width="413dp"
             android:layout_height="157dp"
             android:layout_marginBottom="220dp"
-            android:backgroundTint="@color/giallocra"
+            android:background="@drawable/radius_blurred_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -27,11 +27,12 @@
         <TextView
             android:id="@+id/pageEventProp"
             android:layout_width="97dp"
-            android:layout_height="19dp"
+            android:layout_height="199dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="22dp"
             android:layout_marginBottom="40dp"
             android:text="TextView"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/pageEventPart"
             app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
             app:layout_constraintHorizontal_bias="1.0"
@@ -39,12 +40,12 @@
 
         <TextView
             android:id="@+id/pageEventData"
-            android:layout_width="101dp"
+            android:layout_width="wrap_content"
             android:layout_height="19dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="18dp"
             android:layout_marginBottom="24dp"
-            android:text="TextView"
+            android:text="Data"
             app:layout_constraintBottom_toTopOf="@+id/pageEventProp"
             app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
             app:layout_constraintHorizontal_bias="0.0"
@@ -77,14 +78,15 @@
 
         <TextView
             android:id="@+id/pageEventNm"
-            android:layout_width="102dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="17dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_width="394dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/radius_yellow"
+            android:text="Info su \n &quot;Nome Evento&quot;"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,12 +95,14 @@
             android:layout_width="260dp"
             android:layout_height="168dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="TextView"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/radius_blurred_white"
+            android:text="description"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/pageEventPart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.9" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/pageEventAdmin"
