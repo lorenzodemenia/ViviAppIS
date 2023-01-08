@@ -61,6 +61,12 @@
     <string name="page_event_dis">Disiscriviti</string>
 
 
+    <!--Stringhe pagina dashbord-->
+    <string name="page_dash_nm">Ricerca per nome</string>
+    <string name="page_dash_lg">Ricerca per luogo</string>
+    <string name="page_dash_src_lg">Luogo dell\'evento</string>
+    <string name="page_dash_src_nm">Nome dell\'evento</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="allert_title_new_event">Creazione evento</string>
     <string name="allert_text_new_event">Evento è stato creato con successo</string>

@@ -21,13 +21,28 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="18dp"
             android:layout_marginBottom="24dp"
-            android:text="Data"
+            android:text="Ora"
             app:layout_constraintBottom_toTopOf="@+id/pageEventProp"
             app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
             app:layout_constraintHorizontal_bias="0.083"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pageEventNm"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.694" />
+
+        <TextView
+            android:id="@+id/pageEventLuogo"
+            android:layout_width="101dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="17dp"
+            android:text="Luogo"
+            app:layout_constraintBottom_toTopOf="@+id/pageEventProp"
+            app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pageEventNm" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/pageEventPart"
@@ -46,10 +61,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="22dp"
             android:layout_marginBottom="40dp"
-            android:text="TextView"
+            android:text="Creatore"
             app:layout_constraintBottom_toTopOf="@+id/pageEventPart"
             app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -62,10 +77,10 @@
             android:text="Data"
             app:layout_constraintBottom_toTopOf="@+id/pageEventProp"
             app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.083"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pageEventNm"
-            app:layout_constraintVertical_bias="0.611" />
+            app:layout_constraintVertical_bias="0.247" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/pageEventUser"
@@ -97,7 +112,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="17dp"
-            android:text="TextView"
+            android:text="Nome"
             app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

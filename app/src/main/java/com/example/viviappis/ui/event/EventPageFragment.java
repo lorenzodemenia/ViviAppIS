@@ -32,7 +32,7 @@ public class EventPageFragment extends Fragment
 {
     private FragmentEventPageBinding binding;
 
-    private TextView outNm, outDs, outDate, outProp, outH;
+    private TextView outNm, outDs, outDate, outProp, outH, outLuogo;
     private RecyclerView outPart;
 
     private Button bIscr, bCanc, bStart;
@@ -106,6 +106,7 @@ public class EventPageFragment extends Fragment
         outProp = binding.pageEventProp;
         outPart = binding.pageEventPart;
         outH = binding.pageEventHour;
+        outLuogo = binding.pageEventLuogo;
         bIscr = binding.pageEventIscr;
         bCanc = binding.pageEventCanc;
         bStart = binding.pageEventStart;
@@ -123,6 +124,7 @@ public class EventPageFragment extends Fragment
         outDs.setMovementMethod(new ScrollingMovementMethod());
         outDate.setText(e.getDate());
         outH.setText(e.getOra());
+        outLuogo.setText(e.getLuogo());
         dbGetCollUsers().document(e.getCreator()).get().addOnCompleteListener((task)->
         {
           outProp.setText(task.getResult().get("username").toString());

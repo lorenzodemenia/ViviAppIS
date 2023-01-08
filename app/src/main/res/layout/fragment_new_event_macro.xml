@@ -78,6 +78,18 @@
             app:layout_constraintTop_toBottomOf="@+id/newEventMacroDate" />
 
         <TextView
+            android:id="@+id/newEventMacroLuogo"
+            android:layout_width="107dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="36dp"
+            android:text="Luogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/newEventMacroDesc"
+            app:layout_constraintTop_toBottomOf="@+id/newEventMacroDate" />
+
+        <TextView
             android:id="@+id/newEventMacroType"
             android:layout_width="150dp"
             android:layout_height="25dp"

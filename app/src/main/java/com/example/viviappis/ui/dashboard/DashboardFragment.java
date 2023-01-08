@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -33,6 +34,7 @@ public class DashboardFragment extends Fragment
     private SearchView srcDash;
     private RecyclerView recyclerView;
     private ProgressBar  asp;
+    private Switch swich;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -96,6 +98,21 @@ public class DashboardFragment extends Fragment
     }
 
 
+    public List<DocumentSnapshot> filterListByLuogo(List<DocumentSnapshot> l, String luogo)
+    {
+        int i=0;
+
+        while (i<l.size())
+        {
+            Map<String, Object> m = l.get(i).getData();
+            String cnt = m.get("luogo")!=null ? (String) m.get("luogo") : "";
+
+            if(!cnt.contains(luogo)) l.remove(i);
+            else                      i++;
+        }
+
+        return l;
+    }
     public List<DocumentSnapshot> filterListByName(List<DocumentSnapshot> l, String name)
     {
         int i=0;
@@ -120,6 +137,7 @@ public class DashboardFragment extends Fragment
         srcDash = binding.dashSrcEvent;
         recyclerView = binding.dashViewEvents;
         asp = binding.dashProgressBar;
+        swich = binding.typeSrcEvent;
     }
 
 
@@ -136,12 +154,36 @@ public class DashboardFragment extends Fragment
             @Override
             public boolean onQueryTextChange(String s)
             {
-                db.collection(getResources().getString(R.string.db_rac_events)).get().addOnCompleteListener((t) ->
+                if(swich.isChecked())
                 {
-                    createDash(filterListByName(t.getResult().getDocuments(),s));
-                });
+                    db.collection(getResources().getString(R.string.db_rac_events)).get().addOnCompleteListener((t) ->
+                    {
+                        createDash(filterListByLuogo(t.getResult().getDocuments(),s));
+                    });
+                }
+                else
+                {
+                    db.collection(getResources().getString(R.string.db_rac_events)).get().addOnCompleteListener((t) ->
+                    {
+                        createDash(filterListByName(t.getResult().getDocuments(),s));
+                    });
+                }
 
                 return true;
+            }
+        });
+
+        swich.setOnCheckedChangeListener((com, bool) ->
+        {
+            if (bool)
+            {
+                swich.setText(getResources().getText(R.string.page_dash_lg));
+                srcDash.setQueryHint(getResources().getText(R.string.page_dash_src_lg));
+            }
+            else
+            {
+                swich.setText(getResources().getText(R.string.page_dash_nm));
+                srcDash.setQueryHint(getResources().getText(R.string.page_dash_src_nm));
             }
         });
     }

@@ -34,7 +34,7 @@ public class NewEventMacroFragment extends Fragment
 {
     private Evento e;
     private String t;
-    private TextView nm, ds, data, min, max,type, pub, psw, ora;
+    private TextView nm, ds, data, min, max,type, pub, psw, ora, luogo;
     private Button conf, mod;
 
     private Map<String, Pair<Integer,Integer>> minMax = new HashMap<>();
@@ -79,6 +79,7 @@ public class NewEventMacroFragment extends Fragment
         min.setText(e.getMinPart()+"");
         psw.setText(e.getPassword());
         ora.setText(e.getOra());
+        luogo.setText(e.getLuogo());
     }
 
     @Override
@@ -107,6 +108,7 @@ public class NewEventMacroFragment extends Fragment
         type = binding.newEventMacroType;
         psw = binding.newEventMacroPsw;
         ora = binding.newEventMacroHour;
+        luogo = binding.newEventMacroLuogo;
 
         conf = binding.newEventMacroConf;
         mod = binding.newEventMacroMod;

@@ -102,6 +102,7 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
             inpPsw.setText(e.getPassword());
             inpH.setSelection(Integer.valueOf(e.getOra().split(":")[0]));
             inpM.setSelection(Integer.valueOf(e.getOra().split(":")[1])==0 ? 0 : 1);
+            inpLuogo.setText(e.getLuogo());
         }
         catch (Exception e){}
 

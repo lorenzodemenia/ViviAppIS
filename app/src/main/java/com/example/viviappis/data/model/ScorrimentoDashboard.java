@@ -67,7 +67,7 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
         //posizione delle righe nella dash
         holder.titolo.setText(eventos.get(position).getName());
         holder.data.setText(eventos.get(position).getDate());
-        holder.luogo.setText("Posizione coming soon"); //LA CLASSE EVENTO NON HA UNA STRINGA LUOGO
+        holder.luogo.setText(eventos.get(position).getLuogo()); //LA CLASSE EVENTO NON HA UNA STRINGA LUOGO
         holder.imageView.setImageResource(R.drawable.ic_baseline_arrow_back_ios_24);
 
         holder.imageView.setOnClickListener((v)->
