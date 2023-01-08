@@ -43,30 +43,19 @@
             android:layout_height="19dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="18dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/pageEventHour"
+            android:layout_marginBottom="24dp"
+            android:text="Data"
+            app:layout_constraintBottom_toTopOf="@+id/pageEventProp"
             app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pageEventNm" />
-
-        <TextView
-            android:id="@+id/pageEventHour"
-            android:layout_width="101dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginBottom="24dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/pageEventProp"
-            app:layout_constraintEnd_toStartOf="@+id/pageEventDesc"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/pageEventNm"
+            app:layout_constraintVertical_bias="0.611" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/pageEventUser"
-            android:layout_width="219dp"
-            android:layout_height="56dp"
+            android:layout_width="125dp"
+            android:layout_height="99dp"
             android:layout_marginBottom="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,8 +65,8 @@
 
             <Button
                 android:id="@+id/pageEventIscr"
-                android:layout_width="153dp"
-                android:layout_height="46dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Iscriviti"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -104,9 +93,10 @@
             android:layout_width="260dp"
             android:layout_height="168dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="TextView"
-            android:scrollbars = "vertical"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/radius_blurred_white"
+            android:text="description"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/pageEventPart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

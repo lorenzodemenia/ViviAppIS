@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,7 +43,9 @@ public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPart
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
         //posizione delle righe nella dash
-        holder.titolo.setText(part.get(position));
+        holder.nomeUtente.setText(part.get(position));
+        holder.avatar.setImageResource(R.drawable.ic_baseline_account_circle_24);
+
     }
 
     @Override
@@ -51,12 +54,16 @@ public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPart
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
         //prende la vista del file layout
-        TextView titolo;
+        TextView nomeUtente;
+        ImageView avatar;
+
 
         public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            titolo    = itemView.findViewById(R.id.cardPartNm);
+            nomeUtente = itemView.findViewById(R.id.nomeUtente);
+            avatar = itemView.findViewById(R.id.avatar);
+
         }
     }
 }

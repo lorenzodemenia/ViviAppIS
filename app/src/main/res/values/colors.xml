@@ -9,5 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="giallocra">#FFCD29</color>
     <color name="blurred_white">#99FFFFFF</color>
+    <color name="dark_red">#6E0101</color>
+    <color name="red">#FF0000</color>
+    <color name="azzurro">#0D99FF</color>
+
 
 </resources>
