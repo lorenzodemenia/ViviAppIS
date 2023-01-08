@@ -1,5 +1,6 @@
 package com.example.viviappis.ui.event.EventInExecutionFragments;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,9 @@ public class TiroAllaFuneFragment extends Fragment {
                         mButtonStartPause.setText("Start");
                         mButtonStartPause.setVisibility(View.INVISIBLE);
                         mButtonReset.setVisibility(View.VISIBLE);
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("Gioco Finito!")
+                                .setMessage("\nSe vuoi giocare ancora tocca lo schermo.\nSe invece avete finito e volete vedere la Ranklist, tocca il bottone \"FINISCI EVENTO\"").show();
                     }else if(t.ismTimerRunning()){
                         mButtonStartPause.setText("pause");
                         mButtonReset.setVisibility(View.INVISIBLE);
