@@ -13,7 +13,7 @@ public class Flipper extends MacroA {
      * @param isPublic    define if the event is public or not
      * @param points      points gained for the victory
      */
-    public Flipper(String name, String desc, String creator, String date, String password, boolean isPublic, int points) {
-        super(name, desc, creator, date, password, isPublic, 2, 20, points);
+    public Flipper(String name, String desc, String creator, String date, String password, boolean isPublic, int points, String luogo) {
+        super(name, desc, creator, date, password, isPublic, 2, 20, points, luogo);
     }
 }

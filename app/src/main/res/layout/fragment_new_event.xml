@@ -14,6 +14,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <EditText
+            android:id="@+id/newEvLuogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="128dp"
+            android:layout_marginBottom="11dp"
+            android:ems="10"
+            android:hint="Luogo"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/newEvCont"
+            app:layout_constraintTop_toTopOf="@+id/newEvDesc"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="100dp" />
+
+        <Spinner
+            android:id="@+id/newEvOra"
+            android:layout_width="99dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="52dp"
+            app:layout_constraintStart_toEndOf="@+id/newEvDate"
+            app:layout_constraintTop_toTopOf="@+id/newEvName" />
+
+        <Spinner
+            android:id="@+id/newEvMin"
+            android:layout_width="108dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toEndOf="@+id/newEvOra"
+            app:layout_constraintTop_toBottomOf="@+id/newEvName" />
+
         <TextView
             android:id="@+id/newEvResult"
             android:layout_width="wrap_content"
@@ -46,13 +79,13 @@
 
         <EditText
             android:id="@+id/newEvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="0dp"
             android:ems="10"
             android:hint="Data"
             android:inputType="date"
             app:layout_constraintBottom_toTopOf="@+id/newEvPublic"
-            tools:layout_editor_absoluteX="51dp" />
+            tools:layout_editor_absoluteX="16dp" />
 
         <Switch
             android:id="@+id/newEvPublic"
@@ -93,6 +126,7 @@
             android:gravity="start|top"
             android:hint="Descrizione"
             android:inputType="textMultiLine"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="34dp" />
 

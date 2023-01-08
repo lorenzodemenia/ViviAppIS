@@ -13,7 +13,7 @@ public class Sardine extends MacroA {
      * @param isPublic    define if the event is public or not
      * @param points      points gained for the victory
      */
-    public Sardine(String name, String desc, String creator, String date, String password, boolean isPublic, int points) {
-        super(name, desc, creator, date, password, isPublic, 4, 15, points);
+    public Sardine(String name, String desc, String creator, String date, String password, boolean isPublic, int points, String luogo) {
+        super(name, desc, creator, date, password, isPublic, 4, 15, points, luogo);
     }
 }

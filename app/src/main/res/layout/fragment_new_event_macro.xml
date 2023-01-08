@@ -38,19 +38,18 @@
             android:id="@+id/newEventMacroNm"
             android:layout_width="125dp"
             android:layout_height="16dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="60dp"
             android:text="nome"
-            app:layout_constraintEnd_toStartOf="@+id/newEventMacroDate"
-            app:layout_constraintHorizontal_bias="0.402"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/newEventMacroDate"
-            android:layout_width="96dp"
-            android:layout_height="24dp"
+            android:layout_width="123dp"
+            android:layout_height="25dp"
             android:layout_marginTop="60dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginEnd="116dp"
             android:text="data"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -62,6 +61,7 @@
             android:layout_marginStart="48dp"
             android:layout_marginTop="48dp"
             android:text="descrizione"
+            android:scrollbars = "vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newEventMacroNm" />
 
@@ -113,11 +113,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="72dp"
-            android:text="TextView"
+            android:text="psw"
             app:layout_constraintBottom_toTopOf="@+id/newEventMacroType"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newEventMacroDesc"
             app:layout_constraintVertical_bias="0.507" />
+
+        <TextView
+            android:id="@+id/newEventMacroHour"
+            android:layout_width="70dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="64dp"
+            android:text="ora"
+            app:layout_constraintBottom_toTopOf="@+id/newEventMacroMax"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.346"
+            app:layout_constraintStart_toEndOf="@+id/newEventMacroDate"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

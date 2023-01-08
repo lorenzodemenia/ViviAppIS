@@ -41,8 +41,8 @@ public class MacroA extends Evento
      * @param maxPart define the maximum number of partecipants
      * @param points points gained for the victory
      */
-    public MacroA(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart, int points) {
-        super(name, description, creator, date, password, isPublic, minPart, maxPart);
+    public MacroA(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart, int points, String luogo) {
+        super(name, description, creator, date, password, isPublic, minPart, maxPart, luogo);
         this.points = points; //consigliato: mettere un numero >= 8
         this.Giocatori = new ArrayList<>();
         this.ranklist = new HashMap<>();

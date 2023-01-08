@@ -6,9 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,12 +32,15 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class NewEventFragment extends Fragment implements OnMapReadyCallback
 {
-    private EditText inpName, inpDesc, inpDate, inpPsw;
+    private EditText inpName, inpDesc, inpDate, inpPsw, inpLuogo;
     private TextView result;
-    private Spinner inpType;
+    private Spinner inpType, inpH, inpM;
     private Switch inpPublic;
     private Button bCont;
     private MapView inpMap;
@@ -95,11 +100,10 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
             inpPublic.setChecked(e.isPublic());
             inpType.setSelection(getPosition(t));
             inpPsw.setText(e.getPassword());
+            inpH.setSelection(Integer.valueOf(e.getOra().split(":")[0]));
+            inpM.setSelection(Integer.valueOf(e.getOra().split(":")[1])==0 ? 0 : 1);
         }
         catch (Exception e){}
-
-        System.out.println("dfdfsasdaf");
-
 
         return  binding.getRoot();
     }
@@ -116,14 +120,40 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         inpType = binding.newEvType;
         inpPublic = binding.newEvPublic;
        // inpMap = binding.newEventMap;
+        inpH = binding.newEvOra;
+        inpM = binding.newEvMin;
+        inpLuogo = binding.newEvLuogo;
 
         bCont   = binding.newEvCont;
         result  = binding.newEvResult;
 
+        inpDesc.setText(getResources().getStringArray(R.array.description_event)[0]);
+        inpDesc.setMovementMethod(new ScrollingMovementMethod());
 
-        ArrayAdapter aa = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,getActivity().getResources().getTextArray(R.array.new_ev_spinner_item));
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        inpType.setAdapter(aa);
+        setValOra(inpH,23);
+
+        List<String> bb = new ArrayList<>();
+        bb.add("00");
+        bb.add("30");
+        ArrayAdapter cc = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,bb);
+        cc.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        inpM.setAdapter(cc);
+
+
+        cc = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,getResources().getTextArray(R.array.new_ev_spinner_item));
+        cc.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        inpType.setAdapter(cc);
+    }
+
+    private void setValOra(Spinner inp, int m)
+    {
+        List<String> aa = new ArrayList<>();
+
+        for (int i=0;i<=m; i++) aa.add((i<10 ? "0" : "")+i);
+
+        ArrayAdapter bb = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,aa);
+        bb.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        inp.setAdapter(bb);
     }
 
 
@@ -147,6 +177,19 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
                 inpPublic.setText(getResources().getText(R.string.new_ev_priv));
                 inpPsw.setVisibility(View.VISIBLE);
             }
+        });
+
+        inpType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                String[] a = getResources().getStringArray(R.array.description_event);
+                inpDesc.setText(a[i]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
 
@@ -202,12 +245,16 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         String ds = inpDesc.getText().toString();
         String d = inpDate.getText().toString();
         String p = inpPsw.getText().toString();
+        String l = inpLuogo.getText().toString();
         boolean i = inpPublic.isChecked();
+        String h = (String) inpH.getSelectedItem();
+        String m = (String) inpM.getSelectedItem();
 
         if(!i && p.equals("")) p = Utilities.getNewPassword(10);
         else if(i)             p="";
 
-        return !n.isEmpty() && !d.equals("") ? new Evento(n,ds,au.getCurrentUser().getEmail(),d,p,i, 0, 0) : null;
+        return  !ds.equals("") && !l.equals("") && !n.equals("") && !d.equals("") ?
+                new Evento(n,ds,au.getCurrentUser().getEmail(),d.concat(","+h+":"+m),p,i, 0, 0, l) : null;
     }
 
     @Override

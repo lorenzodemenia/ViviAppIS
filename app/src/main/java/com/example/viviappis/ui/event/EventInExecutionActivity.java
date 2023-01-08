@@ -31,23 +31,23 @@ public class EventInExecutionActivity extends AppCompatActivity {
         e = new Evento(savedInstanceState.getString(getResources().getString(R.string.event_send_ev)));
         String[] s = (String[]) getResources().getTextArray(R.array.new_ev_spinner_item);
         if (eventType.equals(s[0])) {
-            e = new PallaPrigioniera(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), "Squadra 1", "Squadra 2", 10); // points da stabilire
+            e = new PallaPrigioniera(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), "Squadra 1", "Squadra 2", 10, e.getLuogo()); // points da stabilire
         } else if(eventType.equals(s[1])) {
-            e = new RubaBandiera(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), "Squadra 1", "Squadra 2", 10); // points da stabilire
+            e = new RubaBandiera(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), "Squadra 1", "Squadra 2", 10, e.getLuogo()); // points da stabilire
         } else if(eventType.equals(s[2])) {
-            e = new TiroAllaFune(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), "Squadra 1", "Squadra 2", 10); // points da stabilire
+            e = new TiroAllaFune(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), "Squadra 1", "Squadra 2", 10, e.getLuogo()); // points da stabilire
         } else if(eventType.equals(s[3])) {
-            e = new CorsaConSacchi(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), 10); // points da stabilire
+            e = new CorsaConSacchi(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), 10, e.getLuogo()); // points da stabilire
         } else if(eventType.equals(s[4])) {
-            e = new Flipper(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), 10); // points da stabilire
+            e = new Flipper(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), 10, e.getLuogo()); // points da stabilire
         } else if(eventType.equals(s[5])) {
-            e = new MoscaCieca(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), 10); // points da stabilire
+            e = new MoscaCieca(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), 10, e.getLuogo()); // points da stabilire
         } else if(eventType.equals(s[6])) {
-            e = new Nascondino(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(),  10); // points da stabilire
+            e = new Nascondino(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(),  10, e.getLuogo()); // points da stabilire
         } else if(eventType.equals(s[7])) {
-            e = new Sardine(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(),  10); // points da stabilire
+            e = new Sardine(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(),  10, e.getLuogo()); // points da stabilire
         } else if(eventType.equals(s[8])) {
-            e = new UnoDueTreStella(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(),  10); // points da stabilire
+            e = new UnoDueTreStella(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(),  10, e.getLuogo()); // points da stabilire
         }
 
     }

@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.viviappis.R;
-import com.example.viviappis.control.loginAndRegister.LoginActivity;
 import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.data.model.ScorrimentoPartecipant;
 import com.example.viviappis.databinding.FragmentEventPageBinding;
@@ -32,11 +32,13 @@ public class EventPageFragment extends Fragment
 {
     private FragmentEventPageBinding binding;
 
-    private TextView inpNm, inpDs, inpDate, inpProp;
-    private RecyclerView inpPart;
+    private TextView outNm, outDs, outDate, outProp, outH;
+    private RecyclerView outPart;
+
     private Button bIscr, bCanc, bStart;
 
     private String id;
+
     private Evento e;
 
     private FirebaseAuth au;
@@ -98,11 +100,12 @@ public class EventPageFragment extends Fragment
 
     private void setUpUIViews()
     {
-        inpNm = binding.pageEventNm;
-        inpDs = binding.pageEventDesc;
-        inpDate = binding.pageEventData;
-        inpProp = binding.pageEventProp;
-        inpPart = binding.pageEventPart;
+        outNm = binding.pageEventNm;
+        outDs = binding.pageEventDesc;
+        outDate = binding.pageEventData;
+        outProp = binding.pageEventProp;
+        outPart = binding.pageEventPart;
+        outH = binding.pageEventHour;
         bIscr = binding.pageEventIscr;
         bCanc = binding.pageEventCanc;
         bStart = binding.pageEventStart;
@@ -115,12 +118,14 @@ public class EventPageFragment extends Fragment
 
     private void setViewEvent()
     {
-        inpNm.setText(e.getName());
-        inpDs.setText(e.getDescription());
-        inpDate.setText(e.getDate());
+        outNm.setText(e.getName());
+        outDs.setText(e.getDescription());
+        outDs.setMovementMethod(new ScrollingMovementMethod());
+        outDate.setText(e.getDate());
+        outH.setText(e.getOra());
         dbGetCollUsers().document(e.getCreator()).get().addOnCompleteListener((task)->
         {
-          inpProp.setText(task.getResult().get("username").toString());
+          outProp.setText(task.getResult().get("username").toString());
         });
         createDash(e.getPartecipants());
         switcPanelProp(e.getCreator().equals(au.getCurrentUser().getEmail()));
@@ -151,7 +156,7 @@ public class EventPageFragment extends Fragment
         }
         else
         {
-            //iscrivi
+            //iscriviti
             bIscr.setText(getResources().getString(R.string.page_event_isc));
             r = (v)->
             {
@@ -182,16 +187,16 @@ public class EventPageFragment extends Fragment
                 adapter.addPart(task.getResult().get("username").toString());
                 if(i.equals(l.get(l.size()-1)))
                 {
-                    inpPart.setAdapter(adapter);
-                    inpPart.setLayoutManager(new LinearLayoutManager(this.getContext()));
+                    outPart.setAdapter(adapter);
+                    outPart.setLayoutManager(new LinearLayoutManager(this.getContext()));
                 }
             });
         }
 
         if(l.size()==0)
         {
-            inpPart.setAdapter(adapter);
-            inpPart.setLayoutManager(new LinearLayoutManager(this.getContext()));
+            outPart.setAdapter(adapter);
+            outPart.setLayoutManager(new LinearLayoutManager(this.getContext()));
         }
     }
 
@@ -224,7 +229,9 @@ public class EventPageFragment extends Fragment
             });
             bStart.setOnClickListener((v)->
             {
-                startActivity(new Intent(getActivity(), EventInExecutionActivity.class));
+                //startActivity(new Intent(getActivity(), EventInExecutionActivity.class));
+
+                System.out.println(e.canStart());
             });
         }
     }

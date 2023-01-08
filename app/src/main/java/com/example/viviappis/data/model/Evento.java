@@ -1,8 +1,12 @@
 package com.example.viviappis.data.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,9 +22,10 @@ public class Evento implements Serializable
     private boolean isPublic;
     private int minPart;
     private int maxPart;
+    private String luogo;
 
 
-    private final String splitCart = "-";
+    private final String splitCart = "&=&";
 
     /**
      * Genera un oggetto di tipo evento
@@ -33,7 +38,7 @@ public class Evento implements Serializable
      * @param minPart numero minimo di partecipanti
      * @param maxPart numero massimo di partecipanti
      */
-    public Evento(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart)
+    public Evento(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart, String luogo)
     {
         this.name = name;
         this.creator = creator;
@@ -44,7 +49,7 @@ public class Evento implements Serializable
         this.isPublic = isPublic;
         this.minPart=minPart;
         this.maxPart=maxPart;
-
+        this.luogo = luogo;
     }
     /**
      * Genera un oggetto di tipo evento
@@ -58,34 +63,28 @@ public class Evento implements Serializable
      * @param minPart numero minimo di partecipanti
      * @param maxPart numero massimo di partecipanti
      */
-    public Evento(String name, String description, String creator, String date, String password, boolean isPublic, int minPart, int maxPart, List<String> partecipants)
+    public Evento(String name, String description, String creator, String date, String password,
+                  boolean isPublic, int minPart, int maxPart, List<String> partecipants, String luogo)
     {
-        this.name = name;
-        this.creator = creator;
-        this.description = description;
-        this.password = password;
-        this.date = date;
+        this(name, description, creator, date, password, isPublic, minPart, maxPart, luogo);
         this.partecipants = partecipants;
-        this.isPublic = isPublic;
-        this.minPart=minPart;
-        this.maxPart=maxPart;
     }
     /**
      * Genera un oggetto di tipo evento
      * @param a oggetto di tipo GenericEvent per creare un nuovo oggetto
      */
-    public Evento(Evento a) {this(a.getName(), a.getDescription(), a.getCreator(), a.getDate(), a.getPassword(),a.isPublic(), a.minPart, a.maxPart, a.partecipants);}
+    public Evento(Evento a) {this(a.getName(), a.getDescription(), a.getCreator(), a.getDate(), a.getPassword(),a.isPublic(), a.minPart, a.maxPart, a.partecipants,a.luogo);}
     /**
      * crea un oggetto a partire da una stringa creata con toStringData()
-     * @param a stringa creata con to string data (deve avere la forma name/description/creator/date/password/minPart/maxPart/isPublic;
+     * @param a stringa creata con to string data (deve avere la forma name/description/creator/date/password/minPart/maxPart/isPublic/luogo) / non rappresenta il carattere di separazione
      */
     public Evento(String a)
     {
-        this("","","","","",false,0,0);
+        this("","","","","",false,0,0,"");
 
         String[] b = a.split(splitCart);
 
-        if(b.length==8)
+        if(b.length>=9)
         {
             this.name = b[0];
             this.creator = b[2];
@@ -96,6 +95,7 @@ public class Evento implements Serializable
             this.isPublic = Boolean.parseBoolean(b[7]);
             this.minPart=Integer.parseInt(b[5]);
             this.maxPart=Integer.parseInt(b[6]);
+            this.luogo = b[8];
         }
     }
 
@@ -108,8 +108,9 @@ public class Evento implements Serializable
                 (String) data.get("password"),
                 (boolean) data.get("public"),
                 (data.get("minPart")==null ? 0 : ((Long) data.get("minPart")).intValue()),
-                (data.get("maxPart")==null ? 0 : ((Long) data.get("maxPart")).intValue()));
-        this.partecipants = (ArrayList<String>) data.get("partecipants");
+                (data.get("maxPart")==null ? 0 : ((Long) data.get("maxPart")).intValue()),
+                (ArrayList<String>) data.get("partecipants"),
+                (String) data.get("luogo"));
     }
 
     /**
@@ -122,6 +123,19 @@ public class Evento implements Serializable
      * @return ritorna il valore massimo dei partecipanti
      */
     public int getMaxPart() {return maxPart;}
+
+    public String getLuogo() {return luogo;}
+
+    /**
+     * ritorna il valore del ora dell'evento
+     * @return il valore del ora dell'evento
+     */
+    public String getOra()
+    {
+        String[] spl = date.split(",");
+
+        return spl.length>=2 ? spl[1] : "";
+    }
 
     /**
      * Return the name of the event.
@@ -143,8 +157,13 @@ public class Evento implements Serializable
      * Return the time of the event.
      * @return time of the event
      */
-    public String getDate() {
-        return date;
+    public String getDate()
+    {
+        String[] spl = date.split(",");
+
+        System.out.println(spl.length);
+
+        return spl.length<=0 ? date : spl[0];
     }
 
     /**
@@ -234,14 +253,31 @@ public class Evento implements Serializable
         Map<String, Object> event = new HashMap<>();
         event.put("name", this.getName());
         event.put("description", this.getDescription());
-        event.put("date", this.getDate());
+        event.put("date", date);
         event.put("creator", this.getCreator());
         event.put("password", this.getPassword());
         event.put("partecipants", this.getPartecipants());
         event.put("public", this.isPublic());
         event.put("maxPart", this.maxPart);
         event.put("minPart", this.minPart);
+        event.put("luogo", this.luogo);
         return event;
+    }
+
+    /**
+     * controlla se evento puo partire in base alla data
+     * @return ritorna true se evento puo partire (data odierna dopo la data dell'evento) else false
+     */
+    public boolean canStart()
+    {
+        SimpleDateFormat dtf = new SimpleDateFormat("dd/MM/yyyy,hh:mm");
+
+        Date now = Calendar.getInstance().getTime();
+        Date c = new Date(0);
+        try {c = dtf.parse(date);}
+        catch (Exception e){}
+
+        return now.after(c);
     }
 
     public void setCreator(String creator) {
@@ -276,7 +312,8 @@ public class Evento implements Serializable
                 "("+password+")"+splitCart+
                 minPart         +splitCart+
                 maxPart         +splitCart+
-                isPublic;
+                isPublic        +splitCart+
+                luogo;
     }
 
     /**

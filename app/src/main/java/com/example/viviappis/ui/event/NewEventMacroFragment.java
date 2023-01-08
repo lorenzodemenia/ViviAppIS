@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class NewEventMacroFragment extends Fragment
 {
     private Evento e;
     private String t;
-    private TextView nm, ds, data, min, max,type, pub, psw;
+    private TextView nm, ds, data, min, max,type, pub, psw, ora;
     private Button conf, mod;
 
     private Map<String, Pair<Integer,Integer>> minMax = new HashMap<>();
@@ -67,6 +68,7 @@ public class NewEventMacroFragment extends Fragment
     {
         nm.setText(e.getName());
         ds.setText(e.getDescription());
+        ds.setMovementMethod(new ScrollingMovementMethod());
         data.setText(e.getDate());
         type.setText(t);
         pub.setText(e.isPublic() ? "Publico" : "Privato");
@@ -76,6 +78,7 @@ public class NewEventMacroFragment extends Fragment
         max.setText(e.getMaxPart()+"");
         min.setText(e.getMinPart()+"");
         psw.setText(e.getPassword());
+        ora.setText(e.getOra());
     }
 
     @Override
@@ -103,6 +106,7 @@ public class NewEventMacroFragment extends Fragment
         pub = binding.newEventMacroPub;
         type = binding.newEventMacroType;
         psw = binding.newEventMacroPsw;
+        ora = binding.newEventMacroHour;
 
         conf = binding.newEventMacroConf;
         mod = binding.newEventMacroMod;
