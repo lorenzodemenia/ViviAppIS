@@ -65,8 +65,10 @@ public class ProfileFragment extends Fragment {
         return root;
     }
     private void setUpUiView(){
+        // Buttons setup
         bProfileLogout = binding.ButtonLogout;
 
+        // Texts setup
         textName = binding.textName;
         textSurname = binding.textSurname;
         textDate = binding.textDate;
