@@ -23,7 +23,7 @@ public class FlipperFragment extends Fragment {
     Timer t = new Timer();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_corsa_con_sacchi, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_flipper, container, false);
         mTextViewCountDown = (TextView) rootView.findViewById(R.id.text_view_countdown);
         mButtonStartPause = (Button) rootView.findViewById(R.id.button_start_pause);
         mButtonReset = (Button) rootView.findViewById(R.id.button_reset);
