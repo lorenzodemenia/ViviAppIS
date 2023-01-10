@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity
         String p = inpPsw.getText().toString();
         String e = inpEmail.getText().toString();
 
-        Utente r = !p.isEmpty() && !e.isEmpty() ? new Utente("","", "","",e,p) : null;
+        Utente r = !p.isEmpty() && !e.isEmpty() ? new Utente("","", "","",e,p,null) : null;
 
         return r;
     }

@@ -2,6 +2,7 @@ package com.example.viviappis.data.model;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,7 +23,7 @@ public class Utente
     private final String birth;
     private final String email;
     private String password;
-    private Collection<Utente> friends;
+    private List<String> friends;
     //private Collection<Evento> events;
     private int score;
 
@@ -37,7 +38,7 @@ public class Utente
      * @param password password dell'utente, salvata solo momentaneamente alla register
      * @param score rappresenta il valore di punteggio dell'utente
      */
-    public Utente(String name, String surname, String username,  String birth, String email, String password, int score)
+    public Utente(String name, String surname, String username,  String birth, String email, String password, int score, ArrayList<String> friends)
     {
         this.username = username;
         this.name = name;
@@ -45,8 +46,7 @@ public class Utente
         this.birth = birth;
         this.email = email;
         this.password = password;
-        this.friends = new ArrayList<>();
-        //this.events = new ArrayList<>();
+        this.friends = friends;
         this.score = score;
     }
     /**
@@ -57,12 +57,12 @@ public class Utente
      * @param email email dell'utente
      * @param password password dell'utente, salvata solo momentaneamente alla register
      */
-    public Utente(String name, String surname, String username, String birth, String email, String password){this(name, surname, username, birth,email,password, 0);}
+    public Utente(String name, String surname, String username, String birth, String email, String password, ArrayList<String> friends){this(name, surname, username, birth,email,password, 0, friends);}
     /**
      * Permette di costruire un oggetto di tipo Utente
      * @param a Rappresenta utente che serve per creare il nuovo utente
      */
-    public Utente(Utente a){this(a.name, a.surname,a.username, a.birth, a.email, a.password, a.score);}
+    public Utente(Utente a){this(a.name, a.surname,a.username, a.birth, a.email, a.password, a.score, (ArrayList<String>) a.friends);}
     /**
      * crea un utente a partire dalla mappa che rappresenta il documento nel database
      * @param user mappa del documento
@@ -70,7 +70,8 @@ public class Utente
     public Utente(Map<String, Object> user)
     {
         this((String) user.get("name"), (String) user.get("surname"), (String)user.get("username"),
-             (String) user.get("birthday"),(String) user.get("email"), "", ((Long) user.get("score")).intValue());
+             (String) user.get("birthday"),(String) user.get("email"), "", ((Long) user.get("score")).intValue(),
+                (ArrayList<String>) user.get("friends"));
     }
 
 
@@ -101,7 +102,7 @@ public class Utente
      * Ritorna gli amici del utente
      * @return gli amici del utente
      */
-    public Collection<Utente> getFriends() {return friends;}
+    public List<String> getFriends() {return friends;}
     /**
      * Ritorna il valore della data di nascita del utente
      * @return il valore della data di nascita del utente
@@ -122,7 +123,7 @@ public class Utente
      * Permette di aggiungere un amico alla lista degli amici del utente
      * @param u amico da aggiungere
      */
-    public void addFriends(Utente u) {this.friends.add(u);}
+    public void addFriends(String u) {this.friends.add(u);}
     /**
      * Permette di settare il valore dello score al valore passato
      * @param score valore da sostituire a score del utente

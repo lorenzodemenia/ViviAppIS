@@ -6,14 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.control.loginAndRegister.LoginActivity;
+import com.example.viviappis.data.model.ScorrimentoRanklist;
 import com.example.viviappis.data.model.Utente;
 import com.example.viviappis.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class ProfileFragment extends Fragment {
@@ -30,6 +35,8 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth au;
     private FirebaseFirestore db;
     private Button bProfileLogout;
+    private ProgressBar asp;
+    private RecyclerView recyclerView;
     private TextView textName,textSurname,textDate,textNickname,textEmail;
 
     protected Utente user;
@@ -51,11 +58,14 @@ public class ProfileFragment extends Fragment {
 
             user = new Utente(filterListByID(t.getResult().getDocuments(),au.getCurrentUser().getEmail()));
 
+
             textName.setText(user.getName());
             textSurname.setText(user.getSurname());
             textDate.setText(user.getBirth());
             textNickname.setText(user.getUsername());
             textEmail.setText(user.getEmail());
+
+            createDashRanklist(t.getResult().getDocuments());
 
         });
 
@@ -74,8 +84,27 @@ public class ProfileFragment extends Fragment {
         textDate = binding.textDate;
         textNickname = binding.textNickname;
         textEmail = binding.textEmail;
+
+        recyclerView = binding.ProfileRecyclerView;
+
     }
 
+    /**
+     * crea la dash bord del fragmant per la visualizzazione degli eventi
+     * @param l lista dei documenti presi dal server che rappresentano gli eventi
+     */
+    public void createDashRanklist(List<DocumentSnapshot> l)
+    {
+        ScorrimentoRanklist adapter = new ScorrimentoRanklist(this.getContext());
+
+        for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
+        {
+           // adapter.addPart(new Utente(i.getData()));
+        //    //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
+        }
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+    }
 
     public void onClickLogout (){
         au.signOut();

@@ -196,6 +196,6 @@ public class RegisterActivity extends AppCompatActivity
         String e = inpEmail.getText().toString();
         String d = inpDate.getText().toString();
 
-        return !u.isEmpty() && !p.isEmpty() && !e.isEmpty() && !d.isEmpty()  && !d.equals("")? new Utente(n, s, u, d, e,p) : null;
+        return !u.isEmpty() && !p.isEmpty() && !e.isEmpty() && !d.isEmpty()  && !d.equals("")? new Utente(n, s, u, d, e,p,null) : null;
     }
 }
