@@ -60,6 +60,9 @@
     <string name="page_event_isc">Iscriviti</string>
     <string name="page_event_dis">Disiscriviti</string>
 
+    <!--Stringhe pagine EventoInEsecuzione-->
+    <string name="event_end">Termina Evento</string>
+
 
     <!--Stringhe pagina dashbord-->
     <string name="page_dash_nm">Ricerca per nome</string>

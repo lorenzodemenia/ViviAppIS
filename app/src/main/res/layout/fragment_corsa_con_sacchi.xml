@@ -49,8 +49,22 @@
         android:layout_marginTop="322dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="361dp"
-        android:text="reset"
+        android:text="Reset"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/end_game_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="636dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="47dp"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

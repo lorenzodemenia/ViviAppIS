@@ -49,7 +49,7 @@ public class Timer {
         FirebaseDatabase db = FirebaseDatabase.getInstance("https://vivi-a924b-default-rtdb.europe-west1.firebasedatabase.app");
         DatabaseReference dbRef = db.getReference();
 
-        dbRef.child("timers").child(idEvento).setValue(timeLeftFormatted); //TODO: da modificare idEvento con l id dell' evento in esecuzione
+        dbRef.child("timers").child(idEvento).setValue(timeLeftFormatted);
         return timeLeftFormatted;
     }
 
