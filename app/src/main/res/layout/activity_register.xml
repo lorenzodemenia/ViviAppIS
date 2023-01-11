@@ -35,17 +35,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/giallocra"
         android:enabled="true"
         android:text="Registrati"
-        android:backgroundTint="@color/giallocra"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerPassword"
-        app:layout_constraintVertical_bias="0.772" />
+        app:layout_constraintVertical_bias="0.862" />
 
     <EditText
         android:id="@+id/registerEmail"
@@ -63,7 +63,7 @@
         android:id="@+id/registerDataNasc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="428dp"
+        android:layout_marginTop="420dp"
         android:autofillHints="data di nascita"
         android:hint="Data di nascita "
         android:inputType="date"
@@ -72,6 +72,18 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkPrivacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:elevation="2dp"
+        android:text="@string/privacy"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerDataNasc" />
 
     <EditText
         android:id="@+id/registerSurname"

@@ -1,18 +1,19 @@
 package com.example.viviappis.control.loginAndRegister;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.viviappis.control.AfterLogin;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.viviappis.R;
+import com.example.viviappis.control.AfterLogin;
 import com.example.viviappis.data.model.Utente;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;

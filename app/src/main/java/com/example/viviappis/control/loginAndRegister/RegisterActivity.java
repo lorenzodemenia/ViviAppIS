@@ -1,14 +1,13 @@
 package com.example.viviappis.control.loginAndRegister;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -25,9 +24,6 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,6 +40,8 @@ public class RegisterActivity extends AppCompatActivity
 
     private FirebaseAuth au;
     private FirebaseFirestore db;
+    private CheckBox privacyCheck;
+
 
     //eliminabile
     private TextView result;
@@ -76,6 +74,8 @@ public class RegisterActivity extends AppCompatActivity
         inpDate  = (EditText) findViewById(R.id.registerDataNasc);
         inpName  = (EditText) findViewById(R.id.registerName);
         inpSurn  = (EditText) findViewById(R.id.registerSurname);
+        privacyCheck= (CheckBox) findViewById(R.id.checkPrivacy);
+
 
         bReg = (Button) findViewById(R.id.register);
 
@@ -195,7 +195,8 @@ public class RegisterActivity extends AppCompatActivity
         String p = inpPsw.getText().toString();
         String e = inpEmail.getText().toString();
         String d = inpDate.getText().toString();
+        boolean pc=privacyCheck.isChecked();
 
-        return !u.isEmpty() && !p.isEmpty() && !e.isEmpty() && !d.isEmpty()  && !d.equals("")? new Utente(n, s, u, d, e,p,null) : null;
+        return !u.isEmpty() && !p.isEmpty() && !e.isEmpty() && !d.isEmpty()  && !d.equals("") && pc? new Utente(n, s, u, d, e,p,null) : null;
     }
 }

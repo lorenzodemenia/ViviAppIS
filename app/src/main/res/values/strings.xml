@@ -77,4 +77,7 @@
     <string name="allert_text_del_event">Evento è stato cancellato con successo</string>
     <string name="allert_title_show_event_err">Errore Evento</string>
     <string name="allert_text_show_event_err">La pagina non e stata caricata correttamente, l\'evento potrebbe essere stato cancellato o ci potrebbero essere altri problemi ricarcia la pagina</string>
+
+    <!--Privacy-->
+    <string name="privacy">Ho letto ed accettato le privacy policy </string>
 </resources>
