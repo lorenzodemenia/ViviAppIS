@@ -117,7 +117,7 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         inpName = binding.newEvName;
         inpDesc = binding.newEvDesc;
         inpDate = binding.newEvDate;
-        inpPsw = binding.newEvPsw;
+        //inpPsw = binding.newEvPsw;
         inpType = binding.newEvType;
         inpPublic = binding.newEvPublic;
        // inpMap = binding.newEventMap;
