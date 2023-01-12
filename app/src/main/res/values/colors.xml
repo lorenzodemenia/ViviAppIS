@@ -9,13 +9,19 @@
     <color name="white">#FFFFFFFF</color>
     <color name="giallocra">#FFCD29</color>
     <color name="blurred_white">#99FFFFFF</color>
+    <color name="green">#36AC3B</color>
     <color name="dark_red">#6E0101</color>
     <color name="red">#FF0000</color>
     <color name="light_blue">#0D99FF</color>x
     <color name="azzurro">#0D99FF</color>
     <color name="hint_black">#99000000</color>
-    <color name="vomito_verde">#C7F94C</color>
+    <color name="vomito_giallo">#C7F94C</color>
     <color name="vomito_viola">#3E0FB3</color>
+    <color name="vomito_rosso">#e73d63</color>
+    <color name="vomito_ciano">#3de7c1</color>
+    <color name="vomito_blu">#3d63e7</color>
+    <color name="vomito_verde">#63e73d</color>
+
 
 
 </resources>
