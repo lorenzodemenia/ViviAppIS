@@ -45,38 +45,37 @@ public class EventInExecutionActivity extends AppCompatActivity {
 
     private String d;
     private String id;
+    private String eventType;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_in_execution);
 
-        //e = new Evento(savedInstanceState.getString(getResources().getString(R.string.event_send_ev)));
+        id = getIntent().getStringExtra(getResources().getString(R.string.event_send_ev));
 
-        System.out.println("Stampa dato: " + savedInstanceState.getString(getResources().getString(R.string.event_send_ev)));
-
-        db.collection(getResources().getString(R.string.db_rac_events)).get().addOnCompleteListener((t)->{
-            e = new Evento(filterListByID(t.getResult().getDocuments(),au.getCurrentUser().getEmail()));
-
+        db.collection(getResources().getString(R.string.db_rac_events)).document(id).get().addOnCompleteListener((t)->
+        {
+            if (t.isSuccessful())
+            {
+                e = new Evento(t.getResult().getData());
+                eventType = t.getResult().getString("class");
+                switchFragment();
+            }
         });
-/*
-        e = new Evento(savedInstanceState.getString(db.collection(getResources().getString(R.string.db_rac_events)).getId()));
-        d = savedInstanceState.getString(getResources().getString(R.string.event_send_ev));
-*/
-        /*
-        d = String.valueOf(db.collection(getResources().getString(R.string.db_rac_events)).document(id).get().addOnCompleteListener((t -> {
+    }
 
-                e = new Evento(savedInstanceState.getString(db.collection(getResources().getString(R.string.db_rac_events)).getId()));
-        })));
-        */
-        String eventType = savedInstanceState.getString(d);
 
-        String[] s = (String[]) getResources().getTextArray(R.array.new_ev_spinner_item);
+    //passare almeno id all pagina
+    private void switchFragment()
+    {
+        String[] s = getResources().getStringArray(R.array.new_ev_spinner_item);
 
         if (eventType.equals(s[0])) {
             e = new PallaPrigioniera(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), "Squadra 1", "Squadra 2", 10, e.getLuogo()); // points da stabilire
             Fragment fragment = new PallaPrigionieraFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container, fragment).commit();
+            //cambioato per test non risolve errore
+            ft.replace(R.id.container, PallaPrigionieraFragment.class, null).commit();
         } else if(eventType.equals(s[1])) {
             e = new RubaBandiera(e.getName(), e.getDescription(), e.getCreator(), e.getDate(), e.getPassword(), e.isPublic(), "Squadra 1", "Squadra 2", 10, e.getLuogo()); // points da stabilire
             Fragment fragment = new RubaBandieraFragment();
@@ -118,7 +117,6 @@ public class EventInExecutionActivity extends AppCompatActivity {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.container, fragment).commit();
         }
-
     }
 
     public Map<String, Object> filterListByID(List<DocumentSnapshot> l, String id)
