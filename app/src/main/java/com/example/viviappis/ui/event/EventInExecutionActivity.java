@@ -40,6 +40,7 @@ public class EventInExecutionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_event_in_execution);
         String eventType = savedInstanceState.getString(getResources().getString(R.string.event_macro_send_type));
         e = new Evento(savedInstanceState.getString(getResources().getString(R.string.event_send_ev)));
         String[] s = (String[]) getResources().getTextArray(R.array.new_ev_spinner_item);
