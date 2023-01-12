@@ -231,9 +231,14 @@ public class EventPageFragment extends Fragment
             });
             bStart.setOnClickListener((v)->
             {
-                //startActivity(new Intent(getActivity(), EventInExecutionActivity.class));
+/*
+                Intent intent = new Intent(this.getActivity(), EventInExecutionActivity.class);
+                startActivity(intent);
+*/
+                startActivity(new Intent(getActivity(), EventInExecutionActivity.class).putExtra(getResources().getString(R.string.event_send_ev),id));
 
-                System.out.println(e.canStart());
+
+                //System.out.println(e.canStart());
             });
         }
     }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,11 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ViviAppIS"
         tools:targetApi="31">
+        <activity
+            android:name=".EventiMacroA"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyDjsYA6EV9gYu5NPy_RKjFJIwhthYuCDmE" />
-
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDjsYA6EV9gYu5NPy_RKjFJIwhthYuCDmE" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -24,6 +34,14 @@
             android:name=".control.AfterLogin"
             android:exported="true"
             android:label="AfterLogin" />
+        <activity
+            android:name=".ui.event.EventInExecutionActivity"
+            android:exported="true"
+            android:label="EventInExecutionActivity" />
+        <activity
+            android:name=".ui.event.EventPageFragment"
+            android:exported="true"
+            android:label="EventPageFragment" />
         <activity
             android:name=".control.loginAndRegister.RegisterActivity"
             android:exported="false"
@@ -47,6 +65,5 @@
                 android:value="" />
         </activity>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
 </manifest>

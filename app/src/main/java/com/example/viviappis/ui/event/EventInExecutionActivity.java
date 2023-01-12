@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
@@ -19,6 +20,7 @@ import com.example.viviappis.data.model.MacroAree.AreaA.UnoDueTreStella;
 import com.example.viviappis.data.model.MacroAree.AreaD.PallaPrigioniera;
 import com.example.viviappis.data.model.MacroAree.AreaD.RubaBandiera;
 import com.example.viviappis.data.model.MacroAree.AreaD.TiroAllaFune;
+import com.example.viviappis.data.model.Utente;
 import com.example.viviappis.ui.event.EventInExecutionFragments.CorsaConSacchiFragment;
 import com.example.viviappis.ui.event.EventInExecutionFragments.FlipperFragment;
 import com.example.viviappis.ui.event.EventInExecutionFragments.MoscaCiecaFragment;
@@ -29,7 +31,11 @@ import com.example.viviappis.ui.event.EventInExecutionFragments.SardineFragment;
 import com.example.viviappis.ui.event.EventInExecutionFragments.TiroAllaFuneFragment;
 import com.example.viviappis.ui.event.EventInExecutionFragments.UnoDueTreStellaFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.List;
+import java.util.Map;
 
 public class EventInExecutionActivity extends AppCompatActivity {
 
@@ -37,12 +43,33 @@ public class EventInExecutionActivity extends AppCompatActivity {
     private FirebaseAuth au = FirebaseAuth.getInstance();
     private Evento e = null;
 
+    private String d;
+    private String id;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_in_execution);
-        String eventType = savedInstanceState.getString(getResources().getString(R.string.event_macro_send_type));
-        e = new Evento(savedInstanceState.getString(getResources().getString(R.string.event_send_ev)));
+
+        //e = new Evento(savedInstanceState.getString(getResources().getString(R.string.event_send_ev)));
+
+        System.out.println("Stampa dato: " + savedInstanceState.getString(getResources().getString(R.string.event_send_ev)));
+
+        db.collection(getResources().getString(R.string.db_rac_events)).get().addOnCompleteListener((t)->{
+            e = new Evento(filterListByID(t.getResult().getDocuments(),au.getCurrentUser().getEmail()));
+
+        });
+/*
+        e = new Evento(savedInstanceState.getString(db.collection(getResources().getString(R.string.db_rac_events)).getId()));
+        d = savedInstanceState.getString(getResources().getString(R.string.event_send_ev));
+*/
+        /*
+        d = String.valueOf(db.collection(getResources().getString(R.string.db_rac_events)).document(id).get().addOnCompleteListener((t -> {
+
+                e = new Evento(savedInstanceState.getString(db.collection(getResources().getString(R.string.db_rac_events)).getId()));
+        })));
+        */
+        String eventType = savedInstanceState.getString(d);
+
         String[] s = (String[]) getResources().getTextArray(R.array.new_ev_spinner_item);
 
         if (eventType.equals(s[0])) {
@@ -94,5 +121,20 @@ public class EventInExecutionActivity extends AppCompatActivity {
 
     }
 
+    public Map<String, Object> filterListByID(List<DocumentSnapshot> l, String id)
+    {
+        int i=0;
+
+        while (i<l.size())
+        {
+            Map<String, Object> m = l.get(i).getData();
+            String cnt = (String) m.get("class");
+
+            if(!cnt.startsWith(id)) l.remove(i);
+            else                      i++;
+        }
+        Map<String, Object> m = l.get(0).getData();
+        return m;
+    }
 
 }
