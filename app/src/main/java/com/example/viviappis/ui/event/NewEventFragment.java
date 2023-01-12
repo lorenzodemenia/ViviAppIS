@@ -117,7 +117,7 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         inpName = binding.newEvName;
         inpDesc = binding.newEvDesc;
         inpDate = binding.newEvDate;
-        //inpPsw = binding.newEvPsw;
+        inpPsw = binding.newEvPsw;
         inpType = binding.newEvType;
         inpPublic = binding.newEvPublic;
        // inpMap = binding.newEventMap;
@@ -140,7 +140,7 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         cc.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         inpM.setAdapter(cc);
 
-
+        inpPsw.setVisibility(View.INVISIBLE);
         cc = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,getResources().getTextArray(R.array.new_ev_spinner_item));
         cc.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         inpType.setAdapter(cc);

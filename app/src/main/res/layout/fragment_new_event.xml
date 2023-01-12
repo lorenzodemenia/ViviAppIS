@@ -12,66 +12,111 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/newEvent"
         android:layout_width="match_parent"
-        android:layout_height="741dp"
+        android:layout_height="match_parent"
         android:background="@color/giallocra"
         android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/view3"
+            android:layout_width="178dp"
+            android:layout_height="95dp"
+
+            android:layout_marginTop="188dp"
+            android:background="@drawable/radius_blurred_white_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/view8"
+            android:layout_width="409dp"
+            android:layout_height="51dp"
+
+            android:layout_marginTop="8dp"
+            android:background="@drawable/radius_blurred_white_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/view2"
             android:layout_width="394dp"
             android:layout_height="378dp"
 
+            android:layout_marginTop="12dp"
             android:background="@drawable/radius_blurred_white_button"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.529"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.809"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
             tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/newEvLuogo"
-            android:layout_width="226dp"
-            android:layout_height="52dp"
+            android:layout_width="189dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="64dp"
             android:background="@drawable/radius_blurred_white_button"
             android:ems="10"
             android:gravity="center"
             android:hint="Luogo"
+            android:textColorHint="@color/hint_black"
             android:inputType="textPersonName"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/newEvPublic"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.332" />
+            app:layout_constraintHorizontal_bias="0.591"
+            app:layout_constraintStart_toEndOf="@+id/newEvPublic" />
+
+        <EditText
+            android:id="@+id/newEvPsw"
+            android:layout_width="189dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/radius_blurred_white_button"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:textColorHint="@color/hint_black"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toEndOf="@+id/view3" />
 
         <Spinner
             android:id="@+id/newEvOra"
             android:layout_width="102dp"
             android:layout_height="38dp"
             android:layout_marginStart="28dp"
-            android:layout_marginBottom="532dp"
+            android:layout_marginTop="24dp"
+            android:textColorHint="@color/hint_black"
             android:background="@drawable/radius_blurred_white_button"
             android:gravity="center"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/newEvDate" />
+            app:layout_constraintStart_toEndOf="@+id/newEvDate"
+            app:layout_constraintTop_toBottomOf="@+id/newEvName" />
 
         <Spinner
             android:id="@+id/newEvMin"
             android:layout_width="110dp"
             android:layout_height="38dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="532dp"
             android:background="@drawable/radius_blurred_white_button"
             android:gravity="center"
+            android:textColorHint="@color/hint_black"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/newEvDate" />
+            app:layout_constraintStart_toEndOf="@+id/newEvOra"
+            app:layout_constraintTop_toBottomOf="@+id/newEvName"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/newEvResult"
@@ -85,72 +130,81 @@
             android:id="@+id/newEvCont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="Continua"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newEvDesc"
-            app:layout_constraintVertical_bias="0.238" />
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <EditText
             android:id="@+id/newEvDate"
             android:layout_width="140dp"
             android:layout_height="38dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/radius_blurred_white_button"
             android:ems="10"
             android:gravity="center"
             android:hint="Data"
+            android:textColorHint="@color/hint_black"
             android:inputType="date"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/newEvPublic"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.029"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.033"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newEvName"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Switch
             android:id="@+id/newEvPublic"
-            android:layout_width="147dp"
+            android:layout_width="166dp"
             android:layout_height="52dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="460dp"
-            android:background="@drawable/radius_blurred_white_button"
+
             android:checked="true"
             android:showText="false"
             android:text="@string/new_ev_pub"
             android:textColor="@color/black"
             android:textOff="Privato"
-            android:textOn="Publico"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textOn="Pubblico"
+            app:layout_constraintBottom_toBottomOf="@+id/view3"
+            app:layout_constraintEnd_toEndOf="@+id/view3"
+            app:layout_constraintStart_toStartOf="@+id/view3"
+            app:layout_constraintTop_toTopOf="@+id/view3"
+            app:layout_constraintVertical_bias="0.529"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Spinner
             android:id="@+id/newEvType"
-            android:layout_width="409dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/radius_lightblue_button"
-            app:layout_constraintBottom_toTopOf="@+id/newEvName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_width="370dp"
+            android:layout_height="40dp"
+            android:textColorHint="@color/hint_black"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view8"
+            app:layout_constraintEnd_toEndOf="@+id/view8"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/view8"
+            app:layout_constraintTop_toTopOf="@+id/view8"
+            app:layout_constraintVertical_bias="0.545" />
 
         <EditText
             android:id="@+id/newEvName"
             android:layout_width="409dp"
             android:layout_height="37dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/radius_blurred_white_button"
             android:ems="10"
             android:gravity="center"
             android:hint="Name"
+            android:textColorHint="@color/hint_black"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/newEvDate"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view8"
+            app:layout_constraintVertical_bias="0.001" />
 
         <EditText
             android:id="@+id/newEvDesc"
@@ -162,7 +216,7 @@
             android:hint="Descrizione"
             android:inputType="textMultiLine"
             android:scrollbars="vertical"
-
+            android:textColorHint="@color/hint_black"
             android:textColor="@color/black"
             android:typeface="serif"
             app:layout_constraintBottom_toBottomOf="@+id/view2"

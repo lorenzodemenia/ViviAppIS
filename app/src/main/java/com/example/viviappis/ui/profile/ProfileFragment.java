@@ -99,8 +99,8 @@ public class ProfileFragment extends Fragment {
 
         for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
         {
-           // adapter.addPart(new Utente(i.getData()));
-        //    //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
+            adapter.addPart(new Utente(i.getData()));
+        //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
         }
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));

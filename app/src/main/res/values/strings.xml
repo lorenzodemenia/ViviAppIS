@@ -38,7 +38,7 @@
     <string name="log_err_no_all_data">Inserisci tutti i dati richiesti</string>
 
     <!-- stringhe per l'activity newEvent  -->
-    <string name="new_ev_pub">Evento: publico</string>
+    <string name="new_ev_pub">Evento: pubblico</string>
     <string name="new_ev_priv">Evento: privato</string>
 
 

@@ -13,6 +13,7 @@
     <color name="red">#FF0000</color>
     <color name="light_blue">#0D99FF</color>x
     <color name="azzurro">#0D99FF</color>
+    <color name="hint_black">#99000000</color>
 
 
 </resources>
