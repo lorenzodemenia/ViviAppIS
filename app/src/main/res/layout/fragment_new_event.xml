@@ -13,18 +13,18 @@
         android:id="@+id/newEvent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/giallocra"
+
         android:gravity="center">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/view3"
-            android:layout_width="178dp"
-            android:layout_height="95dp"
+            android:layout_width="165dp"
+            android:layout_height="94dp"
 
-            android:layout_marginTop="188dp"
+            android:layout_marginTop="184dp"
             android:background="@drawable/radius_blurred_white_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintHorizontal_bias="0.105"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
@@ -44,8 +44,8 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/view2"
-            android:layout_width="394dp"
-            android:layout_height="378dp"
+            android:layout_width="362dp"
+            android:layout_height="310dp"
 
             android:layout_marginTop="12dp"
             android:background="@drawable/radius_blurred_white_button"
@@ -93,11 +93,11 @@
             android:id="@+id/newEvOra"
             android:layout_width="102dp"
             android:layout_height="38dp"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:textColorHint="@color/hint_black"
             android:background="@drawable/radius_blurred_white_button"
             android:gravity="center"
+            android:textColorHint="@color/hint_black"
             app:layout_constraintStart_toEndOf="@+id/newEvDate"
             app:layout_constraintTop_toBottomOf="@+id/newEvName" />
 
@@ -109,11 +109,11 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/radius_blurred_white_button"
             android:gravity="center"
-            android:textColorHint="@color/hint_black"
             android:textColor="@color/black"
+            android:textColorHint="@color/hint_black"
             app:layout_constraintBottom_toTopOf="@+id/view2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.529"
             app:layout_constraintStart_toEndOf="@+id/newEvOra"
             app:layout_constraintTop_toBottomOf="@+id/newEvName"
             app:layout_constraintVertical_bias="0.0" />
@@ -132,10 +132,13 @@
             android:layout_height="wrap_content"
             android:text="Continua"
             android:textColor="@color/black"
+            android:backgroundTint="@color/light_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            app:layout_constraintVertical_bias="0.397" />
 
         <EditText
             android:id="@+id/newEvDate"
@@ -146,20 +149,20 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Data"
-            android:textColorHint="@color/hint_black"
             android:inputType="date"
             android:textColor="@color/black"
+            android:textColorHint="@color/hint_black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.033"
+            app:layout_constraintHorizontal_bias="0.095"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newEvName"
             app:layout_constraintVertical_bias="0.0" />
 
         <Switch
             android:id="@+id/newEvPublic"
-            android:layout_width="166dp"
-            android:layout_height="52dp"
+            android:layout_width="142dp"
+            android:layout_height="51dp"
 
             android:checked="true"
             android:showText="false"
@@ -208,23 +211,23 @@
 
         <EditText
             android:id="@+id/newEvDesc"
-            android:layout_width="375dp"
-            android:layout_height="354dp"
+            android:layout_width="328dp"
+            android:layout_height="272dp"
 
             android:ems="10"
             android:gravity="center_horizontal"
             android:hint="Descrizione"
             android:inputType="textMultiLine"
             android:scrollbars="vertical"
-            android:textColorHint="@color/hint_black"
             android:textColor="@color/black"
+            android:textColorHint="@color/hint_black"
             android:typeface="serif"
             app:layout_constraintBottom_toBottomOf="@+id/view2"
             app:layout_constraintEnd_toEndOf="@+id/view2"
-            app:layout_constraintHorizontal_bias="0.421"
+            app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toStartOf="@+id/view2"
             app:layout_constraintTop_toTopOf="@+id/view2"
-            app:layout_constraintVertical_bias="0.541" />
+            app:layout_constraintVertical_bias="0.529" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
