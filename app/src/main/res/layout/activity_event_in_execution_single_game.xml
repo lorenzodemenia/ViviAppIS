@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/endGameSingle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="633dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/replaySingle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
@@ -22,7 +22,7 @@
         tools:layout_editor_absoluteY="633dp" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinner1"
         android:layout_width="105dp"
         android:layout_height="29dp"
         android:layout_marginStart="156dp"
@@ -44,7 +44,7 @@
         tools:layout_editor_absoluteY="333dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/titleSingle"
         android:layout_width="139dp"
         android:layout_height="36dp"
         android:text="TextView"
@@ -52,7 +52,7 @@
         tools:layout_editor_absoluteY="39dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/roundSingle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
