@@ -39,6 +39,8 @@ public class EventInExecutionActivity extends AppCompatActivity {
                 switchLayout();
             }
         });
+
+
     }
 
 
