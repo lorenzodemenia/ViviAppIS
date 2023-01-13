@@ -1,16 +1,8 @@
 package com.example.viviappis.ui.event;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.InputType;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -20,8 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
+import com.example.viviappis.data.model.Utilities;
 import com.example.viviappis.data.model.recicleView.ScorrimentoPartecipant;
 import com.example.viviappis.databinding.FragmentEventPageBinding;
 import com.example.viviappis.ui.home.HomeFragment;
@@ -31,6 +30,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 
 
+/**
+ * Questa classe serve a gestire la pagina di visualizzazione dell'evento
+ * @author jacopo
+ * @version 1.0
+ */
 public class EventPageFragment extends Fragment
 {
     private FragmentEventPageBinding binding;
@@ -51,12 +55,23 @@ public class EventPageFragment extends Fragment
     private String psw="";
 
 
+    /**
+     * crea il fragment
+     * @param savedInstanceState istanze precedenti
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * serve a creare la view del fragment
+     * @param inflater inflanter per creare istanza della pagina xml
+     * @param container container del fragment
+     * @param savedInstanceState istanze precedenti
+     * @return la view della pagina 
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -71,7 +86,7 @@ public class EventPageFragment extends Fragment
 
         if(e==null)
         {
-            dbGetCollEvents().document(id).get().addOnCompleteListener((task ->
+            Utilities.dbGetCollEvents(db,getResources()).document(id).get().addOnCompleteListener((task ->
             {
                 if(task.getResult().getData()!=null)
                 {
@@ -96,12 +111,19 @@ public class EventPageFragment extends Fragment
         return binding.getRoot();
     }
 
+    /**
+     * serve a nascondere e a rendere visibile la pagina
+     * @param a true pagina visibile, false pagina invisibile
+     */
     public void hide(Boolean a)
     {
         if(a)binding.pageEvent.setVisibility(View.INVISIBLE);
         else binding.pageEvent.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Questa funzione serve a inizzializzare le variabili del fragment eventpage per recuperare i valori di input e mostrare i valori di output
+     */
     private void setUpUIViews()
     {
         outNm = binding.pageEventNm;
@@ -118,9 +140,10 @@ public class EventPageFragment extends Fragment
         pUsers = binding.pageEventUser;
     }
 
-    private com.google.firebase.firestore.CollectionReference dbGetCollEvents() {return db.collection(getResources().getString(R.string.db_rac_events));}
-    private com.google.firebase.firestore.CollectionReference dbGetCollUsers() {return db.collection(getResources().getString(R.string.db_rac_users));}
 
+    /**
+     * Carica i valori dell'evento nei vari campi di output
+     */
     private void setViewEvent()
     {
         outNm.setText(e.getName());
@@ -129,7 +152,7 @@ public class EventPageFragment extends Fragment
         outDate.setText(e.getDate());
         outH.setText(e.getOra());
         outLuogo.setText(e.getLuogo());
-        dbGetCollUsers().document(e.getCreator()).get().addOnCompleteListener((task)->
+        Utilities.dbGetCollUsers(db,getResources()).document(e.getCreator()).get().addOnCompleteListener((task)->
         {
           outProp.setText(task.getResult().get("username").toString());
         });
@@ -138,12 +161,21 @@ public class EventPageFragment extends Fragment
 
     }
 
+    /**
+     * cambia il pannello di controllo dell'evento
+     * @param b true pannello admin evento(start e canc evento), false pannello utente(iscriviti, disiscriviti)
+     */
     private void switcPanelProp(boolean b)
     {
         pAdmin.setVisibility(b ? View.VISIBLE : View.INVISIBLE);
         pUsers.setVisibility(!b ? View.VISIBLE : View.INVISIBLE);
     }
 
+    /**
+     * genera il onClicklistener da mettere nel bottone d'iscrizione o disiscrizione
+     * @param b true se e da aggungere l'ascoltatore per gestire iscrizione, false se è da gestire ascoltatore per la disiscrizione
+     * @return
+     */
     private View.OnClickListener getOnClickListenerIscr(Boolean b)
     {
         View.OnClickListener r;
@@ -155,7 +187,7 @@ public class EventPageFragment extends Fragment
             r = (v)->
             {
                 e.removePartecipant(au.getCurrentUser().getEmail());
-                dbGetCollEvents().document(id).update("partecipants", e.getPartecipants());
+                Utilities.dbGetCollEvents(db,getResources()).document(id).update("partecipants", e.getPartecipants());
                 bIscr.setOnClickListener(getOnClickListenerIscr(true));
                 createDash(e.getPartecipants());
             };
@@ -175,18 +207,37 @@ public class EventPageFragment extends Fragment
         return r;
     }
 
+    /**
+     * funzione per iscrivere utente che preme il tasto di iscriviti
+     */
     private void iscr()
     {
-        e.addPartecipants(au.getCurrentUser().getEmail());
-        dbGetCollEvents().document(id).update("partecipants", e.getPartecipants());
-        bIscr.setOnClickListener(getOnClickListenerIscr(false));
-        createDash(e.getPartecipants());
+        Utilities.dbGetCollEvents(db,getResources()).document(id).get().addOnCompleteListener((task ->
+        {
+            e = new Evento(task.getResult().getData());
+            if (e.getPartecipants().size()<e.getMaxPart())
+            {
+                e.addPartecipants(au.getCurrentUser().getEmail());
+                Utilities.dbGetCollEvents(db, getResources()).document(id).update("partecipants", e.getPartecipants());
+                bIscr.setOnClickListener(getOnClickListenerIscr(false));
+                createDash(e.getPartecipants());
+            }
+            else
+            {
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Evento pieno")
+                        .setMessage("Evento ha raggiunto il numero massimo di partecipanti").show();
+            }
+        }));
     }
 
+    /**
+     * funzione per andare a controllare se la password inserita nell inp dialog è uguale a quella dell'evento privato a cui ci si vuole iscrivere
+     */
     private void cntrPsw()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-        builder.setTitle("Password evento");
+        builder.setTitle(getResources().getString(R.string.allert_title_show_inp_psw));
 
         EditText input = new EditText(this.getContext());
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -200,8 +251,8 @@ public class EventPageFragment extends Fragment
             if (!r)
             {
                 new AlertDialog.Builder(getContext())
-                    .setTitle("Password sbagliata")
-                    .setMessage("La password inserita è dicersa da quella dell'evento").show();
+                    .setTitle(getResources().getString(R.string.allert_title_wrong_psw))
+                    .setMessage(getResources().getString(R.string.allert_text_wrong_psw)).show();
             }
             else iscr();
         });
@@ -221,7 +272,7 @@ public class EventPageFragment extends Fragment
 
         for (String i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
         {
-           dbGetCollUsers().document(i).get().addOnCompleteListener((task)->
+            Utilities.dbGetCollUsers(db,getResources()).document(i).get().addOnCompleteListener((task)->
             {
                 adapter.addPart(task.getResult().getString("username"));
                 if(l.size()>0 &&i.equals(l.get(l.size()-1)))
@@ -251,7 +302,7 @@ public class EventPageFragment extends Fragment
         {
             bCanc.setOnClickListener((v)->
             {
-                dbGetCollEvents().document(id).delete().addOnCompleteListener((task ->
+                Utilities.dbGetCollEvents(db,getResources()).document(id).delete().addOnCompleteListener((task ->
                 {
                     new AlertDialog.Builder(getContext())
                             .setTitle(getResources().getString(R.string.allert_title_del_event))
@@ -268,15 +319,22 @@ public class EventPageFragment extends Fragment
             });
             bStart.setOnClickListener((v)->
             {
-/*
-                Intent intent = new Intent(this.getActivity(), EventInExecutionActivity.class);
-                startActivity(intent);
-*/
-                startActivity(new Intent(getActivity(), EventInExecutionActivity.class).putExtra(getResources().getString(R.string.event_send_ev),id));
-
-
-                //System.out.println(e.canStart());
+                Utilities.dbGetCollEvents(db,getResources()).document(id).get().addOnCompleteListener((task ->
+                {
+                    e = new Evento(task.getResult().getData());
+                    if(e.canStart() && e.getMinPart()<=e.getPartecipants().size())
+                        startActivity(new Intent(getActivity(), EventInExecutionActivity.class).putExtra(getResources().getString(R.string.event_send_ev), id));
+                }));
             });
         }
+    }
+    /**
+     * funzione che distrugge la view della pagina
+     */
+    @Override
+    public void onDestroyView()
+    {
+        super.onDestroyView();
+        binding = null;
     }
 }

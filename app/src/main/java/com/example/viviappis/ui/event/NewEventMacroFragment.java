@@ -2,34 +2,32 @@ package com.example.viviappis.ui.event;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.viviappis.Pair;
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
-import com.example.viviappis.databinding.FragmentNewEventBinding;
+import com.example.viviappis.data.model.Utilities;
 import com.example.viviappis.databinding.FragmentNewEventMacroBinding;
 import com.example.viviappis.ui.home.HomeFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.checkerframework.common.subtyping.qual.Bottom;
-
-import java.security.PublicKey;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Questa classe serve a gestire la pagina di conferma per la creazione di un nuovo evento
+ * @author jacopo
+ * @version 1.0
+ */
 public class NewEventMacroFragment extends Fragment
 {
     private Evento e;
@@ -42,6 +40,10 @@ public class NewEventMacroFragment extends Fragment
 
     private FragmentNewEventMacroBinding binding;
 
+    /**
+     * crea il fragment
+     * @param savedInstanceState istanze precedenti
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -54,6 +56,9 @@ public class NewEventMacroFragment extends Fragment
         createminMax();
     }
 
+    /**
+     * carica dal file string le strighe relative al massimo e minimo di utenti per gioco
+     */
     private void createminMax()
     {
         String a[] = getResources().getStringArray(R.array.new_ev_spinner_item);
@@ -64,6 +69,9 @@ public class NewEventMacroFragment extends Fragment
     }
 
 
+    /**
+     * mostra evento nei campi di output
+     */
     private void showEvent()
     {
         nm.setText(e.getName());
@@ -82,6 +90,13 @@ public class NewEventMacroFragment extends Fragment
         luogo.setText(e.getLuogo());
     }
 
+    /**
+     * serve a creare la view del fragment
+     * @param inflater inflanter per creare istanza della pagina xml
+     * @param container container del fragment
+     * @param savedInstanceState istanze precedenti
+     * @return la view della pagina
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -116,7 +131,8 @@ public class NewEventMacroFragment extends Fragment
 
 
     /**
-     * nasconde tutti i componenti appartenenti alla pagina newEvent
+     * serve a nascondere e a rendere visibile la pagina
+     * @param a true pagina visibile, false pagina invisibile
      */
     private void hide(Boolean a)
     {
@@ -134,7 +150,7 @@ public class NewEventMacroFragment extends Fragment
             Map<String, Object> a = e.toMap();
             a.put("class", t);
 
-            db.collection(getResources().getString(R.string.db_rac_events)).add(a).addOnCompleteListener((task)->
+            Utilities.dbGetCollEvents(db,getResources()).add(a).addOnCompleteListener((task)->
             {
                 if(task.isSuccessful())
                 {
@@ -170,4 +186,13 @@ public class NewEventMacroFragment extends Fragment
         });
     }
 
+    /**
+     * funzione che distrugge la view della pagina
+     */
+    @Override
+    public void onDestroyView()
+    {
+        super.onDestroyView();
+        binding = null;
+    }
 }

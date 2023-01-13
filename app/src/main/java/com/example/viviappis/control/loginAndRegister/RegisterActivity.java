@@ -115,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity
                 {
                     if (task.isSuccessful())
                     {
-                        db.collection(getResources().getString(R.string.db_rac_users)).
+                        Utilities.dbGetCollEvents(db,getResources()).
                                 document(u.getEmail()).set(u.toMap()).addOnCompleteListener((t) ->
                                 {
                                     if (t.isSuccessful())
@@ -197,6 +197,6 @@ public class RegisterActivity extends AppCompatActivity
         String d = inpDate.getText().toString();
         boolean pc=privacyCheck.isChecked();
 
-        return !u.isEmpty() && !p.isEmpty() && !e.isEmpty() && !d.isEmpty()  && !d.equals("") && pc? new Utente(n, s, u, d, e,p,null) : null;
+        return !u.isEmpty() && !p.isEmpty() && !e.isEmpty() && !d.isEmpty()  && !d.equals("") && pc? new Utente(n, s, u, d, e,p) : null;
     }
 }

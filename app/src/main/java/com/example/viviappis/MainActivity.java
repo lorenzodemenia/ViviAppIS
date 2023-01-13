@@ -1,17 +1,12 @@
 package com.example.viviappis;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.viviappis.control.AfterLogin;
 import com.example.viviappis.control.loginAndRegister.LoginActivity;
-import com.example.viviappis.control.loginAndRegister.RegisterActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -34,24 +29,6 @@ public class MainActivity extends AppCompatActivity
         au = FirebaseAuth.getInstance();
 
         if(au.getCurrentUser()==null || au.getCurrentUser().isAnonymous()) startActivity(new Intent(this, LoginActivity.class));
-        else
-        {
-            startActivity(new Intent(this, AfterLogin.class));
-        }
-
-
+        else                                                               startActivity(new Intent(this, AfterLogin.class));
     }
 }
-
-
-
-  /*FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        Utente userObj = new Utente("Pietro", "Smusi", "12/04/1874", "gattinoarruffato@gmil.com", "cacca123");
-        Evento eventObj = new Evento("sesso", "gay", userObj, "30/11/2022", "Lorenzocula", false);
-
-        Map<String, Object> event = eventMap(eventObj);
-        Map<String, Object> user = userMap(userObj);
-
-        db.collection("users").document(generateRandomId()).set(user);
-        db.collection("events").document(generateRandomId()).set(event);*/

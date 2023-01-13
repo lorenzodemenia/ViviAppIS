@@ -219,10 +219,10 @@ public class MacroD extends Evento {
     }
 
 
-    /**
+    /*
      * Set all event fields' values with map param's values
      * @param map
-     */
+
     public void setValuesFromMap(Map<String, Object> map){
         this.setDescription((String) map.get("description"));
         this.setDate((String) map.get("date"));
@@ -236,6 +236,5 @@ public class MacroD extends Evento {
         this.setSquadra2((Pair<String, Collection<Utente>>) map.get("team 2"));
         this.setWinners((Pair<String, Collection<Utente>>) map.get("winners"));
         this.setRanklist((Map<Utente, Integer>) map.get("ranklist"));
-    }
-
+    }*/
 }

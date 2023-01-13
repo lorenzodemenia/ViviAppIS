@@ -1,13 +1,7 @@
 package com.example.viviappis.data.model;
 
-import com.google.firebase.firestore.DocumentSnapshot;
-
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,8 +17,6 @@ public class Utente
     private final String birth;
     private final String email;
     private String password;
-    private List<String> friends;
-    //private Collection<Evento> events;
     private int score;
 
 
@@ -38,7 +30,7 @@ public class Utente
      * @param password password dell'utente, salvata solo momentaneamente alla register
      * @param score rappresenta il valore di punteggio dell'utente
      */
-    public Utente(String name, String surname, String username,  String birth, String email, String password, int score, ArrayList<String> friends)
+    public Utente(String name, String surname, String username,  String birth, String email, String password, int score)
     {
         this.username = username;
         this.name = name;
@@ -46,7 +38,6 @@ public class Utente
         this.birth = birth;
         this.email = email;
         this.password = password;
-        this.friends = friends;
         this.score = score;
     }
     /**
@@ -57,12 +48,12 @@ public class Utente
      * @param email email dell'utente
      * @param password password dell'utente, salvata solo momentaneamente alla register
      */
-    public Utente(String name, String surname, String username, String birth, String email, String password, ArrayList<String> friends){this(name, surname, username, birth,email,password, 0, friends);}
+    public Utente(String name, String surname, String username, String birth, String email, String password){this(name, surname, username, birth,email,password, 0);}
     /**
      * Permette di costruire un oggetto di tipo Utente
      * @param a Rappresenta utente che serve per creare il nuovo utente
      */
-    public Utente(Utente a){this(a.name, a.surname,a.username, a.birth, a.email, a.password, a.score, (ArrayList<String>) a.friends);}
+    public Utente(Utente a){this(a.name, a.surname,a.username, a.birth, a.email, a.password, a.score);}
     /**
      * crea un utente a partire dalla mappa che rappresenta il documento nel database
      * @param user mappa del documento
@@ -70,11 +61,8 @@ public class Utente
     public Utente(Map<String, Object> user)
     {
         this((String) user.get("name"), (String) user.get("surname"), (String)user.get("username"),
-             (String) user.get("birthday"),(String) user.get("email"), "", ((Long) user.get("score")).intValue(),
-                (ArrayList<String>) user.get("friends"));
+             (String) user.get("birthday"),(String) user.get("email"), "", ((Long) user.get("score")).intValue());
     }
-
-
 
 
     /**
@@ -99,11 +87,6 @@ public class Utente
      */
     public int getScore() {return score;}
     /**
-     * Ritorna gli amici del utente
-     * @return gli amici del utente
-     */
-    public List<String> getFriends() {return friends;}
-    /**
      * Ritorna il valore della data di nascita del utente
      * @return il valore della data di nascita del utente
      */
@@ -120,11 +103,6 @@ public class Utente
     public String getPassword() {return password;}
 
     /**
-     * Permette di aggiungere un amico alla lista degli amici del utente
-     * @param u amico da aggiungere
-     */
-    public void addFriends(String u) {this.friends.add(u);}
-    /**
      * Permette di settare il valore dello score al valore passato
      * @param score valore da sostituire a score del utente
      */
@@ -136,8 +114,6 @@ public class Utente
      * @param score valore da aggiungere allo score dell'utente
      */
     public void addScore(int score) {this.score+= score;}
-
-
     /**
      * Permette di creare una mappa a partire dall'utente
      * @return La mappa che rappresenta l'utente
@@ -153,9 +129,25 @@ public class Utente
         user.put("username", this.getUsername());
         user.put("birthday", this.getBirth());
         user.put("email", this.getEmail());
-        user.put("friends", this.getFriends());
         user.put("score", this.getScore());
 
         return user;
+    }
+
+    /**
+     * ritorna la stringa per stampare evento
+     * @return stringa che rappresenta evento
+     */
+    @Override
+    public String toString() {
+        return "Utente{" +
+                "username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", birth='" + birth + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", score=" + score +
+                '}';
     }
 }

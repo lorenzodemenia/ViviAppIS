@@ -15,11 +15,20 @@ import com.example.viviappis.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe serve a gestire lo scorrimento dei partecipanti ad un evento
+ * @author jacopo
+ * @version 1.0
+ */
 public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPartecipant.MyViewHolder>
 {
     private Context context;
     private List<String> part;
 
+    /**
+     * costruisce un oggetto di tipo ScorrimentoPartecipant
+     * @param context contex del oggetto
+     */
     public ScorrimentoPartecipant(Context context)
     {
         this.context=context;
@@ -27,9 +36,18 @@ public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPart
     }
 
 
+    /**
+     * aggiunge un partecipante all'evento visualizzato
+     * @param e partecipante da aggiungere
+     */
     public void addPart(String e){part.add(e);}
 
-
+    /**
+     * funzione chiamata quando viene creata la view del holder
+     * @param parent gruppo di parentela
+     * @param viewType tipo di view
+     * @return ritorna l'holder creato
+     */
     @NonNull
     @Override
     public ScorrimentoPartecipant.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -39,6 +57,11 @@ public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPart
     }
 
 
+    /**
+     * modifica i valori del singolo holger quando viene visualizzato
+     * @param holder holder dove inserire evento
+     * @param position posizione dell'evento nell'array degli eventi
+     */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
@@ -48,9 +71,18 @@ public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPart
 
     }
 
+    /**
+     * ritorna il numero massimo di elementi nell array dei partecipanti
+     * @return ritorna la dimensione dell'array di partecipanti
+     */
     @Override
     public int getItemCount() {return part.size();}
 
+    /**
+     * Questa classe serve a gestire un singolo holder per la visualizzazione dei partecipanti
+     * @author jacopo
+     * @version 1.0
+     */
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
         //prende la vista del file layout
@@ -58,6 +90,10 @@ public class ScorrimentoPartecipant extends RecyclerView.Adapter<ScorrimentoPart
         ImageView avatar;
 
 
+        /**
+         * crea un oggetto di tipo MyViewHolder
+         * @param itemView view che rappresenta oggetto
+         */
         public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);

@@ -2,7 +2,6 @@ package com.example.viviappis.ui.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.control.loginAndRegister.LoginActivity;
-import com.example.viviappis.data.model.recicleView.ScorrimentoPartecipant;
 import com.example.viviappis.data.model.Utente;
 import com.example.viviappis.data.model.recicleView.ScorrimentoRanklist;
 import com.example.viviappis.databinding.FragmentProfileBinding;
@@ -26,12 +24,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.checkerframework.checker.units.qual.A;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -103,7 +95,7 @@ public class ProfileFragment extends Fragment {
     {
         ScorrimentoRanklist adapter = new ScorrimentoRanklist(this.getContext(), au.getCurrentUser().getEmail());
 
-        for (DocumentSnapshot i : l)adapter.addPart(new Utente(i.getData()));
+        for (DocumentSnapshot i : l)adapter.addUtn(new Utente(i.getData()));
 
         adapter.sort();
         recyclerView.setAdapter(adapter);

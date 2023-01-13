@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
+import com.example.viviappis.data.model.Utilities;
 import com.example.viviappis.data.model.recicleView.ScorrimentoDashboard;
 import com.example.viviappis.databinding.FragmentHomeBinding;
 import com.example.viviappis.ui.event.NewEventFragment;
@@ -37,6 +38,19 @@ public class HomeFragment extends Fragment
     private FirebaseAuth au;
 
 
+    /**
+     * crea il fragment
+     * @param savedInstanceState istanze precedenti
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
+    /**
+     * serve a creare la view del fragment
+     * @param inflater inflanter per creare istanza della pagina xml
+     * @param container container del fragment
+     * @param savedInstanceState istanze precedenti
+     * @return la view della pagina
+     */
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -48,40 +62,33 @@ public class HomeFragment extends Fragment
         setUpUIViews();
         addActionListener();
 
-        db.collection(getResources().getString(R.string.db_rac_events)).
-                whereArrayContains("partecipants",au.getCurrentUser().getEmail()).get().addOnCompleteListener((task)->
-        {
-            createDash(task.getResult().getDocuments(), iscr);
-        });
+        Utilities.dbGetCollEvents(db,getResources()).whereArrayContains("partecipants",au.getCurrentUser().getEmail()).get()
+                .addOnCompleteListener((task)-> {createDash(task.getResult().getDocuments(), iscr);});
 
-        db.collection(getResources().getString(R.string.db_rac_events)).
-                whereEqualTo("creator",au.getCurrentUser().getEmail()).get().addOnCompleteListener((task)->
-                {
-                    createDash(task.getResult().getDocuments(), prop);
-                });
+        Utilities.dbGetCollEvents(db,getResources()).whereEqualTo("creator",au.getCurrentUser().getEmail()).get()
+                .addOnCompleteListener((task)-> {createDash(task.getResult().getDocuments(), prop);});
 
         return root;
     }
 
+    /**
+     * crea la dashbord per la visualizzazzione degli eventi di cui utente e iscritto o proprietario
+     * @param l lista di elementi da aggiungere nella RecyclerView
+     * @param r recyclerView a cui caricare i dati
+     */
     public void createDash(List<DocumentSnapshot> l, RecyclerView r)
     {
         ScorrimentoDashboard adapter = new ScorrimentoDashboard(this.getContext(), this, this::hide,false);
 
         asp.setVisibility(View.VISIBLE);
 
-        System.out.println(l);
+        for (DocumentSnapshot i : l) adapter.addEvent(new Evento(i.getData()),i.getId());
 
-        for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
-        {
-            adapter.addEvent(new Evento(i.getData()),i.getId());
-            //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
-        }
         asp.setVisibility(View.INVISIBLE);
 
         r.setAdapter(adapter);
         r.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
-
 
 
     /**
@@ -101,13 +108,6 @@ public class HomeFragment extends Fragment
         }
     }
 
-    @Override
-    public void onDestroyView()
-    {
-        super.onDestroyView();
-        binding = null;
-    }
-
     /**
      * Carica i valori utili per accedere all'interfaccia della pagina
      */
@@ -120,7 +120,8 @@ public class HomeFragment extends Fragment
     }
 
     /**
-     * nasconde tutti i componenti appartenenti alla pagina home
+     * serve a nascondere e a rendere visibile la pagina
+     * @param a true pagina visibile, false pagina invisibile
      */
     public void hide(Boolean a)
     {
@@ -145,5 +146,14 @@ public class HomeFragment extends Fragment
             transaction.commit();
             hide(true);
         });
+    }
+    /**
+     * funzione che distrugge la view della pagina
+     */
+    @Override
+    public void onDestroyView()
+    {
+        super.onDestroyView();
+        binding = null;
     }
 }

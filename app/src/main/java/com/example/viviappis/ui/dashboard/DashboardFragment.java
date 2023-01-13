@@ -25,6 +25,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Questa classe serve a gestire la pagina di creazione dell'evento
+ * @author jacopo
+ * @version 1.0
+ */
 public class DashboardFragment extends Fragment
 {
     private FragmentDashboardBinding binding;
@@ -36,7 +41,20 @@ public class DashboardFragment extends Fragment
     private ProgressBar  asp;
     private Switch swich;
 
+    /**
+     * crea il fragment
+     * @param savedInstanceState istanze precedenti
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
 
+    /**
+     * serve a creare la view del fragment
+     * @param inflater inflanter per creare istanza della pagina xml
+     * @param container container del fragment
+     * @param savedInstanceState istanze precedenti
+     * @return la view della pagina
+     */
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
@@ -77,6 +95,9 @@ public class DashboardFragment extends Fragment
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
+    /**
+     * funzione che serve a ricaricare il fragment
+     */
     @Override
     public void onResume()
     {
@@ -91,6 +112,10 @@ public class DashboardFragment extends Fragment
         }
     }
 
+    /**
+     * serve a nascondere e a rendere visibile la pagina
+     * @param a true pagina visibile, false pagina invisibile
+     */
     public void hide(Boolean a)
     {
         if(a)binding.dasboard.setVisibility(View.INVISIBLE);
@@ -98,6 +123,12 @@ public class DashboardFragment extends Fragment
     }
 
 
+    /**
+     * funzione che serve a filtrare in base al luogo
+     * @param l lista di eventi
+     * @param luogo luogo da cercare
+     * @return la lista di elementi dove il luogo dell'evento contiene la stringa luogo
+     */
     public List<DocumentSnapshot> filterListByLuogo(List<DocumentSnapshot> l, String luogo)
     {
         int i=0;
@@ -113,6 +144,12 @@ public class DashboardFragment extends Fragment
 
         return l;
     }
+    /**
+     * funzione che serve a filtrare in base al nome dell'evento
+     * @param l lista di eventi
+     * @param name nome da cercare
+     * @return la lista di elementi dove il nome dell'evento contiene la stringa name
+     */
     public List<DocumentSnapshot> filterListByName(List<DocumentSnapshot> l, String name)
     {
         int i=0;
@@ -122,7 +159,7 @@ public class DashboardFragment extends Fragment
             Map<String, Object> m = l.get(i).getData();
             String cnt = (String) m.get("name");
 
-            if(!cnt.startsWith(name)) l.remove(i);
+            if(!cnt.contains(name)) l.remove(i);
             else                      i++;
         }
 
@@ -188,7 +225,9 @@ public class DashboardFragment extends Fragment
         });
     }
 
-
+    /**
+     * funzione che distrugge la view della pagina
+     */
     @Override
     public void onDestroyView()
     {

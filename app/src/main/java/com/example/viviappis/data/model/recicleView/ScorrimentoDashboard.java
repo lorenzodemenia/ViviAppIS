@@ -21,6 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Questa classe serve a gestire lo scorrimento della dashbord
+ * @author jacopo
+ * @version 1.0
+ */
 public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashboard.MyViewHolder>
 {
     private Context context;
@@ -32,6 +37,13 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
     private int conteiner;
 
 
+    /**
+     * crea un oggetto di tipo ScorrimentoDashboard
+     * @param context contex del oggetto
+     * @param dashboardFragment fragment che utilizza la dashbord
+     * @param func funzione d'applicare quando viene premuto il tasto di visualizzazione pagina utente
+     * @param isDash identifica se origine della pagina e la pagina dashbord o quella di home
+     */
     public ScorrimentoDashboard(Context context, Fragment dashboardFragment, Consumer<Boolean> func, boolean isDash)
     {
         this.context=context;
@@ -44,6 +56,11 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
     }
 
 
+    /**
+     * Aggiunge un evento alla lista degli eventi da mostrare
+     * @param e evento da aggiungere
+     * @param id id dell'evento aggiunto
+     */
     public void addEvent(Evento e, String id)
     {
         eventos.add(e);
@@ -51,6 +68,12 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
     }
 
 
+    /**
+     * funzione chiamata quando viene creata la view del holder
+     * @param parent gruppo di parentela
+     * @param viewType tipo di view
+     * @return ritorna l'holder creato
+     */
     @NonNull
     @Override
     public ScorrimentoDashboard.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -60,6 +83,11 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
     }
 
 
+    /**
+     * modifica i valori del singolo holger quando viene visualizzato
+     * @param holder holder dove inserire evento
+     * @param position posizione dell'evento nell'array degli eventi
+     */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
@@ -85,15 +113,28 @@ public class ScorrimentoDashboard extends RecyclerView.Adapter<ScorrimentoDashbo
         });
     }
 
+    /**
+     * ritorna il numero massimo di elementi nell array degli eventi
+     * @return ritorna la dimensione dell'array di eventi
+     */
     @Override
     public int getItemCount() {return eventos.size();}
 
+    /**
+     * Questa classe serve a gestire un singolo holder per la dashbord
+     * @author jacopo
+     * @version 1.0
+     */
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
         //prende la vista del file layout
         ImageView imageView;
         TextView titolo, data, luogo;
 
+        /**
+         * crea un oggetto di tipo MyViewHolder
+         * @param itemView view che rappresenta oggetto
+         */
         public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);

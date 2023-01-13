@@ -1,20 +1,17 @@
 package com.example.viviappis.data.model;
 
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.viviappis.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.lang.annotation.Retention;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 
 public class Utilities
 {
@@ -89,5 +86,16 @@ public class Utilities
 
         return password;
     }
+
+    /**
+     * ritona istanza che rappresenta le collezzioni del database per gli eventi
+     * @return istanza che rappresenta le collezzioni del database per gli eventi
+     */
+    public static com.google.firebase.firestore.CollectionReference dbGetCollEvents(FirebaseFirestore db, android.content.res.Resources r) {return db.collection(r.getString(R.string.db_rac_events));}
+    /**
+     * ritona istanza che rappresenta le collezzioni del database per gli utenti
+     * @return istanza che rappresenta le collezzioni del database per gli utenti
+     */
+    public static com.google.firebase.firestore.CollectionReference dbGetCollUsers(FirebaseFirestore db, android.content.res.Resources r) {return db.collection(r.getString(R.string.db_rac_users));}
 
 }

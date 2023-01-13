@@ -177,7 +177,7 @@ public class MacroA extends Evento
      */
     public void addPoints(){
         for(Utente u: this.Giocatori){
-            u.setScore(u.getScore() + this.points);
+            u.setScore(u.getScore() + this.points);//sua questo aggiunge direttamnte u.addScore(this.points);
         }
     }
 
@@ -261,11 +261,13 @@ public class MacroA extends Evento
     }
 
 
-    /**
+    /*
      * Set all event fields' values with map param's values
      * @param map
-     */
-    public void setValuesFromMap(Map<String, Object> map){
+
+    public void setValuesFromMap(Map<String, Object> map)
+    {
+        super(map);
         this.setDescription((String) map.get("description"));
         this.setDate((String) map.get("date"));
         this.setPublic((Boolean) map.get("public"));
@@ -277,5 +279,5 @@ public class MacroA extends Evento
         this.setGiocatori((List<Utente>) map.get("players"));
         this.setWinners((List<Utente>) map.get("winners"));
         this.setRanklist((Map<Utente, Integer>) map.get("ranklist"));
-    }
+    }*/
 }

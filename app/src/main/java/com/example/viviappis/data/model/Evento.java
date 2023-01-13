@@ -1,17 +1,18 @@
 package com.example.viviappis.data.model;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-public class Evento implements Serializable
+/**
+ * Questa classe serve a gestire l'evento
+ * @author jacopo
+ * @version 1.0
+ */
+public class Evento
 {
     private String name;
     private String description;
@@ -24,7 +25,9 @@ public class Evento implements Serializable
     private int maxPart;
     private String luogo;
 
-
+    /**
+     * valore utilizzato per dividere la stringa per condividerla con i vari fragment
+     */
     private final String splitCart = "&=&";
 
     /**
@@ -99,6 +102,10 @@ public class Evento implements Serializable
         }
     }
 
+    /**
+     * crea un oggetto di tipo evento
+     * @param data mappa che rappresenta un evento preso dal server (deve essere stata formata con toMap())
+     */
     public Evento(Map<String, Object> data)
     {
         this((String) data.get("name"),
@@ -115,15 +122,19 @@ public class Evento implements Serializable
 
     /**
      * ritorna il valore minimo dei partecipanti
-     * @return ritorna il valore minimo dei partecipanti
+     * @return il valore minimo dei partecipanti
      */
     public int getMinPart() {return minPart;}
     /**
      * ritorna il valore massimo dei partecipanti
-     * @return ritorna il valore massimo dei partecipanti
+     * @return il valore massimo dei partecipanti
      */
     public int getMaxPart() {return maxPart;}
 
+    /**
+     * ritorna il luogo dell'evento
+     * @return il luogo dell'evento
+     */
     public String getLuogo() {return luogo;}
 
     /**
@@ -230,6 +241,12 @@ public class Evento implements Serializable
     {
         this.partecipants.add(u);
     }
+
+    /**
+     * rimuove il partecipante dall'evento
+     * @param u partecipante da rimuovere
+     * @return ritorna true se ha eliminato utente u, false altrimenti
+     */
     public boolean removePartecipant(String u)
     {
         return this.partecipants.remove(u);
@@ -266,7 +283,7 @@ public class Evento implements Serializable
 
     /**
      * controlla se evento puo partire in base alla data
-     * @return ritorna true se evento puo partire (data odierna dopo la data dell'evento) else false
+     * @return ritorna true se evento puo partire (data odierna dopo la data dell'evento), false altrimenti
      */
     public boolean canStart()
     {
@@ -280,27 +297,28 @@ public class Evento implements Serializable
         return now.after(c);
     }
 
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
 
+    /**
+     * setta il massimo dei partecipanti dell'evento
+     * @param maxPart numero massimo di partecipanti
+     */
     public void setMaxPart(int maxPart) {
         this.maxPart = maxPart;
     }
 
+    /**
+     * setta il minimo dei partecipanti dell'evento
+     * @param minPart numero minimo di partecipanti
+     */
     public void setMinPart(int minPart) {
         this.minPart = minPart;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public void setPartecipants(List<String> partecipants) {
-        this.partecipants.clear();
-        this.partecipants.addAll(partecipants);
-    }
-
+    /**
+     * converte evento in una stringa che possa essere inviata tra i vari fragment
+     * @return stringa che rappresenta evento
+     */
     public String toStringData()
     {
         String part = "";

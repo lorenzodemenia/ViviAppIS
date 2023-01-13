@@ -1,11 +1,6 @@
 package com.example.viviappis.ui.event;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,46 +13,54 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.data.model.Utilities;
-import com.example.viviappis.databinding.ActivityMainBinding;
 import com.example.viviappis.databinding.FragmentNewEventBinding;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class NewEventFragment extends Fragment implements OnMapReadyCallback
+/**
+ * Questa classe serve a gestire la pagina di creazione dell'evento
+ * @author jacopo
+ * @version 1.0
+ */
+public class NewEventFragment extends Fragment
 {
     private EditText inpName, inpDesc, inpDate, inpPsw, inpLuogo;
     private TextView result;
     private Spinner inpType, inpH, inpM;
     private Switch inpPublic;
     private Button bCont;
-    private MapView inpMap;
 
 
     private FirebaseAuth au;
-    private FirebaseFirestore db;
 
     private FragmentNewEventBinding binding;
 
     private Evento e;
     private String t;
 
+    /**
+     * crea il fragment
+     * @param savedInstanceState istanze precedenti
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);}
 
-
+    /**
+     * serve a creare la view del fragment
+     * @param inflater inflanter per creare istanza della pagina xml
+     * @param container container del fragment
+     * @param savedInstanceState istanze precedenti
+     * @return la view della pagina
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -65,29 +68,10 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
 
         binding = FragmentNewEventBinding.inflate(getLayoutInflater());
 
-        /*SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.map, mapFragment)
-                .commit();
-
-        mapFragment.getMapAsync(this);*/
-
-        /*
-        *  <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-        * */
-
-
         setUpUIViews();
         addActionListener();
 
         au = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
 
         try
         {
@@ -120,7 +104,6 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         inpPsw = binding.newEvPsw;
         inpType = binding.newEvType;
         inpPublic = binding.newEvPublic;
-       // inpMap = binding.newEventMap;
         inpH = binding.newEvOra;
         inpM = binding.newEvMin;
         inpLuogo = binding.newEvLuogo;
@@ -141,11 +124,16 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         inpM.setAdapter(cc);
 
         inpPsw.setVisibility(View.INVISIBLE);
-        cc = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,getResources().getTextArray(R.array.new_ev_spinner_item));
+        cc = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.new_ev_spinner_item));
         cc.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         inpType.setAdapter(cc);
     }
 
+    /**
+     * setta il valore dell'input che rappresenta ora
+     * @param inp spinner che rappresenta ora
+     * @param m valore massimo a cui arrivare (compreso)
+     */
     private void setValOra(Spinner inp, int m)
     {
         List<String> aa = new ArrayList<>();
@@ -215,7 +203,11 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
         });
     }
 
-
+    /**
+     * funzione che trova la posizione, nell'array che rappresenta i giochi, della stringa passata
+     * @param s stringa da cercare nell'array
+     * @return posizione della stringa nell'array
+     */
     private int getPosition(String s)
     {
         String a[] = getResources().getStringArray(R.array.new_ev_spinner_item);
@@ -231,7 +223,8 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
     }
 
     /**
-     * nasconde tutti i componenti appartenenti alla pagina newEvent
+     * serve a nascondere e a rendere visibile la pagina
+     * @param a true pagina visibile, false pagina invisibile
      */
     private void hide(Boolean a)
     {
@@ -240,6 +233,10 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
     }
 
 
+    /**
+     * serve a controllare se i campi di input per evento sono stati caricati correnttamente dall'utente
+     * @return un oggetto di tipo evento se sono stati caricati in modo adeguato i campi di input, null altrimenti
+     */
     private Evento validate()
     {
         String n = inpName.getText().toString();
@@ -258,12 +255,13 @@ public class NewEventFragment extends Fragment implements OnMapReadyCallback
                 new Evento(n,ds,au.getCurrentUser().getEmail(),d.concat(","+h+":"+m),p,i, 0, 0, l) : null;
     }
 
+    /**
+     * funzione che distrugge la view della pagina
+     */
     @Override
-    public void onMapReady(@NonNull GoogleMap googleMap)
+    public void onDestroyView()
     {
-        LatLng sydney = new LatLng(-33.852, 151.211);
-        googleMap.addMarker(new MarkerOptions()
-                .position(sydney)
-                .title("Marker in Sydney"));
+        super.onDestroyView();
+        binding = null;
     }
 }

@@ -9,7 +9,6 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_profile">Profile</string>
-    <!-- Strings used for fragments for navigation -->
 
 
     <!-- stringhe per l'accesso alle raccolte (tabelle database)-->
@@ -53,8 +52,7 @@
     <!-- stringhe per messaggi tra fragment -->
     <string name="event_send_ev">Evento</string>
     <string name="event_macro_send_type">EventoType</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
     <!--Stringhe pagina event-->
     <string name="page_event_isc">Iscriviti</string>
@@ -70,13 +68,18 @@
     <string name="page_dash_src_lg">Luogo dell\'evento</string>
     <string name="page_dash_src_nm">Nome dell\'evento</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- strighe per gli aller-->
     <string name="allert_title_new_event">Creazione evento</string>
     <string name="allert_text_new_event">Evento è stato creato con successo</string>
     <string name="allert_title_del_event">Eliminazione evento</string>
     <string name="allert_text_del_event">Evento è stato cancellato con successo</string>
     <string name="allert_title_show_event_err">Errore Evento</string>
     <string name="allert_text_show_event_err">La pagina non e stata caricata correttamente, l\'evento potrebbe essere stato cancellato o ci potrebbero essere altri problemi ricarcia la pagina</string>
+    <string name="allert_title_wrong_psw">Password sbagliata</string>
+    <string name="allert_text_wrong_psw">La password inserita è dicersa da quella dell\'evento</string>
+    <string name="allert_title_show_inp_psw">Password evento</string>
+
+
 
     <!--Privacy-->
     <string name="privacy">Ho letto ed accettato le privacy policy </string>

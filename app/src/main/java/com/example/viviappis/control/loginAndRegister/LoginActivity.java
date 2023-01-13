@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -16,7 +15,6 @@ import com.example.viviappis.R;
 import com.example.viviappis.control.AfterLogin;
 import com.example.viviappis.data.model.Utente;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Questa classe serve a gestire activity di login
@@ -31,7 +29,6 @@ public class LoginActivity extends AppCompatActivity
     private Switch pageStatuSwitch;
 
     private FirebaseAuth      au;
-    private FirebaseFirestore db;
 
     //eliminabile
     private TextView result;
@@ -50,7 +47,6 @@ public class LoginActivity extends AppCompatActivity
         super.setTitle("Login");
 
         au = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
     }
 
     /**
@@ -69,8 +65,6 @@ public class LoginActivity extends AppCompatActivity
         pageStatuSwitch =(Switch) findViewById(R.id.page_status_switch);
 
     }
-
-
 
 
     /**
@@ -122,7 +116,7 @@ public class LoginActivity extends AppCompatActivity
         String p = inpPsw.getText().toString();
         String e = inpEmail.getText().toString();
 
-        Utente r = !p.isEmpty() && !e.isEmpty() ? new Utente("","", "","",e,p,null) : null;
+        Utente r = !p.isEmpty() && !e.isEmpty() ? new Utente("","", "","",e,p) : null;
 
         return r;
     }

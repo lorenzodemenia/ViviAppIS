@@ -9,4 +9,123 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <!-- array per l'activity newEvent  -->
+    <!-- non toccare ordine e se aggiungiamo giochi aggiungere anche sotto il minimo e massimo dei giocatori -->
+    <string-array name="new_ev_spinner_item">
+        <item>Palla prigioniera</item>
+        <item>Ruba bandiera</item>
+        <item>Tiro alla fune</item>
+        <item>Corsa coi sacchi</item>
+        <item>Flipper</item>
+        <item>Mosca cieca</item>
+        <item>Nascondino</item>
+        <item>Sardine</item>
+        <item>Uno due tre Stella</item>
+    </string-array>
+
+    <!-- array per l'activity newEvent  -->
+    <!-- non toccare ordine e se aggiungiamo giochi aggiungere anche sotto il minimo e massimo dei giocatori -->
+    <integer-array name="max_for_event">
+        <item>30</item>
+        <item>51</item>
+        <item>40</item>
+        <item>20</item>
+        <item>20</item>
+        <item>15</item>
+        <item>20</item>
+        <item>15</item>
+        <item>20</item>
+
+    </integer-array>
+
+    <!-- array per l'activity newEvent  -->
+    <!-- non toccare ordine e se aggiungiamo giochi aggiungere anche sotto il minimo e massimo dei giocatori -->
+    <integer-array name="min_for_event">
+        <item>10</item>
+        <item>7</item>
+        <item>10</item>
+        <item>3</item>
+        <item>2</item>
+        <item>5</item>
+        <item>3</item>
+        <item>4</item>
+        <item>3</item>
+
+    </integer-array>
+
+    <!-- array per l'activity newEvent  -->
+    <!-- non toccare ordine e se aggiungiamo giochi aggiungere anche sotto il minimo e massimo dei giocatori -->
+    <string-array name="description_event">
+        <item>Il gioco si svolge a squadre. Esse devono essere composte da un minimo di
+            cinque giocatori fino ad un massimo di venti. Per giocare a palla prigioniera è necessaria una palla e
+            un campo da gioco diviso in due, sia esso posto all\'aperto o in una palestra, di misura rettangolare grande
+            pressappoco 15x8 metri. Il campo dovrà essere delimitato sul fondo da una striscia orizzontale che delimiterà
+            l\'aerea dove si collocheranno i prigionieri catturati durante il gioco. Le due squadre prenderanno posto sulle
+            due parti del campo. A questo punto il gioco può cominciare. Colui che è in possesso della palla dovrà cercare
+            di colpire gli avversari nell\'altro campo tramite il lancio della palla. Se la palla prima di colpire l\'avversario
+            tocca terra o viene deviata la presa non è valida, al contrario se il giocatore viene colpito direttamente dovrà correre
+            nell\'area dei prigionieri posta sul fondo del campo degli avversari. Li dovrà aspettare che qualche suo compagno intercetti
+            un tiro fermando la palla al volo liberandolo così dalla sua prigionia. Vince il gioco chi riesce a colpire tutti gli avversari."</item>
+
+        <item>l rubabandiera è un gioco tradizionale che si fa all\’aperto. Si gioca in due squadre con lo stesso
+            numero di giocatori, più un\’ulteriore persona, che assume il ruolo del porta-bandiera.
+            Giocatori: da 7 bambini in su (ma sempre in numero dispari).
+            Come si gioca: si tracciano una linea retta immaginaria al centro del campo da gioco e altre due linee equidistanti e parallele che
+            delimiteranno la casa delle due squadre. I giocatori di una squadra si allineano lungo la linea della propria casa, gli uni di
+            fronte agli altri. Ad ogni giocatore viene assegnato un numero in ordine progressivo partendo da un estremo della fila
+            (il primo giocatore sarà il numero 1, il giocatore di fianco a lui il numero 2 e così via). Il porta-bandiera si dispone ad un estremo
+            della linea di mezzeria e tiene in mano, con il braccio alto e teso in avanti, la bandiera, che può essere un fazzoletto o qualcosa
+            di simile. A questo punto il porta-bandiera chiama ad alta voce un numero qualsiasi. I giocatori delle due squadre corrispondenti al
+            numero chiamato devono correre verso il porta-bandiera per rubare la bandiera e portarla nella propria casa, evitando di essere
+            toccato dall\’avversario. Alla squadra del giocatore che ruba la bandiera e riesce a portarla nella propria casa spetta il punto.
+            Obiettivo: vince la squadra che accumula più punti.</item>
+
+        <item>Il tiro alla fune prevede l\'utilizzo di una fune di lunghezza variabile in base al numero di partecipanti.
+            Le squadre che si sfidano al tiro alla fune devono essere composte da almeno 5 persone, anche se la regola suggerisce un numero di 8 persone
+            per squadra. L\'obbiettivo è riuscire a tirare l\'altra squadra oltre una linea posta a metà tra le due posizioni di partenza.</item>
+
+        <item>Per giocare alla corsa coi sacchi occorre un sacco per ogni partecipante della gara. Tutti i concorrenti
+            si dispongono sulla linea di partenza, con le gambe infilate nel sacco che terranno alzato fino alla vita con le mani. Al \'VIA!\' dovranno
+            correre o saltare come meglio possono fino a raggiungere per primi il traguardo finale! Alternativa divertente: se il luogo dove si svolge
+            l\'attività lo permette si può tracciare un percorso. Vince chi riesce a percorrere per primo due volte il tracciato!</item>
+
+        <item>Flipper è un gioco di abilità e di movimento, per poter giocare serve una palla. Stando in piedi, i giocatori si
+            dispongono in cerchio a gambe divaricate, mettendosi piede contro piede. Chi ha la palla deve cercare di farla passare tra le gambe di un
+            altro giocatore, colpendola con le mani unite. Se un giocatore non riesce a parare il tiro e subisce un gol, deve portare una mano dietro
+            la schiena; al gol successivo dovrà girarsi di spalle e potrà parare con due mani; se ne subisce un altro potrà usare solo una mano; se incassa
+            il quarto gol sarà eliminato. Quando rimarranno gli ultimi due giocatori si dovranno battere dei \'rigori\' secondo modalità e distanze concordate
+            dai giocatori. Vince l\'ultimo giocatore che rimane in gioco.</item>
+
+        <item>Mosca Cieca: per questa attività è necessaria una benda. Tra i partecipanti viene scelta una \'Mosca\'. Il giocatore mosca
+            viene bendato e fatto girare su sè stesso diverse volte per disorientarlo e al via deve riuscire a toccare gli altri, che possono muoversi liberamente
+            intorno senza allontanarsi troppo dal posto originario. Appena la mosca tocca un giocatore, questo prende il suo posto. Alternativa divertente: quando
+            la mosca tocca un giocatore deve anche indovinare chi è quel giocatore. Se sbaglia il gioco ricomincia e il giocatore mosca bendato rimane sempre lo
+            stesso. Tips: un gioco molto simile a mosca cieca è \'Marco Polo\'. Le regole sono le stesse tuttavia quì, se il giocatore bendato si trova in difficoltà,
+            può chiamare: \'Marco\' e tutti gli altri giocatori devono rispondergli: \'Polo\'. Questa variante può essere applicata anche a Mosca Cieca per aiutare
+            la mosca bendata che non riesce a toccare nessuno.</item>
+
+        <item>"Nascondino è forse il più famoso gioco di movimento di gruppo da svolgere all\'aperto. Il gioco deve essere svolto in uno spazio
+            ampio e aperto che offra la possibilità di nascondersi ovvero presenti alberi, cespugli, strutture dietro a cui rifugiarsi. Viene scelto chi sarà il primo
+            giocatore a \'stare sotto\'. Il giocatore che sta sotto dovrà tenere la testa contro un muro od un albero che chiameremo \'Tana\'. Inizia il gioco: chi
+            \'sta sotto\' inizia a contare fino a 60 con gli occhi chiusi, nel frattempo tutti gli altri giocatori si nascondono. Terminata la conta, il giocatore che
+            sta sotto urla: \'Via\', si gira e va a cercare gli altri. Quando trova un giocatore corre alla tana e urla il nome del giocatore, quel giocatore viene eliminato.
+            Il primo giocatore eliminato sarà colui che farà la conta al prossimo turno. Se un giocatore raggiunge la tana prima di essere trovato ed dichiara \'tana\' allora
+            è salvo. L\'ultimo giocatore rimasto in gioco può dichiarare \'tana libera tutti\' liberando così tutti i giocatori precedentemente scoperti ed eliminati.
+            Alternativa divertente: nel momento in cui chi sta sotto trova un giocatore nascosto deve cercare di toccarlo. Se riesce a toccarlo prima che quel giocatore faccia
+            tana e si salvi allora, il giocatore toccato, non verrà eliminato ma dovrà invece cercare anche lui gli altri giocatori ed aiutare chi \'sta sotto\'."</item>
+
+        <item>\'Sardine\' è un nascondino al contrario. Solo un giocatore si nasconde e tutti gli altri, dopo aver contato fino a 60, gli danno la caccia
+            individualmente. Quando un cacciatore trova il nascondiglio si unisce alle prede fino a quando non stanno tutti nascosti e stretti come sardine! Il gioco continua
+            fino a quando l\'ultimo cacciatore trova le sardine. In questo gioco vincono tutti tranne l\'ultimo cacciatore. Egli diventerà colui che si nasconderà per primo nel
+            prossimo turno di gioco."</item>
+
+        <item>1,2,3…STELLA! Per questo gioco molto famoso (il cui nome cambia in base alla regione in cui si gioca) non servono strumenti
+            particolari, solo… cercate di stare fermi! PREPARATIVI: Deve essere scelto un \'capogioco\' tra i giocatori. Il capogioco dovrà appoggiare la testa ad un albero
+            od un muro coprendosi gli occhi. Gli altri partecipanti dovranno posizionarsi tutti dietro una linea orizzontale a 25-35 metri di distanza, alle spalle del capogioco.
+            REGOLE: Il capogioco (con gli occhi chiusi e girato verso il muro) pronuncerà ad alta voce: \'Uno, Due, Tre… Stella!\'. Non appena avrà detto \'stella\' potrà
+            girarsi ed osservare attentamente gli altri giocatori. Se il capogioco, mentre si sta girando o mentre è girato a guardarli, vede qualche giocatore muoversi allora
+            quei giocatori vengono eliminati. OBBIETTIVO: Vince il giocatore (o i giocatori) che per primi riescono ad arrivare a toccare il muro e dire: \'STELLONE!\', prima
+            di essere eliminati.</item>
+    </string-array>
 </resources>

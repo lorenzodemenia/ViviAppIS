@@ -22,7 +22,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class AfterLogin extends AppCompatActivity
 {
     private ActivityMainBinding binding;
-    private Button bHomeNewEvent;
     private BottomNavigationView navView;
 
     /**
@@ -34,40 +33,23 @@ public class AfterLogin extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        navView = findViewById(R.id.nav_view);
+        this.navView = findViewById(R.id.nav_view);
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications,R.id.navigation_profile)
+                R.id.navigation_home, R.id.navigation_dashboard,R.id.navigation_profile)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-        setUpUIViews();
-        addActionListener();
     }
 
+    /**
+     * serve ad evitare che utente passa tornare indientro a un fragment inesistente
+     */
     @Override
     public void onBackPressed() {}
-
-    /**
-     * Questa funzione serve a inizzializzare le variabili dell'activity utili per recuperare i valori di input e mostrare i valori di output
-     */
-    private void setUpUIViews()
-    {
-
-    }
-
-
-    /**
-     * Questa funzione va ad inserire i Listener ai vari componenti nella pagina
-     */
-    private void addActionListener()
-    {
-
-    }
 }

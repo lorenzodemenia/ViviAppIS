@@ -1,7 +1,6 @@
 package com.example.viviappis.data.model.recicleView;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,31 +12,46 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Utente;
-import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+/**
+ * Questa classe serve a gestire lo scorrimento della ranklist
+ * @author jacopo
+ * @version 1.0
+ */
 public class ScorrimentoRanklist extends RecyclerView.Adapter<ScorrimentoRanklist.MyViewHolder>
 {
     private Context context;
-    private List<Utente> part;
+    private List<Utente> utn;
     private String prop;
 
+    /**
+     * crea un oggetto di tipo ScorrimentoRanklist
+     * @param context contex del oggetto
+     * @param prop email dell'utente attualmente loggato
+     */
     public ScorrimentoRanklist(Context context, String prop)
     {
         this.context=context;
-        part = new ArrayList<>();
+        utn = new ArrayList<>();
         this.prop = prop;
     }
 
 
-    public void addPart(Utente e){part.add(e);}
+    /**
+     * aggiunge un utente alla lista degli utenti
+     * @param e utente da aggiungere
+     */
+    public void addUtn(Utente e){utn.add(e);}
 
+    /**
+     * ordina la lista degli utenti in base al loro punteggi
+     */
     public void sort()
     {
-        part.sort((t,  t1)->
+        utn.sort((t, t1)->
         {
             long i = t.getScore();
             long ii = t1.getScore();
@@ -46,7 +60,12 @@ public class ScorrimentoRanklist extends RecyclerView.Adapter<ScorrimentoRanklis
         });
     }
 
-
+    /**
+     * funzione chiamata quando viene creata la view del holder
+     * @param parent gruppo di parentela
+     * @param viewType tipo di view
+     * @return ritorna l'holder creato
+     */
     @NonNull
     @Override
     public ScorrimentoRanklist.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -55,12 +74,16 @@ public class ScorrimentoRanklist extends RecyclerView.Adapter<ScorrimentoRanklis
         return new ScorrimentoRanklist.MyViewHolder(view);
     }
 
-
+    /**
+     * modifica i valori del singolo holger quando viene visualizzato
+     * @param holder holder dove inserire evento
+     * @param position posizione dell'evento nell'array degli eventi
+     */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
         //posizione delle righe nella dash
-        if (part.get(position).getEmail().equals(prop))
+        if (utn.get(position).getEmail().equals(prop))
         {
             holder.c.setCardBackgroundColor(context.getColor(R.color.giallocra));
             holder.nomeUtente.setText("Tu");
@@ -68,23 +91,36 @@ public class ScorrimentoRanklist extends RecyclerView.Adapter<ScorrimentoRanklis
         else
         {
             holder.c.setCardBackgroundColor(0);
-            holder.nomeUtente.setText(part.get(position).getUsername());
+            holder.nomeUtente.setText(utn.get(position).getUsername());
         }
 
-        holder.userScore.setText(part.get(position).getScore()+"");
+        holder.userScore.setText(utn.get(position).getScore()+"");
         holder.pos.setText((position+1)+"");
 
     }
 
+    /**
+     * ritorna il numero massimo di elementi nell array degli utenti
+     * @return ritorna la dimensione dell'array degli utenti
+     */
     @Override
-    public int getItemCount() {return part.size();}
+    public int getItemCount() {return utn.size();}
 
+    /**
+     * Questa classe serve a gestire un singolo holder per la dashbord
+     * @author jacopo
+     * @version 1.0
+     */
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
         //prende la vista del file layout
         TextView nomeUtente ,userScore, pos;
         CardView c;
 
+        /**
+         * crea un oggetto di tipo MyViewHolder
+         * @param itemView view che rappresenta oggetto
+         */
         public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);
