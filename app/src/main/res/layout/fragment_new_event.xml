@@ -197,8 +197,8 @@
 
         <Switch
             android:id="@+id/newEvPublic"
-            android:layout_width="142dp"
-            android:layout_height="51dp"
+            android:layout_width="110dp"
+            android:layout_height="62dp"
 
             android:checked="true"
             android:showText="false"
