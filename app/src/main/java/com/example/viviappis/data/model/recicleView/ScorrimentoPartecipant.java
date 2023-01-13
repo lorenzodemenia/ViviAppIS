@@ -1,4 +1,4 @@
-package com.example.viviappis.data.model;
+package com.example.viviappis.data.model.recicleView;
 
 import android.content.Context;
 import android.view.LayoutInflater;

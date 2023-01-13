@@ -17,8 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.control.loginAndRegister.LoginActivity;
-import com.example.viviappis.data.model.ScorrimentoRanklist;
+import com.example.viviappis.data.model.recicleView.ScorrimentoPartecipant;
 import com.example.viviappis.data.model.Utente;
+import com.example.viviappis.data.model.recicleView.ScorrimentoRanklist;
 import com.example.viviappis.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -26,7 +27,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 
 public class ProfileFragment extends Fragment {
@@ -96,14 +96,31 @@ public class ProfileFragment extends Fragment {
     public void createDashRanklist(List<DocumentSnapshot> l)
     {
         ScorrimentoRanklist adapter = new ScorrimentoRanklist(this.getContext());
+        l.sort((a, b)->
+        {
+            return a.getLong("score").compareTo(b.getLong("score"));
+        });
+
 
         for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
         {
-            //adapter.addPart(new Utente(i.getData()));
-        //aggiungere ascoltatore on clik per mandare nella pagina dell'evento
+            db.collection(getResources().getString(R.string.db_rac_users)).document(i.getId()).get().addOnCompleteListener((task)->
+            {
+                System.out.println(i.getId()+" "+task);
+                adapter.addPart(new Utente(task.getResult().getData()));
+                if(i.equals(l.get(l.size()-1)))
+                {
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+                }
+            });
         }
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        if(l.size()==0)
+        {
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        }
     }
 
     public void onClickLogout (){

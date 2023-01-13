@@ -1,4 +1,4 @@
-package com.example.viviappis.data.model;
+package com.example.viviappis.data.model.recicleView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,12 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
+import com.example.viviappis.data.model.Evento;
 import com.example.viviappis.ui.event.EventPageFragment;
-import com.example.viviappis.ui.event.NewEventFragment;
 
 import java.util.ArrayList;
 import java.util.List;

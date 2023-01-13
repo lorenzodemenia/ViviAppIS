@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
-import com.example.viviappis.data.model.ScorrimentoDashboard;
+import com.example.viviappis.data.model.recicleView.ScorrimentoDashboard;
 import com.example.viviappis.databinding.FragmentDashboardBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;

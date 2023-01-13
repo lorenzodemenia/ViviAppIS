@@ -1,6 +1,7 @@
 package com.example.viviappis.ui.event;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,16 +11,18 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.InputType;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.viviappis.R;
 import com.example.viviappis.data.model.Evento;
-import com.example.viviappis.data.model.ScorrimentoPartecipant;
+import com.example.viviappis.data.model.recicleView.ScorrimentoPartecipant;
 import com.example.viviappis.databinding.FragmentEventPageBinding;
 import com.example.viviappis.ui.home.HomeFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +48,7 @@ public class EventPageFragment extends Fragment
     private FirebaseFirestore db;
     private ConstraintLayout pAdmin, pUsers;
     private static AlertDialog b = null;
+    private String psw="";
 
 
     @Override
@@ -162,15 +166,48 @@ public class EventPageFragment extends Fragment
             bIscr.setText(getResources().getString(R.string.page_event_isc));
             r = (v)->
             {
-                e.addPartecipants(au.getCurrentUser().getEmail());
-                dbGetCollEvents().document(id).update("partecipants", e.getPartecipants());
-                bIscr.setOnClickListener(getOnClickListenerIscr(false));
-                createDash(e.getPartecipants());
+                if(e.isPublic()) iscr();
+                else             cntrPsw();
             };
         }
 
 
         return r;
+    }
+
+    private void iscr()
+    {
+        e.addPartecipants(au.getCurrentUser().getEmail());
+        dbGetCollEvents().document(id).update("partecipants", e.getPartecipants());
+        bIscr.setOnClickListener(getOnClickListenerIscr(false));
+        createDash(e.getPartecipants());
+    }
+
+    private void cntrPsw()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+        builder.setTitle("Password evento");
+
+        EditText input = new EditText(this.getContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        builder.setView(input);
+
+        builder.setPositiveButton("OK", (dialog, which)->
+        {
+            psw = input.getText().toString();
+            boolean r =  psw.equals(e.getPassword());
+
+            if (!r)
+            {
+                new AlertDialog.Builder(getContext())
+                    .setTitle("Password sbagliata")
+                    .setMessage("La password inserita è dicersa da quella dell'evento").show();
+            }
+            else iscr();
+        });
+        builder.setNegativeButton("Cancel", (dialog, which)-> {dialog.cancel();});
+
+        builder.show();
     }
 
     /**
@@ -186,8 +223,8 @@ public class EventPageFragment extends Fragment
         {
            dbGetCollUsers().document(i).get().addOnCompleteListener((task)->
             {
-                adapter.addPart(task.getResult().get("username").toString());
-                if(i.equals(l.get(l.size()-1)))
+                adapter.addPart(task.getResult().getString("username"));
+                if(l.size()>0 &&i.equals(l.get(l.size()-1)))
                 {
                     outPart.setAdapter(adapter);
                     outPart.setLayoutManager(new LinearLayoutManager(this.getContext()));

@@ -1,6 +1,5 @@
 package com.example.viviappis.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.viviappis.R;
-import com.example.viviappis.control.loginAndRegister.LoginActivity;
 import com.example.viviappis.data.model.Evento;
-import com.example.viviappis.data.model.ScorrimentoDashboard;
-import com.example.viviappis.databinding.FragmentEventPageBinding;
+import com.example.viviappis.data.model.recicleView.ScorrimentoDashboard;
 import com.example.viviappis.databinding.FragmentHomeBinding;
-import com.example.viviappis.ui.event.EventPageFragment;
 import com.example.viviappis.ui.event.NewEventFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
