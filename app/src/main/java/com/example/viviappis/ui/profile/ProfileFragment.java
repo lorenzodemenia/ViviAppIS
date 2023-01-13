@@ -2,6 +2,7 @@ package com.example.viviappis.ui.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -58,7 +65,6 @@ public class ProfileFragment extends Fragment {
 
             user = new Utente(filterListByID(t.getResult().getDocuments(),au.getCurrentUser().getEmail()));
 
-
             textName.setText(user.getName());
             textSurname.setText(user.getSurname());
             textDate.setText(user.getBirth());
@@ -86,8 +92,8 @@ public class ProfileFragment extends Fragment {
         textEmail = binding.textEmail;
 
         recyclerView = binding.ProfileRecyclerView;
-
     }
+
 
     /**
      * crea la dash bord del fragmant per la visualizzazione degli eventi
@@ -95,32 +101,13 @@ public class ProfileFragment extends Fragment {
      */
     public void createDashRanklist(List<DocumentSnapshot> l)
     {
-        ScorrimentoRanklist adapter = new ScorrimentoRanklist(this.getContext());
-        l.sort((a, b)->
-        {
-            return a.getLong("score").compareTo(b.getLong("score"));
-        });
+        ScorrimentoRanklist adapter = new ScorrimentoRanklist(this.getContext(), au.getCurrentUser().getEmail());
 
+        for (DocumentSnapshot i : l)adapter.addPart(new Utente(i.getData()));
 
-        for (DocumentSnapshot i : l)//creare i vari contenitori per gli eventi ==> aspetto frontend
-        {
-            db.collection(getResources().getString(R.string.db_rac_users)).document(i.getId()).get().addOnCompleteListener((task)->
-            {
-                System.out.println(i.getId()+" "+task);
-                adapter.addPart(new Utente(task.getResult().getData()));
-                if(i.equals(l.get(l.size()-1)))
-                {
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-                }
-            });
-        }
-
-        if(l.size()==0)
-        {
-            recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        }
+        adapter.sort();
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
     public void onClickLogout (){

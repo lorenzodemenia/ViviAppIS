@@ -6,6 +6,7 @@
     android:layout_height="105dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardRanklist"
         android:layout_width="318dp"
         android:layout_height="55dp"
         android:layout_marginStart="60dp"
