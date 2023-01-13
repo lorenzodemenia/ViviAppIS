@@ -1,7 +1,11 @@
 package com.example.viviappis;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity
         {
             startActivity(new Intent(this, AfterLogin.class));
         }
+
+
     }
 }
 
