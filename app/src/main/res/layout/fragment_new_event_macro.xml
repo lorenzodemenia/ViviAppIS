@@ -13,75 +13,128 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/view7"
+            android:layout_width="369dp"
+            android:layout_height="40dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/radius_yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.307"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/view10"
+            android:layout_width="369dp"
+            android:layout_height="40dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/radius_yellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.307"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view7"
+            tools:ignore="MissingConstraints" />
+
         <TextView
             android:id="@+id/newEventMacroPub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="152dp"
             android:text="publico"
             app:layout_constraintEnd_toStartOf="@+id/newEventMacroMin"
-            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintHorizontal_bias="0.69"
             app:layout_constraintStart_toEndOf="@+id/newEventMacroType"
             app:layout_constraintTop_toBottomOf="@+id/newEventMacroMax" />
 
         <TextView
             android:id="@+id/newEventMacroMin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
-            android:layout_marginEnd="36dp"
+            android:layout_width="70dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/radius_blurred_white_text"
+            android:gravity="center"
             android:text="min"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newEventMacroMax" />
+            app:layout_constraintBottom_toBottomOf="@+id/view10"
+            app:layout_constraintEnd_toStartOf="@+id/newEventMacroMax"
+            app:layout_constraintHorizontal_bias="0.923"
+            app:layout_constraintStart_toEndOf="@+id/newEventMacroHour"
+            app:layout_constraintTop_toTopOf="@+id/view10"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/newEventMacroNm"
-            android:layout_width="125dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="60dp"
+            android:layout_width="338dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/radius_blurred_white_text"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
             android:text="nome"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/view7"
+            app:layout_constraintStart_toStartOf="@+id/view7"
+            app:layout_constraintTop_toTopOf="@+id/view7"
+            app:layout_constraintVertical_bias="0.714" />
 
         <TextView
             android:id="@+id/newEventMacroDate"
-            android:layout_width="123dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="116dp"
+            android:layout_width="108dp"
+            android:layout_height="24dp"
+
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+
+
+            android:background="@drawable/radius_blurred_white_text"
+            android:gravity="center"
             android:text="data"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/view10"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="@+id/view10" />
 
         <TextView
             android:id="@+id/newEventMacroDesc"
             android:layout_width="184dp"
             android:layout_height="124dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="76dp"
+            android:scrollbars="vertical"
             android:text="descrizione"
-            android:scrollbars = "vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newEventMacroNm" />
 
         <TextView
             android:id="@+id/newEventMacroMax"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="80dp"
+
+            android:layout_width="70dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/radius_blurred_white_text"
+            android:gravity="center"
             android:text="max"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/newEventMacroDesc"
-            app:layout_constraintTop_toBottomOf="@+id/newEventMacroDate" />
+            app:layout_constraintBottom_toBottomOf="@+id/view10"
+            app:layout_constraintEnd_toEndOf="@+id/view10"
+            app:layout_constraintTop_toTopOf="@+id/view10" />
 
         <TextView
             android:id="@+id/newEventMacroLuogo"
             android:layout_width="107dp"
             android:layout_height="22dp"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="104dp"
             android:layout_marginEnd="36dp"
             android:text="Luogo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -134,16 +187,31 @@
         <TextView
             android:id="@+id/newEventMacroHour"
             android:layout_width="70dp"
-            android:layout_height="23dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="64dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/radius_blurred_white_text"
+            android:gravity="center"
             android:text="ora"
-            app:layout_constraintBottom_toTopOf="@+id/newEventMacroMax"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.346"
+            app:layout_constraintBottom_toBottomOf="@+id/view10"
             app:layout_constraintStart_toEndOf="@+id/newEventMacroDate"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view10"
             app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
