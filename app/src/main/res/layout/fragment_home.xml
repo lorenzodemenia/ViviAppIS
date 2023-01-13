@@ -76,7 +76,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/homeViewEventsIscr"
-            android:layout_width="301dp"
+            android:layout_width="294dp"
             android:layout_height="196dp"
             android:layout_marginStart="3dp"
             android:layout_marginEnd="18dp"
@@ -89,8 +89,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/homeViewEventsProp"
-            android:layout_width="301dp"
-            android:layout_height="196dp"
+            android:layout_width="294dp"
+            android:layout_height="188dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="18dp"
