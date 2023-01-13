@@ -65,7 +65,11 @@ public class ScorrimentoRanklist extends RecyclerView.Adapter<ScorrimentoRanklis
             holder.c.setCardBackgroundColor(context.getColor(R.color.giallocra));
             holder.nomeUtente.setText("Tu");
         }
-        else   holder.nomeUtente.setText(part.get(position).getUsername());
+        else
+        {
+            holder.c.setCardBackgroundColor(0);
+            holder.nomeUtente.setText(part.get(position).getUsername());
+        }
 
         holder.userScore.setText(part.get(position).getScore()+"");
         holder.pos.setText((position+1)+"");
