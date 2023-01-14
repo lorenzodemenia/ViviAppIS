@@ -218,23 +218,4 @@ public class MacroD extends Evento {
         return mdeMap;
     }
 
-
-    /*
-     * Set all event fields' values with map param's values
-     * @param map
-
-    public void setValuesFromMap(Map<String, Object> map){
-        this.setDescription((String) map.get("description"));
-        this.setDate((String) map.get("date"));
-        this.setPublic((Boolean) map.get("public"));
-        this.setPassword((String) map.get("password"));
-        this.setCreator((String) map.get("creator"));
-        this.setMaxPart((Integer) map.get("maxPart"));
-        this.setMinPart((Integer) map.get("minPart"));
-        this.setPartecipants((List<String>) map.get("partecipants"));
-        this.setSquadra1((Pair<String, Collection<Utente>>) map.get("team 1"));
-        this.setSquadra2((Pair<String, Collection<Utente>>) map.get("team 2"));
-        this.setWinners((Pair<String, Collection<Utente>>) map.get("winners"));
-        this.setRanklist((Map<Utente, Integer>) map.get("ranklist"));
-    }*/
 }
