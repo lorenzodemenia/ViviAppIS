@@ -7,15 +7,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardRanklist"
-        android:layout_width="283dp"
+        android:layout_width="wrap_content"
         android:layout_height="41dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="30dp"
         android:elevation="8dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
