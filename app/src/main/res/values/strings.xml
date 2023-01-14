@@ -79,7 +79,14 @@
     <string name="allert_text_wrong_psw">La password inserita è dicersa da quella dell\'evento</string>
     <string name="allert_title_show_inp_psw">Password evento</string>
 
-
+    <!-- stringhe evento in esecuzione-->
+    <string name="ev_in_exec_round">Round</string>
+    <string name="ev_in_exec_team1">Squadra 1</string>
+    <string name="ev_in_exec_team2">Squadra 2</string>
+    <string name="ev_in_exec_endgame">Termina Evento</string>
+    <string name="ev_in_exec_replay">Rigioca</string>
+    <string name="ev_in_exec_team1_wins">Vince Squadra 1</string>
+    <string name="ev_in_exec_team2_wins">Vince Squadra 2</string>
 
     <!--Privacy-->
     <string name="privacy">Ho letto ed accettato le privacy policy </string>
