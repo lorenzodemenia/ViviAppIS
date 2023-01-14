@@ -18,13 +18,12 @@
             android:layout_width="349dp"
             android:layout_height="40dp"
 
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="68dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/radius_yellow"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.369"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/view10"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
@@ -49,13 +48,12 @@
             android:layout_width="350dp"
             android:layout_height="80dp"
 
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/radius_yellow"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.36"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/view14"
             app:layout_constraintTop_toBottomOf="@+id/view7"
             tools:ignore="MissingConstraints" />
 
@@ -65,12 +63,12 @@
             android:layout_height="342dp"
 
             android:layout_marginStart="24dp"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="108dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/radius_yellow"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.325"
+            app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view7"
             tools:ignore="MissingConstraints" />
@@ -80,9 +78,10 @@
             android:layout_width="107dp"
             android:layout_height="22dp"
             android:layout_marginTop="4dp"
-            android:background="@color/blurred_white"
-            android:text="publico"
+            android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
+            android:text="publico"
+            android:textSize="17dp"
             app:layout_constraintEnd_toEndOf="@+id/view14"
             app:layout_constraintHorizontal_bias="0.052"
             app:layout_constraintStart_toEndOf="@+id/textTypeTitle"
@@ -97,6 +96,8 @@
             android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
             android:text="min"
+            android:textSize="17dp"
+
             app:layout_constraintBottom_toBottomOf="@+id/view10"
             app:layout_constraintEnd_toStartOf="@+id/newEventMacroMax"
             app:layout_constraintHorizontal_bias="0.714"
@@ -112,9 +113,11 @@
             android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
             android:text="Min"
+            android:textSize="17dp"
+
             app:layout_constraintBottom_toTopOf="@+id/newEventMacroMin"
             app:layout_constraintEnd_toStartOf="@+id/newEventMacroMax"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toEndOf="@+id/newEventMacroHour"
             app:layout_constraintTop_toTopOf="@+id/view10"
             app:layout_constraintVertical_bias="0.0" />
@@ -130,6 +133,8 @@
             android:backgroundTint="@color/white"
             android:gravity="center"
             android:text="nome"
+            android:textSize="17dp"
+
             app:layout_constraintBottom_toBottomOf="@+id/view7"
             app:layout_constraintStart_toStartOf="@+id/view7"
             app:layout_constraintTop_toTopOf="@+id/view7"
@@ -145,6 +150,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
 
+            android:textSize="17dp"
 
             android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
@@ -159,10 +165,11 @@
             android:layout_width="321dp"
             android:layout_height="163dp"
             android:layout_marginBottom="12dp"
-            android:background="@color/blurred_white"
+            android:background="@drawable/radius_blurred_white_text"
             android:gravity="fill_horizontal"
             android:scrollbars="vertical"
             android:text="Descrizione"
+            android:textSize="17dp"
             app:layout_constraintBottom_toBottomOf="@+id/view14"
             app:layout_constraintEnd_toEndOf="@+id/view14"
             app:layout_constraintHorizontal_bias="0.625"
@@ -179,6 +186,8 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
+            android:textSize="17dp"
+
             android:text="max"
             app:layout_constraintBottom_toBottomOf="@+id/view10"
             app:layout_constraintEnd_toEndOf="@+id/view10"
@@ -191,12 +200,13 @@
             android:layout_width="70dp"
             android:layout_height="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
             android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
+            android:textSize="17dp"
+
             android:text="Max"
             app:layout_constraintBottom_toTopOf="@+id/newEventMacroMax"
-            app:layout_constraintEnd_toEndOf="@+id/view10"
+            app:layout_constraintEnd_toEndOf="@+id/newEventMacroMax"
             app:layout_constraintTop_toTopOf="@+id/view10"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -206,7 +216,9 @@
             android:layout_height="27dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
-            android:background="@color/blurred_white"
+            android:textSize="17dp"
+
+            android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
             android:text="luogo"
             app:layout_constraintEnd_toEndOf="@+id/view14"
@@ -220,9 +232,11 @@
             android:layout_height="22dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="2dp"
-            android:background="@color/blurred_white"
+            android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
             android:text="Luogo :"
+            android:textSize="17dp"
+
             app:layout_constraintBottom_toTopOf="@+id/newEventMacroLuogo"
             app:layout_constraintStart_toStartOf="@+id/newEventMacroLuogo"
             app:layout_constraintTop_toTopOf="@+id/view14"
@@ -234,9 +248,11 @@
             android:layout_height="24dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="22dp"
-            android:background="@color/blurred_white"
+            android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
             android:text="type"
+            android:textSize="17dp"
+
             app:layout_constraintBottom_toBottomOf="@+id/view15"
             app:layout_constraintEnd_toEndOf="@+id/view15"
             app:layout_constraintHorizontal_bias="1.0"
@@ -248,25 +264,26 @@
             android:layout_width="107dp"
             android:layout_height="22dp"
             android:layout_marginTop="4dp"
-            android:background="@color/blurred_white"
+            android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
             android:text="Tipo :"
+            android:textSize="17dp"
+
             app:layout_constraintEnd_toEndOf="@+id/view14"
-            app:layout_constraintHorizontal_bias="0.106"
-            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/newEventMacroDesc"
             app:layout_constraintTop_toBottomOf="@+id/newEventMacroPsw" />
 
         <Button
             android:id="@+id/newEventMacroConf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="92dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="32dp"
             android:text="Conferma"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.289"
+            app:layout_constraintEnd_toEndOf="@+id/view14"
             app:layout_constraintStart_toEndOf="@+id/newEventMacroMod"
             app:layout_constraintTop_toBottomOf="@+id/view14"
             app:layout_constraintVertical_bias="1.0" />
@@ -275,9 +292,9 @@
             android:id="@+id/newEventMacroMod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="92dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="32dp"
             android:text="Modifica"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -291,12 +308,14 @@
             android:layout_height="27dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/blurred_white"
+            android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
             android:text="psw"
+            android:textSize="17dp"
+
             app:layout_constraintEnd_toEndOf="@+id/view14"
-            app:layout_constraintHorizontal_bias="0.714"
-            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textTypeTitle"
             app:layout_constraintTop_toBottomOf="@+id/newEventMacroLuogo" />
 
         <TextView
@@ -305,9 +324,10 @@
             android:layout_height="22dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="2dp"
-            android:background="@color/blurred_white"
+            android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
             android:text="Password :"
+            android:textSize="17dp"
             app:layout_constraintBottom_toTopOf="@+id/newEventMacroPsw"
             app:layout_constraintStart_toStartOf="@+id/newEventMacroPsw"
             app:layout_constraintTop_toBottomOf="@+id/newEventMacroLuogo"
@@ -322,6 +342,8 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
+            android:textSize="17dp"
+
             android:text="ora"
             app:layout_constraintBottom_toBottomOf="@+id/view10"
             app:layout_constraintStart_toEndOf="@+id/newEventMacroDate"
@@ -336,9 +358,11 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/radius_blurred_white_text"
             android:gravity="center"
+            android:textSize="17dp"
+
             android:text="Ora"
             app:layout_constraintBottom_toTopOf="@+id/newEventMacroHour"
-            app:layout_constraintStart_toEndOf="@+id/newEventMacroDate"
+            app:layout_constraintStart_toEndOf="@+id/textDateTitle"
             app:layout_constraintTop_toTopOf="@+id/view10"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -360,11 +384,9 @@
             android:id="@+id/textDateTitle"
             android:layout_width="108dp"
             android:layout_height="24dp"
-
-            android:layout_marginStart="4dp"
+            android:textSize="17dp"
 
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="3dp"
 
 
             android:layout_marginBottom="8dp"
@@ -372,9 +394,7 @@
             android:gravity="center"
             android:text="Data"
             app:layout_constraintBottom_toTopOf="@+id/newEventMacroDate"
-            app:layout_constraintEnd_toStartOf="@+id/textOraTitle"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/view10"
+            app:layout_constraintStart_toStartOf="@+id/newEventMacroDate"
             app:layout_constraintTop_toTopOf="@+id/view10"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
