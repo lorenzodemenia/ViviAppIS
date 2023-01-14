@@ -27,30 +27,48 @@
         android:id="@+id/view"
         android:layout_width="353dp"
         android:layout_height="267dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/radius_yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/view11"
+        android:id="@+id/view17"
         android:layout_width="353dp"
         android:layout_height="322dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/radius_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/view11"
+        android:layout_width="323dp"
+        android:layout_height="260dp"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/radius_blurred_white"
+        app:layout_constraintBottom_toBottomOf="@+id/view17"
+        app:layout_constraintEnd_toEndOf="@+id/view17"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/view17"
+        app:layout_constraintTop_toBottomOf="@+id/RanklistTitle"
+        app:layout_constraintVertical_bias="0.823" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="132dp"
         android:layout_height="117dp"
         android:layout_marginEnd="24dp"
+        android:background="@drawable/radius_blurred_white_text"
         android:src="@drawable/ic_baseline_person_outline_24"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
@@ -153,30 +171,30 @@
         android:id="@+id/RanklistTitle"
         android:layout_width="222dp"
         android:layout_height="28dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginEnd="40dp"
         android:gravity="center"
         android:text="Ranklist"
         android:textColor="@color/black"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/view11"
-        app:layout_constraintStart_toStartOf="@+id/view11"
-        app:layout_constraintTop_toTopOf="@+id/view11" />
+        app:layout_constraintEnd_toEndOf="@+id/view17"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/view17"
+        app:layout_constraintTop_toTopOf="@+id/view17" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ProfileRecyclerView"
-        android:layout_width="318dp"
-        android:layout_height="250dp"
-        android:background="@drawable/radius_blurred_white_text"
+        android:layout_width="300dp"
+        android:layout_height="230dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/view11"
         app:layout_constraintEnd_toEndOf="@+id/view11"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="@+id/view11"
-        app:layout_constraintTop_toTopOf="@+id/view11"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="@+id/view11">
 
     </androidx.recyclerview.widget.RecyclerView>
 
