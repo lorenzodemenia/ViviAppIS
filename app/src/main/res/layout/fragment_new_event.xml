@@ -63,7 +63,7 @@
             android:layout_width="339dp"
             android:layout_height="290dp"
 
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/radius_yellow"
             app:layout_constraintEnd_toEndOf="@+id/newEvPsw"
             app:layout_constraintHorizontal_bias="0.0"
@@ -234,9 +234,10 @@
             android:textColorHint="@color/hint_black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/view8"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/view8"
             app:layout_constraintTop_toBottomOf="@+id/view8"
-            app:layout_constraintVertical_bias="0.001" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/newEvDesc"
