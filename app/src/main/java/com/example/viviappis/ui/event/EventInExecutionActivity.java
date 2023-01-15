@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 public class EventInExecutionActivity extends AppCompatActivity {
 
@@ -65,6 +66,29 @@ public class EventInExecutionActivity extends AppCompatActivity {
     List<String> team1 = new ArrayList<>();
     List<String> team2 = new ArrayList<>();
     String[] part;
+
+    private String[] months;
+    private Spinner choosePlayer;
+    private int nRound = 1;
+    TextView round;
+    private TextView testoPrimo;
+    private TextView testoSecondo;
+    private TextView testoTerzo;
+    private TextView contienePrimo;
+    private TextView contieneSecondo;
+    private TextView contieneTerzo;
+    TextView staSotto;
+    TextView scegli;
+    List<String> partecipanti = new ArrayList<>();
+    List<String> utentiPrimo = new ArrayList<>();
+    List<String> utentiSecondo = new ArrayList<>();
+    List<String> utentiTerzo = new ArrayList<>();
+    Map<String, Integer> tempPointsPlayer = new HashMap<>();
+    private Button resetButton;
+    private Button fineEventoButton;
+    Spinner primo;
+    Spinner secondo;
+    Spinner terzo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -121,9 +145,127 @@ public class EventInExecutionActivity extends AppCompatActivity {
         }else{
             eventTypeString = "single";
             setContentView(R.layout.activity_event_in_execution_single_game);
+            resetButton = (Button) findViewById(R.id.button_reset);
+            fineEventoButton = (Button) findViewById(R.id.button_fine_evento);
+            staSotto = (TextView) findViewById(R.id.textViewStaSotto);
+            scegli = (TextView) findViewById(R.id.textViewScegli);
+            testoPrimo = (TextView) findViewById(R.id.textViewTestPrimo);
+            testoSecondo = (TextView) findViewById(R.id.textViewTestSecondo);
+            testoTerzo = (TextView) findViewById(R.id.textViewTestTerzo);
+            contienePrimo = (TextView) findViewById(R.id.textViewPrimo);
+            contieneSecondo = (TextView) findViewById(R.id.textViewSecondo);
+            contieneTerzo = (TextView) findViewById(R.id.textViewTerzo);
+
+            round = (TextView) findViewById(R.id.round);
+            primo = (Spinner) findViewById(R.id.primoSpinner);
+            secondo = (Spinner) findViewById(R.id.secondoSpinner);
+            terzo = (Spinner) findViewById(R.id.terzoSpinner);
+
+            round.setText(getResources().getString(R.string.ev_in_exec_round) + " " + Integer.toString(nRound));
+            addPartecipantsToMap2();
+            createPartString2();
+            populateChoosePlayer(primo, utentiPrimo, contienePrimo);
+            populateChoosePlayer(secondo, utentiSecondo, contieneSecondo);
+            populateChoosePlayer(terzo, utentiTerzo, contieneTerzo);
+            partecipanti = e.getPartecipants();
+            chooseRandom();
+            addActionListenerTeam2();
         }
     }
+    private void populateChoosePlayer(Spinner choosePlayer, List<String> utenti, TextView seePlayers) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, part);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        choosePlayer.setAdapter(adapter);
 
+        choosePlayer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                if(e.getPartecipants().contains(item)){
+                    if(utenti.size()<1) {
+                        utenti.add(item);
+                        printListPlayer2(seePlayers, utenti);
+                    } else {
+                        utenti.remove(0);
+                        utenti.add(item);
+                        printListPlayer2(seePlayers, utenti);
+                    }
+                }
+
+            }
+
+            private void setText(){
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+    }
+    private void chooseRandom() {
+        int randomNum = new Random().nextInt(partecipanti.size()-1 + 1);
+        printListPlayer2(scegli, partecipanti, randomNum);
+    }
+    private void addActionListenerTeam2(){
+        fineEventoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(String s: e.getPartecipants()){
+                    DocumentReference docRef = db.collection("users").document(s);
+                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.isSuccessful()){
+                                DocumentSnapshot doc = task.getResult();
+                                Utente u = new Utente(Objects.requireNonNull(doc.getData()));
+                                docRef.update("score", u.getScore() + tempPointsPlayer.get(s));
+                            }
+                        }
+                    });
+                }
+                startActivity(new Intent(EventInExecutionActivity.this, AfterLogin.class));
+            }
+        });
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseRandom();
+                for(String s : partecipanti)
+                    tempPointsPlayer.computeIfPresent(s, (k,v) -> v +10);
+                tempPointsPlayer.computeIfPresent(utentiPrimo.get(0), (k,v) -> v +10);
+                tempPointsPlayer.computeIfPresent(utentiSecondo.get(0), (k,v) -> v +5);
+                tempPointsPlayer.computeIfPresent(utentiTerzo.get(0), (k,v) -> v +3);
+                nRound++;
+                round.setText(getResources().getString(R.string.ev_in_exec_round) + " " + Integer.toString(nRound));
+            }
+        });
+    }
+    private void printListPlayer2(TextView seePlayers, List<String> utenti, int n){
+        String players;
+        players = utenti.get(n);
+        seePlayers.setText(players);
+    }
+
+    private void createPartString2(){
+        List<String> tmp = new ArrayList<>();
+        tmp.addAll(e.getPartecipants());
+        part = tmp.toArray(new String[0]);
+    }
+    private void printListPlayer2(TextView seePlayers, List<String> utenti){
+        String players = "";
+        for(String s: utenti){
+            players += "\n" + s + " " + tempPointsPlayer.get(s).toString();
+        }
+        seePlayers.setText(players);
+    }
+    private void addPartecipantsToMap2(){
+        for(String s: e.getPartecipants()){
+            tempPointsPlayer.put(s, 0);
+        }
+    }
     private void createPartString(){
         List<String> tmp = new ArrayList<>();
         tmp.add("Aggiungi Giocatore");
