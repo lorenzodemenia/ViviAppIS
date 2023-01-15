@@ -79,7 +79,7 @@ public class NewEventMacroFragment extends Fragment
         ds.setMovementMethod(new ScrollingMovementMethod());
         data.setText(e.getDate());
         type.setText(t);
-        pub.setText(e.isPublic() ? "Publico" : "Privato");
+        pub.setText(e.isPublic() ? "Pubblico" : "Privato");
         type.setText(t);
         e.setMinPart(minMax.get(t).getX());
         e.setMaxPart(minMax.get(t).getY());

@@ -74,9 +74,9 @@
     <string name="allert_title_del_event">Eliminazione evento</string>
     <string name="allert_text_del_event">Evento è stato cancellato con successo</string>
     <string name="allert_title_show_event_err">Errore Evento</string>
-    <string name="allert_text_show_event_err">La pagina non e stata caricata correttamente, l\'evento potrebbe essere stato cancellato o ci potrebbero essere altri problemi ricarcia la pagina</string>
+    <string name="allert_text_show_event_err">La pagina non è stata caricata correttamente, l\'evento potrebbe essere stato cancellato o ci potrebbero essere altri problemi ricarica la pagina</string>
     <string name="allert_title_wrong_psw">Password sbagliata</string>
-    <string name="allert_text_wrong_psw">La password inserita è dicersa da quella dell\'evento</string>
+    <string name="allert_text_wrong_psw">La password inserita è diversa da quella dell\'evento</string>
     <string name="allert_title_show_inp_psw">Password evento</string>
 
     <!-- stringhe evento in esecuzione-->

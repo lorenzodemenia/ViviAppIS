@@ -162,12 +162,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/pageEventPart"
             android:layout_width="340dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="4dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="-30dp"
             app:layout_constraintBottom_toBottomOf="@+id/viewpartecipants"
             app:layout_constraintEnd_toEndOf="@+id/viewpartecipants"
             app:layout_constraintHorizontal_bias="0.461"
-            app:layout_constraintStart_toStartOf="@+id/viewpartecipants">
+            app:layout_constraintStart_toStartOf="@+id/viewpartecipants"
+            app:layout_constraintTop_toTopOf="@+id/viewpartecipants">
 
         </androidx.recyclerview.widget.RecyclerView>
 
