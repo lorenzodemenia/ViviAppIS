@@ -286,10 +286,14 @@ public class EventInExecutionActivity extends AppCompatActivity {
         team1Winner.setOnClickListener((v) -> {
             t1Wins = true;
             team1Winner.setBackgroundColor(getResources().getColor(R.color.azzurro));
+            t2Wins = false;
+            team2Winner.setBackgroundColor(getResources().getColor(R.color.giallocra));
         });
         team2Winner.setOnClickListener((v) -> {
             t2Wins = true;
             team2Winner.setBackgroundColor(getResources().getColor(R.color.azzurro));
+            t1Wins = false;
+            team1Winner.setBackgroundColor(getResources().getColor(R.color.giallocra));
         });
     }
 
@@ -306,7 +310,8 @@ public class EventInExecutionActivity extends AppCompatActivity {
                     if(otherTeam.contains(item)){
                         otherTeam.remove(item);
                     }
-                    teamSelected.add(item);
+                    if(!teamSelected.contains(item))teamSelected.add(item);
+                    else                            teamSelected.remove(item);
                     printListPlayer(tvSelected, teamSelected);
                     printListPlayer(otherTV, otherTeam);
                 }

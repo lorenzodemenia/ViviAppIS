@@ -322,7 +322,7 @@ public class EventPageFragment extends Fragment
                 Utilities.dbGetCollEvents(db,getResources()).document(id).get().addOnCompleteListener((task ->
                 {
                     e = new Evento(task.getResult().getData());
-                    if(e.canStart() && e.getMinPart()<=e.getPartecipants().size())
+                    //if(e.canStart() && e.getMinPart()<=e.getPartecipants().size())
                         startActivity(new Intent(getActivity(), EventInExecutionActivity.class).putExtra(getResources().getString(R.string.event_send_ev), id));
                 }));
             });

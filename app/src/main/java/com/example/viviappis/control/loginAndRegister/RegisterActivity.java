@@ -117,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity
                 {
                     if (task.isSuccessful())
                     {
-                        Utilities.dbGetCollEvents(db,getResources()).
+                        Utilities.dbGetCollUsers(db,getResources()).
                                 document(u.getEmail()).set(u.toMap()).addOnCompleteListener((t) ->
                                 {
                                     if (t.isSuccessful())
