@@ -39,7 +39,53 @@
     <!-- stringhe per l'activity newEvent  -->
     <string name="new_ev_pub">Evento: pubblico</string>
     <string name="new_ev_priv">Evento: privato</string>
-    <string-array name="privacy"></string-array>
+    <string name="privacy_testo">Norme della community
+        In modo Di garantire una buona esperienza in Vivi, sono presenti un insieme di regole da rispettare per creare un ambiente sicuro in cui gli utenti possano divertirsi.
+        Le conseguenze della violazione di queste linee guida possono variare dalla sospensione temporanea alla cancellazione permanente dell’account.
+        1. Atti di bullismo
+        Non si tollera nessuna forma di bullismo. Crediamo in una comunità inclusiva e nella libertà di espressione individuale priva di abusi. Comportamenti o contenuti offensivi possono essere causa di gravi disturbi psicologici e verranno pertanto rimossi dalla nostra piattaforma.
+        2. Volgarità
+        Non si tollerano bestemmie, parolacce e insulti.
+        3. Violenza
+        Non si tollerano atti di violenza e di incitamento all’odio. Tali comportamenti hanno conseguenza della rimozione permanente dell’account e l’impedimento alla partecipazione delle attività che si svolgeranno all’interno dell’applicazione.
+        4. Attivita criminali
+        Non è consentito promuovere crimini violenti, furti e frodi. Ci adoperiamo al fine di garantire che Vivi non consenta attività che violino legge o regolamenti.
+        5. Rispetto della privacy
+        Non è consentito condividere informazioni personali di chiunque, come ad esempio indirizzo, numero di telefono o email senza il suo permesso, o di genitori se minorenne.
+        6. Tutela dei minori
+        Ci impegniamo a garantire la tutela dei soggetti minorenni sulla nostra piattaforma. Per Vivi un minorenne è una persona di età inferiore ai 18 anni. Non consentiamo attività che possano causare abuso, danno, pericolo o sfruttamento dei minori su Vivi.
+        7. Sicurezza della piattaforma
+        Per Vivi la priorità principale è la sicurezza dei dati degli utenti. Non consentiamo l’accesso alla piattaforma utilizzando metodi non autorizzati o al fine di ottenere informazioni personali, dati sensibili e riservati. Qualunque atto che possa arrecare danno alla nostra piattaforma o ai nostri servizi, o aggirarne la sicurezza, l’integrità o l’affidabilita è espressamente vietato.
+        Info generali app
+        La missione di Vivi è quella di stimolare la creatività, socializzazione e portare allegria. Stiamo costruendo una community in cui tutti possano partecipare e scoprire il mondo che li circonda, conoscendo sempre persone nuove e instaurare relazioni sane.
+        Lavoriamo per mantenere un ambiente che vada a sostegno della nostra community e che ne promuova la crescita.
+        Le linee guida della Community definiscono un insieme di norme e un codice di condotta con l’obiettivo di rendere la piattaforma uno spazio sicuro e accogliente per tutti.
+        Un ulteriore obiettivo della piattaforma è coltivare un ambiente che promuova interazioni veritiere , consentendo esclusivamente esperienze autentiche.
+        Ci impegniamo a garantire al piu presto strumenti che possano aiutare sia noi che la community per la rilevazione di atti che vanno contro le nostre norme.
+        Procederemo a sospendere o cancellare account e/o utenti in caso di violazioni gravi o ripetute. L’utilizzo di Vivi è riservato a persone di eta di 13 anni e superiore e procediamo alla rimozione di account di soggetti che potrebbero avere un’età inferiore.
+        INFORMATIVA PRIVACY
+        Lo scopo del seguente documento è di informare la persona fisica *NOME* relativamente ai suoi dati personali tramite l’applicazione Vivi.
+        Le modifiche e gli aggiornamenti saranno vincolati non appena pubblicati sull’Applicazione . In caso di mancata accettazione delle modifiche apportate all’informativa Privacy, l’interessato è tenuto a cessare l’utilizzo di questa Applicazione e può richiedere al Titolare di cancellare I propri dati personali.
+        TITOLARE DEL TRATTAMENTO? RESPONSABILE DELLAPROTEZIONE DATI?
+        1. CATEGORIE DI DATI PERSONALI TRATTATI
+        Il titolare tratta le seguenti tipologie di dati personali forniti volontariamente dall’interessato:
+        - Dati di contatto, nome, cognome, e-mail, credenziali di autenticazione, eventuali ulteriori informazioni inviate dall’interessato
+        - Dati relativi alla posizione 2. Cookie
+        Non viene fatto uso di cookie
+        3. Base giuridica e finalità
+        I dati vengono trattati nel rispetto del Codice della Privacy e del GDPR (art. 4).
+        Per motivi connessi all’erogazione del servizio, viene richiesto all’utente di rendere accessibili all’applicazione alcune funzionalità e risorse del dispositivo mobile. Nello specifico:
+        - Informazioni sul dispositivo e sul sistema operativo installato
+        - Accesso di rete
+        - Posizione
+        Alcuni trattamenti non essenziali per l’utilizzo dell’applicazione trovano base giuridica nel
+        libero consenso dell’interessato.
+        4. Modalità di trattamento
+        I dati personali trattati sono conservati per il solo tempo strettamente necessario a conseguire gli scopi per cui sono stati raccolti e, successivamente per adempiere a prescrizioni normative. Specifiche misure di sicurezza sono osservate per prevenire la perdita dei dati, usi illeciti o non corretti ed accessi non autorizzati. Nessun dato personale derivante dal servizio viene diffuso.
+        5. Conferimento dei dati
+        Il conferimento dei dati personali è necessario per poter usufruire dei servizi offerti dal software Vivi.
+        6. Diritti degli interessati e modalità di esercizio
+        In qualità di interessato, ha diritto di ottenere dall’applicazione Vivi, nei casi previsti dal Regolamento, l’accesso ai dati personali, la rettifica, l’integrazione e la cancellazione degli stessi. La richiesta potrà essere presentata contattando il Titolare del trattamento, inviando una PEC a *inserisci email* . Gli interessati che ritengono che il trattamento dei dati personali a loro riferiti avvenga in violazione di quanto previsto dal Regolamento hanno il diritto di proporre reclamo all’Autorita Garante per la protezione dei dati personali, come previsto dall’articolo 77 del Regolamento stesso, o di adire le opportune sedi giudiziarie (art. 79 del Regolamento).</string>
 
 
     <!-- stringhe per file utility  -->
