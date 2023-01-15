@@ -5,7 +5,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -80,8 +82,8 @@ public class RegisterActivity extends AppCompatActivity
         bReg = (Button) findViewById(R.id.register);
 
         changePage = (Switch) findViewById(R.id.page_status_switch2);
+        ((TextView)findViewById(R.id.textView3)).setMovementMethod(new ScrollingMovementMethod());
 
-        //eliminabile
         result = (TextView) findViewById(R.id.registerResult);
     }
 

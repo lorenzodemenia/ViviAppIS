@@ -179,15 +179,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register" />
 
-    <EditText
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="383dp"
         android:layout_height="148dp"
         android:layout_marginTop="16dp"
+        android:scrollIndicators="left"
+
+        android:scrollHorizontally="true"
         android:text="@string/privacy_testo"
         android:textColor="@color/black"
         android:textColorHint="@color/hint_black"
-
         app:layout_constraintEnd_toEndOf="@+id/registerDataNasc"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/registerDataNasc"
