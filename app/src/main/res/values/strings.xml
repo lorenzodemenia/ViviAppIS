@@ -132,8 +132,8 @@
     <string name="ev_in_exec_team2">Squadra 2</string>
     <string name="ev_in_exec_endgame">Termina Evento</string>
     <string name="ev_in_exec_replay">Rigioca</string>
-    <string name="ev_in_exec_team1_wins">Vince Squadra 1</string>
-    <string name="ev_in_exec_team2_wins">Vince Squadra 2</string>
+    <string name="ev_in_exec_team1_wins">Vince Team 1</string>
+    <string name="ev_in_exec_team2_wins">Vince Team 2</string>
 
     <!--Privacy-->
     <string name="privacy">Ho letto ed accettato le privacy policy </string>
