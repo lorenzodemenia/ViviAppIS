@@ -94,8 +94,8 @@ public class ScorrimentoRanklist extends RecyclerView.Adapter<ScorrimentoRanklis
             holder.nomeUtente.setText(utn.get(position).getUsername());
         }
 
-        holder.userScore.setText(utn.get(position).getScore()+"");
-        holder.pos.setText((position+1)+"");
+        holder.userScore.setText(utn.get(position).getScore()+" pti");
+        holder.pos.setText((position+1)+"°");
 
     }
 
