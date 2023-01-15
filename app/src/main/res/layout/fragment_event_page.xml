@@ -235,8 +235,10 @@
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/viewDescription"
             app:layout_constraintEnd_toEndOf="@+id/viewDescription"
+            app:layout_constraintHorizontal_bias="0.514"
             app:layout_constraintStart_toStartOf="@+id/viewDescription"
-            app:layout_constraintTop_toTopOf="@+id/viewDescription" />
+            app:layout_constraintTop_toTopOf="@+id/viewDescription"
+            app:layout_constraintVertical_bias="0.47" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/pageEventUser"

@@ -5,171 +5,282 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view19"
+        android:layout_width="239dp"
+        android:layout_height="169dp"
+
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/radius_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view22"
+        android:layout_width="366dp"
+        android:layout_height="161dp"
+
+        android:layout_marginTop="8dp"
+        android:background="@drawable/radius_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view19"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view24"
+        android:layout_width="366dp"
+        android:layout_height="161dp"
+
+        android:layout_marginTop="8dp"
+        android:background="@drawable/radius_yellow"
+        app:layout_constraintEnd_toEndOf="@+id/view22"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/view22"
+        app:layout_constraintTop_toBottomOf="@+id/view22"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view25"
+        android:layout_width="365dp"
+        android:layout_height="106dp"
+
+        android:layout_marginTop="8dp"
+        android:background="@drawable/radius_yellow"
+        app:layout_constraintEnd_toEndOf="@+id/view24"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/view24"
+        app:layout_constraintTop_toBottomOf="@+id/view24"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view26"
+        android:layout_width="326dp"
+        android:layout_height="69dp"
+
+        android:background="@drawable/radius_blurred_white_text"
+        app:layout_constraintBottom_toBottomOf="@+id/view25"
+        app:layout_constraintEnd_toEndOf="@+id/view25"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/view25"
+        app:layout_constraintTop_toTopOf="@+id/view25"
+        app:layout_constraintVertical_bias="0.729"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view21"
+        android:layout_width="348dp"
+        android:layout_height="132dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/radius_blurred_white_text"
+        app:layout_constraintEnd_toEndOf="@+id/view22"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/view22"
+        app:layout_constraintTop_toTopOf="@+id/view22"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view23"
+        android:layout_width="348dp"
+        android:layout_height="132dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/radius_blurred_white_text"
+        app:layout_constraintBottom_toBottomOf="@+id/view24"
+        app:layout_constraintEnd_toEndOf="@+id/view24"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="@+id/view24"
+        app:layout_constraintTop_toTopOf="@+id/view24"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view20"
+        android:layout_width="194dp"
+        android:layout_height="151dp"
+
+        android:background="@drawable/radius_blurred_white_text"
+        app:layout_constraintBottom_toBottomOf="@+id/view19"
+        app:layout_constraintEnd_toEndOf="@+id/view19"
+        app:layout_constraintStart_toStartOf="@+id/view19"
+        app:layout_constraintTop_toTopOf="@+id/view19"
+        app:layout_constraintVertical_bias="0.526"
+        tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/replayTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="606dp"
-        android:layout_marginEnd="260dp"
-        android:layout_marginBottom="77dp"
-        android:text="Button"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Rigioca"
+        android:background="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/view25"
+        app:layout_constraintVertical_bias="0.466" />
 
     <TextView
         android:id="@+id/titleTeam"
-        android:layout_width="139dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="645dp"
+        android:layout_width="174dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="2dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/view20"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="@+id/view20"
+        app:layout_constraintTop_toTopOf="@+id/view20" />
 
     <TextView
         android:id="@+id/roundTeam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="126dp"
-        android:layout_marginEnd="177dp"
-        android:layout_marginBottom="586dp"
+        android:layout_width="144dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="7dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/view20"
+        app:layout_constraintEnd_toEndOf="@+id/view20"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/view20"
+        app:layout_constraintTop_toBottomOf="@+id/titleTeam"
+        app:layout_constraintVertical_bias="0.625" />
 
     <Button
         android:id="@+id/endGameTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="257dp"
-        android:layout_marginTop="606dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="77dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="16dp"
+        android:background="@color/light_blue"
+        android:text="Termina"
+        app:layout_constraintBottom_toBottomOf="@+id/replayTeam"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.989"
+        app:layout_constraintStart_toEndOf="@+id/replayTeam"
+        app:layout_constraintTop_toTopOf="@+id/replayTeam"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/team1Winner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="526dp"
-        android:layout_marginEnd="260dp"
-        android:layout_marginBottom="157dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="8dp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Squadra 1"
+        app:layout_constraintBottom_toBottomOf="@+id/view26"
+        app:layout_constraintStart_toStartOf="@+id/view26"
+        app:layout_constraintTop_toTopOf="@+id/view26"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/team2Winner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="257dp"
-        android:layout_marginTop="526dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="157dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="8dp"
+        android:text="Squadra 2"
+        app:layout_constraintBottom_toBottomOf="@+id/team1Winner"
+        app:layout_constraintEnd_toEndOf="@+id/view26"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toEndOf="@+id/team1Winner"
+        app:layout_constraintTop_toTopOf="@+id/team1Winner"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/spinTeam1"
         android:layout_width="146dp"
         android:layout_height="28dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="213dp"
-        android:layout_marginEnd="216dp"
-        android:layout_marginBottom="490dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="8dp"
 
-    <Spinner
-        android:id="@+id/spinTeam2"
-        android:layout_width="165dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="362dp"
-        android:layout_marginEnd="197dp"
-        android:layout_marginBottom="339dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/team1players"
+        app:layout_constraintEnd_toStartOf="@+id/team1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/team1players"
+        app:layout_constraintTop_toTopOf="@+id/view21"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/team1"
-        android:layout_width="151dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="215dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="491dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/team2"
-        android:layout_width="155dp"
+        android:layout_width="165dp"
         android:layout_height="28dp"
-        android:layout_marginStart="218dp"
-        android:layout_marginTop="362dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="341dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/team1players"
+        app:layout_constraintTop_toTopOf="@+id/spinTeam1" />
 
     <TextView
         android:id="@+id/team1players"
         android:layout_width="312dp"
         android:layout_height="74dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="241dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="416dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/view21"
+        app:layout_constraintEnd_toEndOf="@+id/view21"
+        app:layout_constraintStart_toStartOf="@+id/view21" />
 
     <TextView
         android:id="@+id/team2players"
-        android:layout_width="324dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="392dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="251dp"
+        android:layout_width="312dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/view23"
+        app:layout_constraintEnd_toEndOf="@+id/view23"
+        app:layout_constraintStart_toStartOf="@+id/view23" />
+
+    <TextView
+        android:id="@+id/team2"
+        android:layout_width="165dp"
+        android:layout_height="28dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/team2players"
+        app:layout_constraintEnd_toEndOf="@+id/team2players"
+        app:layout_constraintTop_toTopOf="@+id/spinTeam2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/team"
+        android:layout_width="131dp"
+        android:layout_height="23dp"
+        android:text="Vincitori"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/view26"
+        app:layout_constraintEnd_toEndOf="@+id/view25"
+        app:layout_constraintStart_toStartOf="@+id/view25"
+        app:layout_constraintTop_toTopOf="@+id/view25" />
+
+    <Spinner
+        android:id="@+id/spinTeam2"
+        android:layout_width="146dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/team2players"
+        app:layout_constraintEnd_toStartOf="@+id/team2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/team2players"
+        app:layout_constraintTop_toTopOf="@+id/view23"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
